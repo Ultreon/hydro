@@ -1,0 +1,200 @@
+//file:noinspection GroovyAssignabilityCheck
+//file:noinspection GroovyUnusedCatchParameter
+import org.apache.commons.io.IOUtils
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven {
+            url = "https://plugins.gradle.org/m2/"
+        }
+        maven {
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+            name = "sonatype"
+        }
+        maven {
+            url = "https://maven.atlassian.com/3rdparty/"
+        }
+        google()
+    }
+    dependencies {
+        classpath group: 'commons-io', name: 'commons-io', version: '2.8.0'
+        classpath "com.google.code.gson:gson:2.8.+"
+//        classpath "io.freefair.gradle:lombok-plugin:6.1.0-m3"
+    }
+}
+
+plugins {
+//    id 'extra-java-module-info'
+    id "groovy"
+    id 'java'
+    id 'java-library'
+    id "idea"
+    id "io.freefair.lombok"
+    id 'maven-publish'
+}
+
+//apply plugin: "io.freefair.lombok"
+
+//apply plugin: 'maven'
+apply plugin: 'eclipse'
+apply plugin: 'java'
+apply plugin: 'java-library'
+apply plugin: 'maven-publish'
+
+// Read build number file.
+int buildVersion = Integer.parseInt("${version1}")
+int release = Integer.parseInt(project.property("versionRelease").toString())
+String stage = project.property("versionStage").toString()
+int stageRelease = Integer.parseInt(project.property("versionStageRelease").toString())
+
+Integer buildNumber
+try {
+    FileInputStream fileInputStream = new FileInputStream("${projectDir}/buildnumber.txt")
+    String buildNrString = new String(IOUtils.toByteArray(fileInputStream))
+    fileInputStream.close()
+    try {
+        buildNumber = Integer.valueOf(buildNrString)
+    } catch (NumberFormatException e) {
+        buildNumber = -1
+    }
+} catch (IOException e) {
+    buildNumber = -1
+}
+
+
+// Advance build number.
+buildNumber++
+println("Executing build " + buildNumber)
+String newBuild = buildNumber.toString()
+
+// Write new build number.
+if (!new File("buildnumber.txt").exists()) {
+    new File("buildnumber.txt").createNewFile()
+}
+FileOutputStream output = new FileOutputStream("${projectDir}/buildnumber.txt")
+output.write(newBuild.getBytes())
+output.flush()
+output.close()
+
+version = buildVersion + "." + release + '.' + buildNumber + "-" + stage + stageRelease
+group = 'com.ultreon' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'hydro'
+//jar.version = version
+jar.archiveVersion.set(version)
+
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '16' // Need this here so eclipse task generates correctly.
+
+//GroovyShell shell = new GroovyShell(this.getClass().getClassLoader(), this.binding);
+//shell.run(file, arguments);
+
+println("Current version: " + version)
+println("Project: " + group + ":" + archivesBaseName)
+println("Bulding a Java " + compileJava.targetCompatibility + " project...")
+
+repositories {
+    mavenCentral()
+    google()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/"; name "Sonatype" }
+    maven { url "https://maven.atlassian.com/3rdparty/" }
+    maven { url "https://repo.spring.io/libs-milestone/" }
+    maven { url "https://maven.imagej.net/content/repositories/public/" }
+}
+
+configurations {
+    // configuration that holds jars to include in the jar
+    api
+    
+    api {
+        canBeResolved true
+    }
+}
+
+dependencies {
+    implementation 'org.jetbrains:annotations:22.0.0'
+
+    // Projects.
+    api project(":commons")
+
+    api 'com.github.oshi:oshi-core:5.8.2'
+    api 'com.github.oshi:oshi-json:3.13.6'
+    api 'fastutil:fastutil:5.0.9'
+
+    // Annotations.
+    api 'org.jetbrains:annotations:22.0.0'
+
+    // SwingLabs swingX
+    api 'org.swinglabs.swingx:swingx-common:1.6.5-1'
+    api 'org.swinglabs.swingx:swingx-graphics:1.6.5-1'
+    api 'org.swinglabs.swingx:swingx-core:1.6.5-1'
+    api 'org.swinglabs.swingx:swingx-project:1.6.5-1'
+
+    // Google Find Bugs - JSR305
+    api 'com.google.guava:guava:31.0.1-jre'
+
+    // JHLabs
+    api group: 'com.jhlabs', name: 'filters', version: '2.0.235-1'
+
+    // Jopt Simple
+    api group: 'org.xbib.elasticsearch', name: 'joptsimple', version: '6.3.2.1'
+
+    // Logger
+    api group: 'org.apache.logging.log4j', name: 'log4j', version: '2.14.1'
+    api group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.14.1'
+    api group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.14.1'
+
+    // Apache commons
+    api group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+    api group: 'org.apache.commons', name: 'commons-collections4', version: '4.4'
+    api group: 'org.apache.commons', name: 'commons-compress', version: '1.21'
+    api group: 'org.apache.commons', name: 'commons-configuration2', version: '2.7'
+    api group: 'org.apache.commons', name: 'commons-math3', version: '3.6.1'
+    api group: 'org.apache.commons', name: 'commons-text', version: '1.9'
+
+    // Studios Hartman
+    api group: 'com.github.WilliamAHartman', name: 'Jamepad', version: '1.3.2'
+
+    api 'io.projectreactor:reactor-core:3.4.10'
+    api 'io.projectreactor.addons:reactor-extra:3.4.5'
+    api "org.reactivestreams:reactive-streams:1.0.3"
+
+    // Testing
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'QBubbles',
+                'Implementation-Vendor': 'QTech Community',
+                'Implementation-Version': "1.0-indev1",
+                'Main-Class': 'com.qtech.preloadr.PreLoader'
+    }
+    from {
+        configurations.api.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    duplicatesStrategy DuplicatesStrategy.INCLUDE
+}
+
+test {
+    useJUnitPlatform()
+}
+
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
+//publishing {
+//    publications {
+//        mavenJava(MavenPublication) {
+//            artifact jar, sourcesJar
+//        }
+//    }
+//    repositories {
+//        maven {
+//            url System.getenv("MAVEN_REPO")
+//        }
+//    }
+//}
