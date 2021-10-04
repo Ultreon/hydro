@@ -111,6 +111,26 @@ configurations {
     }
 }
 
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
+task deleteOldJavadoc(type: Delete) {
+    delete fileTree("$projectDir/.web/latest/")
+}
+
+task copyJavadoc(type: Copy) {
+    from javadoc.outputs
+    into "$projectDir/.web/latest/"
+    dependsOn deleteOldJavadoc
+}
+
+mkdir "$projectDir/.web/"
+mkdir "$projectDir/.web/latest"
+
+javadoc.finalizedBy(copyJavadoc)
+
 dependencies {
     implementation 'org.jetbrains:annotations:22.0.0'
 
@@ -158,6 +178,7 @@ dependencies {
     api 'io.projectreactor:reactor-core:3.4.10'
     api 'io.projectreactor.addons:reactor-extra:3.4.5'
     api "org.reactivestreams:reactive-streams:1.0.3"
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'
 
     // Testing
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
