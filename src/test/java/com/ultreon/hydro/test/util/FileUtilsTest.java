@@ -10,7 +10,6 @@ public class FileUtilsTest {
     void extension1() {
         assert Objects.equals(getExtension("test.png"), ".png");
     }
-
     @Test
     void extension2() {
         assert Objects.equals(getExtension("file-without-ext"), null);
