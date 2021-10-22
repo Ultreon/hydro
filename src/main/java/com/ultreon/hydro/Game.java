@@ -13,7 +13,7 @@ import com.ultreon.hydro.player.IPlayer;
 import com.ultreon.hydro.player.PlayerController;
 import com.ultreon.hydro.render.FilterApplier;
 import com.ultreon.hydro.render.RenderSettings;
-import com.ultreon.hydro.render.Renderer;
+import com.ultreon.hydro.render.RenderSystem;
 import com.ultreon.hydro.resources.ResourceManager;
 import com.ultreon.hydro.screen.Screen;
 import com.ultreon.hydro.screen.ScreenManager;
@@ -138,7 +138,7 @@ public abstract class Game {
 
     protected abstract IPlayer createPlayer();
 
-    protected abstract void render(Renderer renderer);
+    protected abstract void render(RenderSystem renderSystem);
 
     protected abstract void tick();
 
@@ -326,25 +326,25 @@ public abstract class Game {
         }
 
         // Get GraphicsProcessor and GraphicsProcessor objects.
-        Renderer renderer = new Renderer(bs.getDrawGraphics());
+        RenderSystem renderSystem = new RenderSystem(bs.getDrawGraphics());
 
         FilterApplier filterApplier = new FilterApplier(getBounds().getSize(), this.getObserver());
-        Renderer filterRenderer = filterApplier.getRenderer();
+        RenderSystem filterRenderSystem = filterApplier.getRenderer();
 
         if (this.renderSettings.isAntialiasingEnabled() && this.isTextAntialiasEnabled())
-            filterRenderer.hint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+            filterRenderSystem.hint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         if (this.renderSettings.isAntialiasingEnabled() && this.isAntialiasEnabled())
-            filterRenderer.hint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            filterRenderSystem.hint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         List<BufferedImageOp> filters = Game.instance.getCurrentFilters();
 
-        this.filteredRender(filterRenderer);
+        this.filteredRender(filterRenderSystem);
 
         // Set filter gotten from filter event-handlers.
         filterApplier.setFilters(filters);
 
         // Draw filtered image.
-        renderer.image(filterApplier.done(), 0, 0);
+        renderSystem.image(filterApplier.done(), 0, 0);
 
         // Disable Antialias
         // Todo: check performance.
@@ -356,7 +356,7 @@ public abstract class Game {
         this.fps = fps;
 
         // Dispose and show.
-        renderer.dispose();
+        renderSystem.dispose();
 
         try {
             bs.show();
@@ -366,14 +366,14 @@ public abstract class Game {
     }
 
     /**
-     * @param renderer the renderer to render the game with.
+     * @param renderSystem the renderer to render the game with.
      */
-    private void filteredRender(Renderer renderer) {
+    private void filteredRender(RenderSystem renderSystem) {
 
         // Call to game environment rendering.
-        GameEvents.get().publish(new RenderGameEvent.Before(renderer));
-        render(renderer);
-        GameEvents.get().publish(new RenderGameEvent.After(renderer));
+        GameEvents.get().publish(new RenderGameEvent.Before(renderSystem));
+        render(renderSystem);
+        GameEvents.get().publish(new RenderGameEvent.After(renderSystem));
 
         // Get screen.
         @Nullable Screen screen = this.screenManager.getCurrentScreen();
@@ -382,10 +382,10 @@ public abstract class Game {
         if (screen != null) {
 
             // Render the screen.
-            GameEvents.get().publish(new RenderScreenEvent.Before(screen, renderer));
-            screen.render(this, renderer);
-            screen.renderGUI(this, renderer);
-            GameEvents.get().publish(new RenderScreenEvent.After(screen, renderer));
+            GameEvents.get().publish(new RenderScreenEvent.Before(screen, renderSystem));
+            screen.render(this, renderSystem);
+            screen.renderGUI(this, renderSystem);
+            GameEvents.get().publish(new RenderScreenEvent.After(screen, renderSystem));
         }
     }
 

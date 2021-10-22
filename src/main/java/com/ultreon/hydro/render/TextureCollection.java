@@ -24,7 +24,7 @@ public class TextureCollection extends RegistryEntry {
         }
 
         BufferedImage bufferedImage = new BufferedImage(texture.width(), texture.height(), BufferedImage.TYPE_INT_ARGB);
-        Renderer graphics = new Renderer(bufferedImage.getGraphics());
+        RenderSystem graphics = new RenderSystem(bufferedImage.getGraphics());
         graphics.hint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         texture.render(graphics);
         graphics.dispose();

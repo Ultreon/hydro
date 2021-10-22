@@ -1,6 +1,6 @@
 package com.ultreon.hydro.screen.gui;
 
-import com.ultreon.hydro.render.Renderer;
+import com.ultreon.hydro.render.RenderSystem;
 import com.ultreon.hydro.vector.Vector2i;
 
 import java.util.Objects;
@@ -35,7 +35,7 @@ public abstract class Widget implements IGuiListener {
         return Objects.hash(hash);
     }
 
-    public abstract void render(Renderer renderer);
+    public abstract void render(RenderSystem renderSystem);
 
     public void onMouseClick(int x, int y, int button, int count) {
 

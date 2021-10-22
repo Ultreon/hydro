@@ -45,7 +45,7 @@ public abstract class KeyboardController extends KeyAdapter {
             }
         }
 
-        logger.info("KeyInput: PRESS (" + e.getKeyCode() + ", " + e.getKeyChar() + ")");
+//        logger.info("KeyInput: PRESS (" + e.getKeyCode() + ", " + e.getKeyChar() + ")");
 
         ScreenManager screenManager = this.game.getScreenManager();
         if (screenManager != null) {
@@ -63,7 +63,7 @@ public abstract class KeyboardController extends KeyAdapter {
             GameEvents.get().publish(new KeyboardEvent(Game.getInstance(), this, e, KeyEventType.RELEASE));
         }
 
-        logger.info("KeyInput: RELEASE (" + e.getKeyCode() + ", " + e.getKeyChar() + ")");
+//        logger.info("KeyInput: RELEASE (" + e.getKeyCode() + ", " + e.getKeyChar() + ")");
 
         ScreenManager screenManager = this.game.getScreenManager();
         if (screenManager != null) {
@@ -80,7 +80,7 @@ public abstract class KeyboardController extends KeyAdapter {
             GameEvents.get().publish(new KeyboardEvent(Game.getInstance(), this, e, KeyEventType.TYPE));
         }
 
-        logger.info("KeyInput: TYPE (" + e.getKeyCode() + ", " + e.getKeyChar() + ")");
+//        logger.info("KeyInput: TYPE (" + e.getKeyCode() + ", " + e.getKeyChar() + ")");
 
         ScreenManager screenManager = this.game.getScreenManager();
         if (screenManager != null) {

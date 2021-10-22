@@ -15,7 +15,7 @@ public class PaintTexture extends Texture {
     }
 
     @Override
-    public void render(Renderer gfx, int xf, int yf, int xs, int ys) {
+    public void render(RenderSystem gfx, int xf, int yf, int xs, int ys) {
         gfx.paint(paint);
         switch (mode) {
             case DRAW -> gfx.rectLine(xf, yf, xs - xf, ys - yf);

@@ -1,12 +1,12 @@
 package com.ultreon.hydro.event;
 
 import com.ultreon.hydro.GameObject;
-import com.ultreon.hydro.render.Renderer;
+import com.ultreon.hydro.render.RenderSystem;
 
 public abstract class RenderGameObjectEvent extends RenderEvent {
     private final GameObject gameObject;
 
-    public RenderGameObjectEvent(GameObject gameObject, Renderer graphics) {
+    public RenderGameObjectEvent(GameObject gameObject, RenderSystem graphics) {
         super(graphics);
         this.gameObject = gameObject;
     }
@@ -16,13 +16,13 @@ public abstract class RenderGameObjectEvent extends RenderEvent {
     }
 
     public static class Before extends RenderGameObjectEvent {
-        public Before(GameObject gameObject, Renderer graphics) {
+        public Before(GameObject gameObject, RenderSystem graphics) {
             super(gameObject, graphics);
         }
     }
 
     public static class After extends RenderGameObjectEvent {
-        public After(GameObject gameObject, Renderer graphics) {
+        public After(GameObject gameObject, RenderSystem graphics) {
             super(gameObject, graphics);
         }
     }

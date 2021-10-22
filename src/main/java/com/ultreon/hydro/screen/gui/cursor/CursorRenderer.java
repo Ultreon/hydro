@@ -3,7 +3,7 @@ package com.ultreon.hydro.screen.gui.cursor;
 import com.ultreon.hydro.common.Drawable;
 import com.ultreon.hydro.common.ResourceEntry;
 import com.ultreon.hydro.registry.Registry;
-import com.ultreon.hydro.render.Renderer;
+import com.ultreon.hydro.render.RenderSystem;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -20,7 +20,7 @@ public abstract class CursorRenderer implements Drawable {
         // Transparent 16 x 16 pixel cursor image.
         BufferedImage cursorImg2 = new BufferedImage(32, 32, BufferedImage.TYPE_INT_ARGB);
 
-        Renderer gg2 = new Renderer(cursorImg2.createGraphics());
+        RenderSystem gg2 = new RenderSystem(cursorImg2.createGraphics());
         draw(gg2);
 
         // Create a new blank cursor.
@@ -33,7 +33,7 @@ public abstract class CursorRenderer implements Drawable {
     }
 
     @Override
-    public abstract void draw(Renderer g);
+    public abstract void draw(RenderSystem g);
 
     public String getName() {
         return name;

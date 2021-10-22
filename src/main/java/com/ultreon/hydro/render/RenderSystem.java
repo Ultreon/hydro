@@ -49,27 +49,29 @@ import java.util.Map;
  * @see Rectangle
  */
 @SuppressWarnings("unused")
-public class Renderer {
+public class RenderSystem {
     ////////////////////
     //     Fields     //
     ////////////////////
-    private final Graphics2D gg;
-    private Font fallbackFont;
+    Font fallbackFont;
+    final Graphics2D gg;
+    private RenderState renderState;
 
     //////////////////////////
     //     Constructors     //
     //////////////////////////
-    public Renderer(Graphics gfx) {
+    public RenderSystem(Graphics gfx) {
         this.gg = (Graphics2D) gfx;
     }
 
-    public Renderer(Graphics2D gfx2d) {
+    public RenderSystem(Graphics2D gfx2d) {
         this.gg = gfx2d;
     }
 
-    public Renderer(Renderer renderer) {
-        this.fallbackFont = renderer.fallbackFont;
-        this.gg = renderer.gg;
+    public RenderSystem(RenderSystem renderSystem) {
+        this.fallbackFont = renderSystem.fallbackFont;
+        this.gg = renderSystem.gg;
+        this.renderState = renderSystem.renderState;
     }
 
     ////////////////////////
@@ -268,7 +270,7 @@ public class Renderer {
     }
 
     public void wrappedText(String str, int x, int y, int maxWidth) {
-        List<String> lines = StringUtils.wrap(str, getFontMetrics(getFont()), maxWidth);
+        List<String> lines = StringUtils.wrap(str, fontMetrics(getFont()), maxWidth);
         String joined = org.apache.commons.lang3.StringUtils.join(lines.toArray(new String[]{}), '\n');
         multiLineText(joined, x, y);
     }
@@ -352,11 +354,11 @@ public class Renderer {
         gg.setTransform(Tx);
     }
 
-    public void setClip(int x, int y, int width, int height) {
+    public void simpleClip(int x, int y, int width, int height) {
         gg.setClip(x, y, width, height);
     }
 
-    public void setClip(Shape clip) {
+    public void simpleClip(Shape clip) {
         gg.setClip(clip);
     }
 
@@ -395,7 +397,7 @@ public class Renderer {
         return gg.getFont();
     }
 
-    public FontMetrics getFontMetrics(Font f) {
+    public FontMetrics fontMetrics(Font f) {
         return gg.getFontMetrics(f);
     }
 
@@ -411,7 +413,7 @@ public class Renderer {
         return gg.getClipBounds(r);
     }
 
-    public FontMetrics getFontMetrics() {
+    public FontMetrics fontMetrics() {
         return gg.getFontMetrics();
     }
 
@@ -434,12 +436,12 @@ public class Renderer {
     ///////////////////////////
     //     Miscellaneous     //
     ///////////////////////////
-    public Renderer create() {
-        return new Renderer(gg.create());
+    public RenderSystem subInstance() {
+        return new RenderSystem(gg.create());
     }
 
-    public Renderer create(int x, int y, int width, int height) {
-        return new Renderer(gg.create(x, y, width, height));
+    public RenderSystem subInstance(int x, int y, int width, int height) {
+        return new RenderSystem(gg.create(x, y, width, height));
     }
 
     public boolean hitClip(int x, int y, int width, int height) {

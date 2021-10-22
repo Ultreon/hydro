@@ -1,6 +1,6 @@
 package com.ultreon.hydro.screen.gui.controls;
 
-import com.ultreon.hydro.render.Renderer;
+import com.ultreon.hydro.render.RenderSystem;
 import com.ultreon.hydro.screen.gui.Widget;
 import com.ultreon.hydro.screen.gui.style.State;
 import com.ultreon.hydro.screen.gui.style.Style;
@@ -69,20 +69,20 @@ public class Button extends Widget {
     }
 
     @Override
-    public void render(Renderer renderer) {
+    public void render(RenderSystem renderSystem) {
         if (state.contains(State.PRESSED)) {
-            renderer.color(style.getBackgroundColors().getPressed());
-            renderer.stroke(new BasicStroke(style.getBorderWidths().getPressed()));
+            renderSystem.color(style.getBackgroundColors().getPressed());
+            renderSystem.stroke(new BasicStroke(style.getBorderWidths().getPressed()));
 //            g.fill(buttonRectangle);
-            renderer.fill(new Rectangle2D.Double(0, 0, width, height));
-            renderer.color(style.getBorderColors().getPressed());
-            renderer.outline(new Rectangle2D.Double(0, 0, width, height));
+            renderSystem.fill(new Rectangle2D.Double(0, 0, width, height));
+            renderSystem.color(style.getBorderColors().getPressed());
+            renderSystem.outline(new Rectangle2D.Double(0, 0, width, height));
         } else if (state.contains(State.NORMAL)) {
-            renderer.color(style.getBackgroundColors().getNormal());
-            renderer.stroke(new BasicStroke(style.getBorderWidths().getNormal()));
-            renderer.fill(new Rectangle2D.Double(0, 0, width, height));
-            renderer.color(style.getBorderColors().getNormal());
-            renderer.outline(new Rectangle2D.Double(0, 0, width, height));
+            renderSystem.color(style.getBackgroundColors().getNormal());
+            renderSystem.stroke(new BasicStroke(style.getBorderWidths().getNormal()));
+            renderSystem.fill(new Rectangle2D.Double(0, 0, width, height));
+            renderSystem.color(style.getBorderColors().getNormal());
+            renderSystem.outline(new Rectangle2D.Double(0, 0, width, height));
         }
     }
 

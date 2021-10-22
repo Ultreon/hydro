@@ -1,9 +1,9 @@
 package com.ultreon.hydro.graphics;
 
-import com.ultreon.hydro.render.Renderer;
+import com.ultreon.hydro.render.RenderSystem;
 
 public interface ITexture {
-    void render(Renderer gg);
+    void render(RenderSystem gg);
 
     int width();
 

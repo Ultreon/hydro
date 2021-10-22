@@ -2,7 +2,7 @@ package com.ultreon.hydro.screen;
 
 import com.ultreon.hydro.Game;
 import com.ultreon.hydro.input.KeyInput;
-import com.ultreon.hydro.render.Renderer;
+import com.ultreon.hydro.render.RenderSystem;
 import com.ultreon.hydro.screen.gui.Container;
 import com.ultreon.hydro.screen.gui.Widget;
 
@@ -119,7 +119,7 @@ public abstract class Screen extends Container {
 
     }
 
-    public abstract void render(Game game, Renderer gg);
+    public abstract void render(Game game, RenderSystem gg);
 
     @Override
     public final <T extends Widget> T add(T widget) {
@@ -127,7 +127,7 @@ public abstract class Screen extends Container {
         return widget;
     }
 
-    public void renderGUI(Game game, Renderer gg) {
+    public void renderGUI(Game game, RenderSystem gg) {
         for (Widget widget : this.children) {
             widget.render(gg);
         }

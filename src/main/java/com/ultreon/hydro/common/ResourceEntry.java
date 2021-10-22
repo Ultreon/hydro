@@ -16,7 +16,7 @@ public record ResourceEntry(@NotNull String namespace, @NotNull String path) {
             throw new SyntaxError("Namespace contains illegal characters: " + namespace);
         }
 
-        if (!Pattern.matches("[a-z][a-z0-9_/]*", path)) {
+        if (!Pattern.matches("[a-z][a-z0-9_/.]*", path)) {
             throw new SyntaxError("Path contains illegal characters: " + path);
         }
 
@@ -47,6 +47,19 @@ public record ResourceEntry(@NotNull String namespace, @NotNull String path) {
         if (!Pattern.matches("[a-z_]*", namespace)) {
             throw new SyntaxError("Namespace contains illegal characters: " + namespace);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ResourceEntry that = (ResourceEntry) o;
+        return namespace.equals(that.namespace) && path.equals(that.path);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(namespace, path);
     }
 
     @Override

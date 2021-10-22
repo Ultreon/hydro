@@ -16,9 +16,9 @@ public class PlayerController {
     }
 
     public void tick() {
-        logger.info("PlayerController[8c724942]: " + this.player);
+//        logger.info("PlayerController[8c724942]: " + this.player);
         if (this.player != null) {
-            logger.info("PlayerController[8c217398]: " + this.player);
+//            logger.info("PlayerController[8c217398]: " + this.player);
             this.player.forward(KeyInput.isDown(Map.KEY_UP) || KeyInput.isDown(Map.KEY_KP_UP) || KeyInput.isDown(Map.KEY_W));
             this.player.backward(KeyInput.isDown(Map.KEY_DOWN) || KeyInput.isDown(Map.KEY_KP_DOWN) || KeyInput.isDown(Map.KEY_S));
             this.player.right(KeyInput.isDown(Map.KEY_RIGHT) || KeyInput.isDown(Map.KEY_KP_RIGHT) || KeyInput.isDown(Map.KEY_D));

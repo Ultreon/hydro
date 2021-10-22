@@ -1,20 +1,20 @@
 package com.ultreon.hydro.event;
 
-import com.ultreon.hydro.render.Renderer;
+import com.ultreon.hydro.render.RenderSystem;
 
 public abstract class RenderGameEvent extends RenderEvent {
-    public RenderGameEvent(Renderer graphics) {
+    public RenderGameEvent(RenderSystem graphics) {
         super(graphics);
     }
 
     public static class Before extends RenderGameEvent {
-        public Before(Renderer graphics) {
+        public Before(RenderSystem graphics) {
             super(graphics);
         }
     }
 
     public static class After extends RenderGameEvent {
-        public After(Renderer graphics) {
+        public After(RenderSystem graphics) {
             super(graphics);
         }
     }

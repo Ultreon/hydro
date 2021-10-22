@@ -1,7 +1,7 @@
 package com.ultreon.hydro.screen.gui.border;
 
 import com.ultreon.hydro.graphics.Insets;
-import com.ultreon.hydro.render.Renderer;
+import com.ultreon.hydro.render.RenderSystem;
 
 import java.awt.*;
 
@@ -19,18 +19,18 @@ public class Border {
         this.borderInsets = new com.ultreon.hydro.graphics.Insets(top, left, bottom, right);
     }
 
-    public void paintBorder(Renderer renderer, int x, int y, int width, int height) {
+    public void paintBorder(RenderSystem renderSystem, int x, int y, int width, int height) {
         Insets insets = getBorderInsets();
 
         //  Set paint.
-        renderer.paint(paint);
+        renderSystem.paint(paint);
 
         //  Draw rectangles around the component, but do not draw
         //  in the component area itself.
-        renderer.rect(x + insets.left, y, width - insets.left - insets.right, insets.top);
-        renderer.rect(x, y, insets.left, height);
-        renderer.rect(x + width - insets.right, y, insets.right, height);
-        renderer.rect(x + insets.left, y + height - insets.bottom, width - insets.left - insets.right, insets.bottom);
+        renderSystem.rect(x + insets.left, y, width - insets.left - insets.right, insets.top);
+        renderSystem.rect(x, y, insets.left, height);
+        renderSystem.rect(x + width - insets.right, y, insets.right, height);
+        renderSystem.rect(x + insets.left, y + height - insets.bottom, width - insets.left - insets.right, insets.bottom);
     }
 
     public boolean isBorderOpaque() {

@@ -7,6 +7,7 @@ import com.ultreon.hydro.event.SubscribeEvent;
 import com.ultreon.hydro.event.bus.GameEvents;
 import com.ultreon.hydro.event.registry.RegistryEvent;
 import com.ultreon.hydro.registry.object.RegistryObject;
+import org.apache.logging.log4j.LogManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,16 +30,13 @@ public class DeferredRegister<T extends IRegistryEntry> {
     public <C extends T> RegistryObject<C> register(String key, Supplier<C> supplier) {
         ResourceEntry rl = new ResourceEntry(modId, key);
 
-//        if (!registry.getType().isAssignableFrom(supplier.get().getClass())) {
-//            throw new IllegalArgumentException("Tried to register illegal type: " + supplier.get().getClass() + " expected assignable to " + registry.getType());
-//        }
-
         objects.add(new HashMap.SimpleEntry<>(rl, supplier::get));
 
         return new RegistryObject<C>(registry, supplier, rl);
     }
 
     public void register(GameEvents events) {
+        LogManager.getLogger("Registration").info("Mod " + modId + " subscribes for register events of type: " + registry.getType().getName());
         events.subscribe(this);
     }
 
@@ -48,6 +46,8 @@ public class DeferredRegister<T extends IRegistryEntry> {
         if (!event.getRegistry().getType().equals(registry.getType())) {
             return;
         }
+
+        LogManager.getLogger("Registration").info("Mod " + modId + " registration for: " + registry.getType().getName());
 
         for (HashMap.Entry<ResourceEntry, Supplier<T>> entry : objects) {
             T object = entry.getValue().get();

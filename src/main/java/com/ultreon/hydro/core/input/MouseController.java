@@ -54,19 +54,14 @@ public abstract class MouseController extends MouseAdapter {
 
         this.clickCount = e.getClickCount();
 
-        logger.info("MouseInput[8078f1f3]: CLICK (" + e.getX() + ", " + e.getY() + ") (" + e.getClickCount() + ")");
-
         if (GameEvents.get() != null) {
             GameEvents.get().publish(new com.ultreon.hydro.event.input.MouseEvent(Game.getInstance(), this, e, MouseEventType.CLICK));
         }
 
         ScreenManager screenManager = game.getScreenManager();
-        logger.info("MouseInput[cd2116e5]: SCREEN_MANAGER (" + screenManager + ")");
         if (screenManager != null) {
             Screen currentScreen = screenManager.getCurrentScreen();
-            logger.info("MouseInput[cfd85117]: CURRENT_SCREEN (" + currentScreen + ")");
             if (currentScreen != null) {
-                logger.info("MouseInput[c3d4c2a6]: Sending event to: " + currentScreen.getClass().getName());
                 currentScreen.onMouseClick(e.getX(), e.getY(), e.getButton(), e.getClickCount());
             }
         }
@@ -98,9 +93,6 @@ public abstract class MouseController extends MouseAdapter {
         currentPoint = e.getPoint() != null ? e.getPoint() : currentPoint;
 
         buttonMap.put(e.getButton(), false);
-
-        logger.info("MouseInput[d22a46e6]: " + e.getPoint());
-        logger.info("MouseInput[ac481ce9]: " + currentPoint);
 
         if (GameEvents.get() != null) {
             GameEvents.get().publish(new com.ultreon.hydro.event.input.MouseEvent(Game.getInstance(), this, e, MouseEventType.RELEASE));

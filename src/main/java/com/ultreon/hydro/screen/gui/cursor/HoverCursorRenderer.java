@@ -1,6 +1,6 @@
 package com.ultreon.hydro.screen.gui.cursor;
 
-import com.ultreon.hydro.render.Renderer;
+import com.ultreon.hydro.render.RenderSystem;
 
 import java.awt.*;
 
@@ -10,10 +10,10 @@ public class HoverCursorRenderer extends CursorRenderer {
     }
 
     @Override
-    public void draw(Renderer g) {
+    public void draw(RenderSystem g) {
         Polygon poly = new Polygon(new int[]{10, 20, 15, 10}, new int[]{10, 22, 22, 26}, 4);
 
-        ((Renderer) g).hint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g.hint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g.color(Color.white);
         g.ovalLine(0, 0, 20, 20);
         g.color(Color.white);

@@ -1,6 +1,6 @@
 package com.ultreon.hydro.screen.gui;
 
-import com.ultreon.hydro.render.Renderer;
+import com.ultreon.hydro.render.RenderSystem;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
@@ -18,14 +18,14 @@ public abstract class Container extends Widget {
     }
 
     @Override
-    public void render(Renderer renderer) {
-        Renderer containment = renderer.create(this.x, this.y, this.width, this.height);
+    public void render(RenderSystem renderSystem) {
+        RenderSystem containment = renderSystem.subInstance(this.x, this.y, this.width, this.height);
         renderChildren(containment);
     }
 
-    protected void renderChildren(Renderer renderer) {
+    protected void renderChildren(RenderSystem renderSystem) {
         for (Widget child : this.children) {
-            child.render(renderer);
+            child.render(renderSystem);
         }
     }
 

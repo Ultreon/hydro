@@ -1,9 +1,15 @@
 package com.ultreon.hydro.resources;
 
 import com.ultreon.commons.exceptions.DuplicateElementException;
+import com.ultreon.commons.function.ThrowingSupplier;
 import com.ultreon.hydro.common.ResourceEntry;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.jar.JarEntry;
@@ -11,10 +17,13 @@ import java.util.jar.JarFile;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ResourceManager {
     private final Map<File, PathMapping<byte[]>> mapping = new ConcurrentHashMap<>();
     private final Map<ResourceEntry, byte[]> assets = new ConcurrentHashMap<>();
+    private final List<ResourcePackage> resourcePackages = new ArrayList<>();
+    private final Logger logger = LogManager.getLogger("Resource-Manager");
 
     public byte[] getResource(String path) {
         List<byte[]> collect = mapping.values().stream().map((mapping) -> mapping.get(path)).collect(Collectors.toList());
@@ -24,10 +33,160 @@ public class ResourceManager {
         return collect.get(collect.size() - 1);
     }
 
+    @Deprecated
     public InputStream getResourceAsStream(String path) {
         return new ByteArrayInputStream(getResource(path));
     }
 
+    @Nullable
+    public Resource getResource(ResourceEntry entry) {
+        for (ResourcePackage resourcePackage : resourcePackages) {
+            logger.warn(resourcePackage.entries());
+
+            if (resourcePackage.has(entry)) {
+                return resourcePackage.get(entry);
+            }
+        }
+
+        logger.warn("Unknown resource: " + entry);
+
+        return null;
+    }
+
+    public void importResources(File file) {
+        if (file.isFile()) {
+            importFileResourcePackage(file);
+        } else if (file.isDirectory()) {
+            importDirResourcePackage(file);
+        }
+    }
+
+    @SuppressWarnings("unused")
+    private void importDirResourcePackage(File file) {
+        // Check if it's a directory.
+        assert file.isDirectory();
+
+        try {
+            // Prepare (entry -> resource) mappings/
+            Map<ResourceEntry, Resource> map = new HashMap<>();
+
+            // Get assets directory.
+            File assets = new File(file, "assets");
+
+            // Check if assets directory exists.
+            if (assets.exists()) {
+                // List files in assets dir.
+                File[] files = assets.listFiles();
+
+                // Loop listed files.
+                for (File assetsPackage : files != null ? files : new File[0]) {
+                    // Get assets-package namespace from the name of the listed file (that's a dir).
+                    String namespace = assetsPackage.getName();
+
+                    // Walk assets package.
+                    Stream<Path> walk = Files.walk(assetsPackage.toPath());
+                    for (Path assetPath : walk.toList()) {
+                        // Convert to file object.
+                        File asset = assetPath.toFile();
+
+                        // Check if it's a file, if not we will walk to the next file / folder in the Files.walk(...) list.
+                        if (!asset.isFile()) {
+                            continue;
+                        }
+
+                        // Create resource with file input stream.
+                        ThrowingSupplier<InputStream, IOException> sup = () -> new FileInputStream(asset);
+                        Resource resource = new Resource(sup);
+
+                        logger.warn(assetPath);
+
+                        // Continue to next file / folder if asset path is the same path as the assets package.
+                        if (assetPath.toFile().equals(assetsPackage)) {
+                            continue;
+                        }
+
+                        // Calculate resource path.
+                        Path relativize = assetsPackage.toPath().relativize(assetPath);
+                        String s = relativize.toString().replaceAll("\\\\", "/");
+
+                        logger.warn(s);
+
+                        // Create resource entry/
+                        ResourceEntry entry = new ResourceEntry(namespace, s);
+
+                        logger.warn(entry);
+
+                        // MEME
+                        boolean b = Person.MY_SELF.kill(Person.MY_SELF) == Emotion.LOL;
+
+                        // Add resource mapping for (entry -> resource).
+                        map.put(entry, resource);
+                    }
+                }
+
+                resourcePackages.add(new ResourcePackage(map));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void importFileResourcePackage(File file) {
+        // Check if it's a file.
+        assert file.isFile();
+
+        // Check for .jar files.
+        if (file.getName().endsWith(".jar")) {
+            try {
+                // Prepare (entry -> resource) mappings.
+                Map<ResourceEntry, Resource> map = new HashMap<>();
+
+                // Create jar file instance from file.
+                JarFile jarFile = new JarFile(file);
+
+                // Get jar entries, and convert it into an iterable to use in for(...) loops
+                Enumeration<JarEntry> var0 = jarFile.entries();
+                Iterable<JarEntry> entries = () -> Objects.requireNonNull(var0.asIterator());
+
+                // Loop jar entries.
+                for (JarEntry jarEntry : entries) {
+                    // Get name of the jar entry.
+                    String name = jarEntry.getName();
+                    logger.error(name);
+
+                    // Check if it isn't a directory, because we want a file.
+                    if (!jarEntry.isDirectory()) {
+                        String[] splitPath = name.split("/", 3);
+
+                        if (splitPath.length >= 3) {
+                            String assetsDirectoryName = splitPath[0];
+                            if (assetsDirectoryName.equals("assets")) {
+                                // Get namespace and path from split path
+                                String namespace = splitPath[1];
+                                String path = splitPath[2];
+
+                                // Resource
+                                ThrowingSupplier<InputStream, IOException> sup = () -> jarFile.getInputStream(jarEntry);
+                                Resource resource = new Resource(sup);
+
+                                // Entry
+                                ResourceEntry entry = new ResourceEntry(namespace, path);
+
+                                // Add (entry -> resource) mapping.
+                                map.put(entry, resource);
+                            }
+                        }
+                    }
+                }
+
+                resourcePackages.add(new ResourcePackage(map));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Deprecated
     public void loadResources(File file, JarFile jarFile) {
         Enumeration<JarEntry> entries = jarFile.entries();
 

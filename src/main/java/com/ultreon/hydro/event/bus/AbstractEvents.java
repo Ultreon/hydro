@@ -16,6 +16,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
+@SuppressWarnings("unchecked")
 public abstract class AbstractEvents<T extends AbstractEvent> {
     protected static final Predicate<Method> classPredicate;
 
@@ -41,6 +42,8 @@ public abstract class AbstractEvents<T extends AbstractEvent> {
     }
 
     private static boolean isSubscribing(Method method) {
+//        LogManager.getLogger("Subscribe-Check").info(method.getDeclaringClass().getName() + "." + method.getName());
+
         return method.isAnnotationPresent(SubscribeEvent.class);
     }
 
@@ -60,6 +63,7 @@ public abstract class AbstractEvents<T extends AbstractEvent> {
 
         CopyOnWriteArraySet<Pair<Object, Method>> methods = eventToMethod.get(event.getClass());
         for (Pair<Object, Method> method : methods) {
+//            logger.info("Sending " + event.getClass().getName() + " to " + method.getSecond().getName());
             try {
                 method.getSecond().invoke(method.getFirst(), event);
             } catch (InvocationTargetException e) {

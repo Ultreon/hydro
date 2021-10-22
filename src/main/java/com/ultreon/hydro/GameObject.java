@@ -1,6 +1,6 @@
 package com.ultreon.hydro;
 
-import com.ultreon.hydro.render.Renderer;
+import com.ultreon.hydro.render.RenderSystem;
 import com.ultreon.hydro.vector.Vector2f;
 
 public abstract class GameObject {
@@ -27,5 +27,5 @@ public abstract class GameObject {
         return new Vector2f(x, y);
     }
 
-    public abstract void render(Renderer renderer);
+    public abstract void render(RenderSystem renderSystem);
 }
