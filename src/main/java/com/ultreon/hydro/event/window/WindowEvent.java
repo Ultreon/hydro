@@ -1,16 +1,16 @@
 package com.ultreon.hydro.event.window;
 
-import com.ultreon.hydro.GameWindow;
+import com.ultreon.hydro.Window;
 import com.ultreon.hydro.event.Event;
 
 public class WindowEvent extends Event {
-    private final GameWindow window;
+    private final Window window;
 
-    public WindowEvent(GameWindow window) {
+    public WindowEvent(Window window) {
         this.window = window;
     }
 
-    public GameWindow getWindow() {
+    public Window getWindow() {
         return window;
     }
 }

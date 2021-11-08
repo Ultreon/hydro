@@ -1,19 +1,19 @@
 package com.ultreon.hydro.screen.gui;
 
-import com.ultreon.hydro.render.RenderSystem;
-import com.ultreon.hydro.vector.Vector2i;
+import com.ultreon.hydro.render.Renderer;
+import com.ultreon.hydro.vector.Vec2i;
 
 import java.util.Objects;
 
 @SuppressWarnings("unused")
-public abstract class Widget implements IGuiListener {
+public abstract class Interactable implements GuiElement {
     protected int x;
     protected int y;
     protected int width;
     protected int height;
     private final long hash;
 
-    public Widget(int x, int y, int width, int height) {
+    public Interactable(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -26,7 +26,7 @@ public abstract class Widget implements IGuiListener {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Widget that = (Widget) o;
+        Interactable that = (Interactable) o;
         return hash == that.hash;
     }
 
@@ -35,7 +35,7 @@ public abstract class Widget implements IGuiListener {
         return Objects.hash(hash);
     }
 
-    public abstract void render(RenderSystem renderSystem);
+    public abstract void render(Renderer renderer);
 
     public void onMouseClick(int x, int y, int button, int count) {
 
@@ -119,8 +119,8 @@ public abstract class Widget implements IGuiListener {
         this.height = height;
     }
 
-    public Vector2i getPos() {
-        return new Vector2i(x, y);
+    public Vec2i getPos() {
+        return new Vec2i(x, y);
     }
 
     public void setPos(int x, int y) {
@@ -128,8 +128,8 @@ public abstract class Widget implements IGuiListener {
         setY(y);
     }
 
-    public Vector2i getSize() {
-        return new Vector2i(width, height);
+    public Vec2i getSize() {
+        return new Vec2i(width, height);
     }
 
     public void setSize(int width, int height) {
@@ -150,7 +150,7 @@ public abstract class Widget implements IGuiListener {
         return x >= this.x && y >= this.y && x <= this.x + width && y <= this.y + height;
     }
 
-    public boolean isWithinBounds(Vector2i pos) {
+    public boolean isWithinBounds(Vec2i pos) {
         return pos.x >= this.x && pos.y >= this.y && pos.x <= this.x + width && pos.y <= this.y + height;
     }
 }

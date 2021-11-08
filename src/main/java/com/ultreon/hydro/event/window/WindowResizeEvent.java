@@ -1,24 +1,24 @@
 package com.ultreon.hydro.event.window;
 
-import com.ultreon.hydro.GameWindow;
-import com.ultreon.hydro.vector.Vector2f;
-import com.ultreon.hydro.vector.Vector2i;
+import com.ultreon.hydro.Window;
+import com.ultreon.hydro.vector.Vec2f;
+import com.ultreon.hydro.vector.Vec2i;
 
 public class WindowResizeEvent extends WindowEvent {
-    private final Vector2i oldSize;
-    private final Vector2f newSize;
+    private final Vec2i oldSize;
+    private final Vec2f newSize;
 
-    public WindowResizeEvent(GameWindow window, Vector2i oldSize, Vector2f newSize) {
+    public WindowResizeEvent(Window window, Vec2i oldSize, Vec2f newSize) {
         super(window);
         this.oldSize = oldSize;
         this.newSize = newSize;
     }
 
-    public Vector2i getOldSize() {
+    public Vec2i getOldSize() {
         return oldSize;
     }
 
-    public Vector2f getNewSize() {
+    public Vec2f getNewSize() {
         return newSize;
     }
 }

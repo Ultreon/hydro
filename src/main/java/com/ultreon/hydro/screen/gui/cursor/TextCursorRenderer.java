@@ -1,6 +1,6 @@
 package com.ultreon.hydro.screen.gui.cursor;
 
-import com.ultreon.hydro.render.RenderSystem;
+import com.ultreon.hydro.render.Renderer;
 
 import java.awt.*;
 
@@ -10,7 +10,7 @@ public class TextCursorRenderer extends CursorRenderer {
     }
 
     @Override
-    public void draw(RenderSystem g) {
+    public void draw(Renderer g) {
         g.hint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g.color(Color.white);
         g.line(0, 1, 0, 24);

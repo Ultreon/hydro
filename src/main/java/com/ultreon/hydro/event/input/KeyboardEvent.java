@@ -1,7 +1,7 @@
 package com.ultreon.hydro.event.input;
 
 import com.ultreon.hydro.Game;
-import com.ultreon.hydro.core.input.KeyboardController;
+import com.ultreon.hydro.core.input.KeyboardInput;
 import com.ultreon.hydro.event.Event;
 import com.ultreon.hydro.event.type.KeyEventType;
 import org.jetbrains.annotations.NotNull;
@@ -14,7 +14,7 @@ import java.util.HashMap;
  * This event is used for handling keyboard input.
  *
  * @see KeyboardEvent
- * @see KeyboardController
+ * @see KeyboardInput
  * @see KeyEvent
  * @see KeyEventType
  */
@@ -27,7 +27,7 @@ public class KeyboardEvent extends Event {
     private final long when;
 
     private final Game main;
-    private final KeyboardController controller;
+    private final KeyboardInput controller;
     private final KeyEvent parentEvent;
     private final KeyEventType type;
     private final HashMap<Integer, Boolean> pressed = new HashMap<>();
@@ -36,11 +36,11 @@ public class KeyboardEvent extends Event {
      * Keyboard event, called from a specific scene.
      *
      * @param main       The {@link Game} instance.
-     * @param controller The {@link KeyboardController} instance.
+     * @param controller The {@link KeyboardInput} instance.
      * @param event      The {@link KeyEvent} instance.
      * @param type       One of the {@link KeyEventType} constants.
      */
-    public KeyboardEvent(Game main, @NotNull KeyboardController controller, KeyEvent event, KeyEventType type) {
+    public KeyboardEvent(Game main, @NotNull KeyboardInput controller, KeyEvent event, KeyEventType type) {
         this.main = main;
         this.type = type;
         this.controller = controller;
@@ -67,7 +67,7 @@ public class KeyboardEvent extends Event {
      *
      * @return The KeyboardController instance.
      */
-    public KeyboardController getController() {
+    public KeyboardInput getController() {
         return controller;
     }
 

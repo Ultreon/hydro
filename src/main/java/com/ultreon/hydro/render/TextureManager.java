@@ -1,7 +1,7 @@
 package com.ultreon.hydro.render;
 
 import com.ultreon.hydro.Game;
-import com.ultreon.hydro.common.ResourceEntry;
+import com.ultreon.hydro.common.Identifier;
 import com.ultreon.hydro.resources.ResourceManager;
 
 import java.util.Map;
@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class TextureManager {
     private static final TextureManager instance = new TextureManager();
-    private final Map<ResourceEntry, Texture> textureMap = new ConcurrentHashMap<>();
+    private final Map<Identifier, Texture> textureMap = new ConcurrentHashMap<>();
 
     public static TextureManager instance() {
         return instance;
@@ -19,12 +19,12 @@ public final class TextureManager {
 
     }
 
-    public Texture getTexture(ResourceEntry entry) {
+    public Texture getTexture(Identifier entry) {
         textureMap.get(entry);
         return textureMap.get(entry);
     }
 
-    public Texture getOrLoadTexture(ResourceEntry entry) {
+    public Texture getOrLoadTexture(Identifier entry) {
         if (textureMap.containsKey(entry)) {
             return textureMap.get(entry);
         }
@@ -32,7 +32,7 @@ public final class TextureManager {
         return loadTexture(entry, new TextureSource() {
             @Override
             public Texture create() {
-                return new ImageTexture() {
+                return new ImageTex() {
                     @Override
                     protected byte[] loadBytes() {
                         ResourceManager resourceManager = Game.getInstance().getResourceManager();
@@ -43,7 +43,7 @@ public final class TextureManager {
         });
     }
 
-    public Texture loadTexture(ResourceEntry entry, TextureSource source) {
+    public Texture loadTexture(Identifier entry, TextureSource source) {
         Texture texture = source.create();
         textureMap.put(entry, texture);
         return texture;

@@ -15,16 +15,16 @@ import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
- * @see MouseController
+ * @see MouseInput
  * @see java.awt.event.KeyAdapter
  */
-public abstract class KeyboardController extends KeyAdapter {
+public abstract class KeyboardInput extends KeyAdapter {
     private final Set<Integer> keysDown = new CopyOnWriteArraySet<>();
     private final Game game;
 
     private static final Logger logger = LogManager.getLogger("Game-Input");
 
-    public KeyboardController() {
+    public KeyboardInput() {
         logger.info("test");
         logger.info("test");
         this.game = Game.getInstance();

@@ -10,19 +10,18 @@ import java.util.regex.Pattern;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public record ResourceEntry(@NotNull String namespace, @NotNull String path) {
-    public ResourceEntry {
-        if (!Pattern.matches("[a-z][a-z0-9_]*", namespace)) {
+public record Identifier(@NotNull String namespace, @NotNull String path) {
+    public Identifier {
+        if (!Pattern.matches("[a-z][a-z0-9_.]*", namespace)) {
             throw new SyntaxError("Namespace contains illegal characters: " + namespace);
         }
 
-        if (!Pattern.matches("[a-z][a-z0-9_/.]*", path)) {
+        if (!Pattern.matches("[A-Z][A-Za-z0-9_/.]*((\\.[a-z0-9_]*)|)", path)) {
             throw new SyntaxError("Path contains illegal characters: " + path);
         }
-
     }
 
-    public ResourceEntry(@NotNull String name) {
+    public Identifier(@NotNull String name) {
         this(verify(name, 0).split(":")[0], verify(name, 1).split(":")[1]);
     }
 
@@ -39,8 +38,8 @@ public record ResourceEntry(@NotNull String namespace, @NotNull String path) {
         return name;
     }
 
-    public static ResourceEntry fromString(String name) {
-        return new ResourceEntry(name);
+    public static Identifier fromString(String name) {
+        return new Identifier(name);
     }
 
     public static void testNamespace(String namespace) {
@@ -53,7 +52,7 @@ public record ResourceEntry(@NotNull String namespace, @NotNull String path) {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ResourceEntry that = (ResourceEntry) o;
+        Identifier that = (Identifier) o;
         return namespace.equals(that.namespace) && path.equals(that.path);
     }
 
@@ -67,7 +66,7 @@ public record ResourceEntry(@NotNull String namespace, @NotNull String path) {
         return namespace + ":" + path;
     }
 
-    public ResourceEntry withNamespace(String namespace) {
-        return new ResourceEntry(namespace, path);
+    public Identifier withNamespace(String namespace) {
+        return new Identifier(namespace, path);
     }
 }

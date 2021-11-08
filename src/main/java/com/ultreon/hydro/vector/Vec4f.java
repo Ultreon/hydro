@@ -7,17 +7,17 @@ import java.io.ObjectOutput;
 import java.util.Objects;
 
 @SuppressWarnings("unused")
-public class Vector4f implements Externalizable, Cloneable {
+public class Vec4f implements Externalizable, Cloneable {
     public float x, y, z, w;
 
-    public Vector4f(float x, float y, float z, float w) {
+    public Vec4f(float x, float y, float z, float w) {
         this.x = x;
         this.y = y;
         this.z = z;
         this.w = w;
     }
 
-    public Vector4f() {
+    public Vec4f() {
     }
 
     public float getX() {
@@ -52,10 +52,46 @@ public class Vector4f implements Externalizable, Cloneable {
         this.w = w;
     }
 
+    public static Vec4f mul(Vec4f a, Vec4f b) {
+        return new Vec4f(a.x * b.x, a.y * b.y, a.z * b.z, a.w * b.w);
+    }
+
+    public static Vec4f div(Vec4f a, Vec4f b) {
+        return new Vec4f(a.x / b.x, a.y / b.y, a.z / b.z, a.w / b.w);
+    }
+
+    public static Vec4f add(Vec4f a, Vec4f b) {
+        return new Vec4f(a.x + b.x, a.y + b.y, a.z + b.z, a.w + b.w);
+    }
+
+    public static Vec4f sub(Vec4f a, Vec4f b) {
+        return new Vec4f(a.x - b.x, a.y - b.y, a.z - b.z, a.w - b.w);
+    }
+
+    public static float dot(Vec4f a, Vec4f b) {
+        return a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w;
+    }
+
+    public static Vec4d pow(Vec4f a, Vec4f b) {
+        return new Vec4d(Math.pow(a.x, b.x), Math.pow(a.y, b.y), Math.pow(a.z, b.z), Math.pow(a.w, b.w));
+    }
+
+    public Vec4d d() {
+        return new Vec4d(x, y, z, w);
+    }
+
+    public Vec4f f() {
+        return new Vec4f(x, y, z, w);
+    }
+
+    public Vec4i i() {
+        return new Vec4i((int)x, (int)y, (int)z, (int) w);
+    }
+
     @Override
-    public Vector4f clone() {
+    public Vec4f clone() {
         try {
-            Vector4f clone = (Vector4f) super.clone();
+            Vec4f clone = (Vec4f) super.clone();
 
             clone.x = this.x;
             clone.y = this.y;
@@ -71,7 +107,7 @@ public class Vector4f implements Externalizable, Cloneable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Vector4f vector4i = (Vector4f) o;
+        Vec4f vector4i = (Vec4f) o;
         return getX() == vector4i.getX() && getY() == vector4i.getY() && getZ() == vector4i.getZ() && getW() == vector4i.getW();
     }
 

@@ -2,7 +2,7 @@ package com.ultreon.hydro.render;
 
 import java.awt.*;
 
-public class PaintTexture extends Texture {
+public class PaintTex extends Texture {
     private Paint paint;
     private final Mode mode = Mode.FILL;
 
@@ -10,12 +10,12 @@ public class PaintTexture extends Texture {
         this.paint = paint;
     }
 
-    public PaintTexture(Paint paint) {
+    public PaintTex(Paint paint) {
         this.paint = paint;
     }
 
     @Override
-    public void render(RenderSystem gfx, int xf, int yf, int xs, int ys) {
+    public void render(Renderer gfx, int xf, int yf, int xs, int ys) {
         gfx.paint(paint);
         switch (mode) {
             case DRAW -> gfx.rectLine(xf, yf, xs - xf, ys - yf);

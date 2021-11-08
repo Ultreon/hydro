@@ -1,8 +1,8 @@
 package com.ultreon.hydro.event.input;
 
 import com.ultreon.hydro.Game;
-import com.ultreon.hydro.core.input.KeyboardController;
-import com.ultreon.hydro.core.input.MouseController;
+import com.ultreon.hydro.core.input.KeyboardInput;
+import com.ultreon.hydro.core.input.MouseInput;
 import com.ultreon.hydro.event.Event;
 import com.ultreon.hydro.event.type.KeyEventType;
 import com.ultreon.hydro.event.type.MouseEventType;
@@ -17,7 +17,7 @@ import java.awt.event.KeyEvent;
  *
  * @see MouseMotionEvent
  * @see MouseWheelEvent
- * @see MouseController
+ * @see MouseInput
  * @see MouseEventType
  * @see java.awt.event.MouseEvent
  */
@@ -32,7 +32,7 @@ public class MouseEvent extends Event {
     private final int yOnScreen;
 
     private final Game game;
-    private final @NotNull MouseController controller;
+    private final @NotNull MouseInput controller;
     private final java.awt.event.MouseEvent parentEvent;
     private final MouseEventType type;
 
@@ -40,11 +40,11 @@ public class MouseEvent extends Event {
      * Keyboard event, called from a specific scene.
      *
      * @param game       The {@link Game} instance.
-     * @param controller The {@link KeyboardController} instance.
+     * @param controller The {@link KeyboardInput} instance.
      * @param event      The {@link KeyEvent} instance.
      * @param type       One of the {@link KeyEventType} constants.
      */
-    public MouseEvent(Game game, @NotNull MouseController controller, java.awt.event.MouseEvent event, MouseEventType type) {
+    public MouseEvent(Game game, @NotNull MouseInput controller, java.awt.event.MouseEvent event, MouseEventType type) {
         this.game = game;
         this.type = type;
         this.button = event.getButton();
@@ -73,7 +73,7 @@ public class MouseEvent extends Event {
      *
      * @return The KeyboardController instance.
      */
-    public @NotNull MouseController getController() {
+    public @NotNull MouseInput getController() {
         return controller;
     }
 

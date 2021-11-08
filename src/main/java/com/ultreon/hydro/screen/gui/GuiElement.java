@@ -1,6 +1,6 @@
 package com.ultreon.hydro.screen.gui;
 
-public interface IGuiListener {
+public interface GuiElement {
     void make();
 
     void destroy();

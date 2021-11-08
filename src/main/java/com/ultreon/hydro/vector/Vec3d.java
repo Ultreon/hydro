@@ -7,16 +7,16 @@ import java.io.ObjectOutput;
 import java.util.Objects;
 
 @SuppressWarnings("unused")
-public class Vector3d implements Externalizable, Cloneable {
+public class Vec3d implements Externalizable, Cloneable {
     public double x, y, z;
 
-    public Vector3d(double x, double y, double z) {
+    public Vec3d(double x, double y, double z) {
         this.x = x;
         this.y = y;
         this.z = z;
     }
 
-    public Vector3d() {
+    public Vec3d() {
 
     }
 
@@ -44,10 +44,46 @@ public class Vector3d implements Externalizable, Cloneable {
         this.z = z;
     }
 
+    public static Vec3d mul(Vec3d a, Vec3d b) {
+        return new Vec3d(a.x * b.x, a.y * b.y, a.z * b.z);
+    }
+
+    public static Vec3d div(Vec3d a, Vec3d b) {
+        return new Vec3d(a.x / b.x, a.y / b.y, a.z / b.z);
+    }
+
+    public static Vec3d add(Vec3d a, Vec3d b) {
+        return new Vec3d(a.x + b.x, a.y + b.y, a.z + b.z);
+    }
+
+    public static Vec3d sub(Vec3d a, Vec3d b) {
+        return new Vec3d(a.x - b.x, a.y - b.y, a.z - b.z);
+    }
+
+    public static double dot(Vec3d a, Vec3d b) {
+        return a.x * b.x + a.y * b.y + a.z * b.z;
+    }
+
+    public static Vec3d pow(Vec3d a, Vec3d b) {
+        return new Vec3d(Math.pow(a.x, b.x), Math.pow(a.y, b.y), Math.pow(a.z, b.z));
+    }
+
+    public Vec3d d() {
+        return new Vec3d(x, y, z);
+    }
+
+    public Vec3f f() {
+        return new Vec3f((float)x, (float)y, (float) z);
+    }
+
+    public Vec3i i() {
+        return new Vec3i((int)x, (int)y, (int)z);
+    }
+
     @Override
-    public Vector3d clone() {
+    public Vec3d clone() {
         try {
-            Vector3d clone = (Vector3d) super.clone();
+            Vec3d clone = (Vec3d) super.clone();
 
             clone.x = this.x;
             clone.y = this.y;
@@ -62,7 +98,7 @@ public class Vector3d implements Externalizable, Cloneable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Vector3d vector4i = (Vector3d) o;
+        Vec3d vector4i = (Vec3d) o;
         return getX() == vector4i.getX() && getY() == vector4i.getY() && getZ() == vector4i.getZ();
     }
 

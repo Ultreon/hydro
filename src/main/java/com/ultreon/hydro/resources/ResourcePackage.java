@@ -1,15 +1,15 @@
 package com.ultreon.hydro.resources;
 
-import com.ultreon.hydro.common.ResourceEntry;
+import com.ultreon.hydro.common.Identifier;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
 public class ResourcePackage {
-    private final Map<ResourceEntry, Resource> resources;
+    private final Map<Identifier, Resource> resources;
 
-    public ResourcePackage(Map<ResourceEntry, Resource> resources) {
+    public ResourcePackage(Map<Identifier, Resource> resources) {
         this.resources = resources;
     }
 
@@ -17,15 +17,15 @@ public class ResourcePackage {
         resources = new HashMap<>();
     }
 
-    public boolean has(ResourceEntry entry) {
+    public boolean has(Identifier entry) {
         return resources.containsKey(entry);
     }
 
-    public Set<ResourceEntry> entries() {
+    public Set<Identifier> entries() {
         return resources.keySet();
     }
 
-    public Resource get(ResourceEntry entry) {
+    public Resource get(Identifier entry) {
         return resources.get(entry);
     }
 }

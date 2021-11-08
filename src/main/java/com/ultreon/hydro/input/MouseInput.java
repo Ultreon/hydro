@@ -1,7 +1,6 @@
 package com.ultreon.hydro.input;
 
-import com.ultreon.hydro.core.input.MouseController;
-import com.ultreon.hydro.vector.Vector2i;
+import com.ultreon.hydro.vector.Vec2i;
 
 import java.awt.*;
 
@@ -33,9 +32,9 @@ public final class MouseInput {
         return getPos().y;
     }
 
-    public static Vector2i getPos() {
+    public static Vec2i getPos() {
         Point currentPoint = instance.controller.getCurrentPoint();
-        return currentPoint == null ? new Vector2i(-1, -1) : new Vector2i(currentPoint.x, currentPoint.y);
+        return currentPoint == null ? new Vec2i(-1, -1) : new Vec2i(currentPoint.x, currentPoint.y);
     }
 
     public static void listen(Component canvas) {
@@ -45,7 +44,7 @@ public final class MouseInput {
         canvas.addMouseWheelListener(instance.controller);
     }
 
-    private static class Controller extends MouseController {
+    private static class Controller extends com.ultreon.hydro.core.input.MouseInput {
         @Override
         protected Point getCurrentLocationOnScreen() {
             return super.getCurrentLocationOnScreen();

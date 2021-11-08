@@ -7,15 +7,15 @@ import java.io.ObjectOutput;
 import java.util.Objects;
 
 @SuppressWarnings("unused")
-public class Vector2d implements Externalizable, Cloneable {
+public class Vec2d implements Externalizable, Cloneable {
     public double x, y;
 
-    public Vector2d(double x, double y) {
+    public Vec2d(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
-    public Vector2d() {
+    public Vec2d() {
 
     }
 
@@ -85,12 +85,48 @@ public class Vector2d implements Externalizable, Cloneable {
         this.y = Math.pow(this.y, y);
     }
 
+    public static Vec2d mul(Vec2d a, Vec2d b) {
+        return new Vec2d(a.x * b.x, a.y * b.y);
+    }
+
+    public static Vec2d div(Vec2d a, Vec2d b) {
+        return new Vec2d(a.x / b.x, a.y / b.y);
+    }
+
+    public static Vec2d add(Vec2d a, Vec2d b) {
+        return new Vec2d(a.x + b.x, a.y + b.y);
+    }
+
+    public static Vec2d sub(Vec2d a, Vec2d b) {
+        return new Vec2d(a.x - b.x, a.y - b.y);
+    }
+
+    public static double dot(Vec2d a, Vec2d b) {
+        return a.x * b.x + a.y * b.y;
+    }
+
+    public static Vec2d pow(Vec2d a, Vec2d b) {
+        return new Vec2d(Math.pow(a.x, b.x), Math.pow(a.y, b.y));
+    }
+
+    public Vec2d d() {
+        return new Vec2d(x, y);
+    }
+
+    public Vec2f f() {
+        return new Vec2f((float)x, (float)y);
+    }
+
+    public Vec2i i() {
+        return new Vec2i((int)x, (int)y);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Vector2d vector2d = (Vector2d) o;
-        return Double.compare(vector2d.getX(), getX()) == 0 && Double.compare(vector2d.getY(), getY()) == 0;
+        Vec2d vec2D = (Vec2d) o;
+        return Double.compare(vec2D.getX(), getX()) == 0 && Double.compare(vec2D.getY(), getY()) == 0;
     }
 
     @Override
@@ -107,9 +143,9 @@ public class Vector2d implements Externalizable, Cloneable {
     }
 
     @Override
-    public Vector2d clone() {
+    public Vec2d clone() {
         try {
-            Vector2d clone = (Vector2d) super.clone();
+            Vec2d clone = (Vec2d) super.clone();
 
             clone.x = this.x;
             clone.y = this.y;

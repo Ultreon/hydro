@@ -6,7 +6,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 
-public abstract class ImageTexture extends Texture {
+public abstract class ImageTex extends Texture {
     BufferedImage image;
 
     protected abstract byte[] loadBytes();
@@ -18,7 +18,7 @@ public abstract class ImageTexture extends Texture {
     }
 
     @Override
-    public void render(RenderSystem gfx, int xf, int yf, int xs, int ys) {
+    public void render(Renderer gfx, int xf, int yf, int xs, int ys) {
         gfx.image(image, xf, yf, xs - xf, ys - yf);
     }
 }

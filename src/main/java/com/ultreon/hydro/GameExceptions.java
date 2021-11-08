@@ -4,10 +4,10 @@ import com.ultreon.commons.crash.ApplicationCrash;
 import com.ultreon.commons.crash.CrashLog;
 
 @SuppressWarnings("ClassCanBeRecord")
-class GameExceptionHandler implements Thread.UncaughtExceptionHandler {
+class GameExceptions implements Thread.UncaughtExceptionHandler {
     private final Game game;
 
-    GameExceptionHandler(Game game) {
+    GameExceptions(Game game) {
         this.game = game;
     }
 

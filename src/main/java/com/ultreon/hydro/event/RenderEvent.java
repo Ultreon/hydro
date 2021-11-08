@@ -1,15 +1,15 @@
 package com.ultreon.hydro.event;
 
-import com.ultreon.hydro.render.RenderSystem;
+import com.ultreon.hydro.render.Renderer;
 
 public abstract class RenderEvent extends Event {
-    private final RenderSystem graphics;
+    private final Renderer graphics;
 
-    public RenderEvent(RenderSystem graphics) {
+    public RenderEvent(Renderer graphics) {
         this.graphics = graphics;
     }
 
-    public RenderSystem graphics() {
+    public Renderer graphics() {
         return graphics;
     }
 

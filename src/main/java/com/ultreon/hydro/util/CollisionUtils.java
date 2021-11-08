@@ -16,7 +16,7 @@ import com.ultreon.hydro.graphics.shapes.Polygon;
  * This class provides the utility methods for
  * calculating various intersection properties of Geometric shapes
  */
-public class IntersectionUtils {
+public class CollisionUtils {
 
     /**
      * Returns point of intersection of two given lines
@@ -89,7 +89,7 @@ public class IntersectionUtils {
      * @param line   ?
      * @param circle ?
      * @return boolean value indicating if given line and circle intersect
-     * @see IntersectionUtils#doIntersect(Circle, Polygon)
+     * @see CollisionUtils#doIntersect(Circle, Polygon)
      */
     public static boolean doIntersect(Line line, Circle circle) {
         //extract the slope of the given line

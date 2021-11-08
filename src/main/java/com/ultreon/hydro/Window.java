@@ -1,7 +1,7 @@
 package com.ultreon.hydro;
 
 import com.ultreon.commons.exceptions.OneTimeUseException;
-import com.ultreon.hydro.common.ResourceEntry;
+import com.ultreon.hydro.common.Identifier;
 import com.ultreon.hydro.core.CursorManager;
 import com.ultreon.hydro.event.bus.GameEvents;
 import com.ultreon.hydro.event.window.WindowClosingEvent;
@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 @SuppressWarnings("unused")
-public class GameWindow {
+public class Window {
     // GUI Elements.
     private final JXFrame wrap;
     final Canvas canvas;
@@ -38,7 +38,7 @@ public class GameWindow {
     private Thread mainThread;
 
     @SuppressWarnings("FunctionalExpressionCanBeFolded")
-    public GameWindow(Properties properties) {
+    public Window(Properties properties) {
         this.wrap = new JXFrame(properties.title);
         this.wrap.setPreferredSize(new Dimension(properties.width, properties.height));
         this.wrap.setSize(properties.width, properties.height);
@@ -53,14 +53,14 @@ public class GameWindow {
 
         this.observer = canvas::imageUpdate; // Didn't use canvas directly because of security reasons.
 
-        GameWindow.this.canvas.setSize(properties.width, properties.height);
+        Window.this.canvas.setSize(properties.width, properties.height);
 
         this.wrap.add(this.canvas);
 
         this.wrap.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
-                GameWindow.this.canvas.setSize(e.getComponent().getSize());
+                Window.this.canvas.setSize(e.getComponent().getSize());
             }
         });
 
@@ -74,7 +74,7 @@ public class GameWindow {
 
             @Override
             public void windowClosing(WindowEvent e) {
-                boolean cancelClose = GameEvents.get().publish(new WindowClosingEvent(GameWindow.this));
+                boolean cancelClose = GameEvents.get().publish(new WindowClosingEvent(Window.this));
                 if (!cancelClose) {
                     game().close();
                 }
@@ -109,7 +109,7 @@ public class GameWindow {
         this.wrap.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                GameWindow.this.canvas.requestFocus();
+                Window.this.canvas.requestFocus();
             }
 
             @Override
@@ -126,7 +126,7 @@ public class GameWindow {
 
             @Override
             public void focusLost(FocusEvent e) {
-                GameWindow.this.canvas.requestFocus();
+                Window.this.canvas.requestFocus();
             }
         });
 
@@ -183,8 +183,8 @@ public class GameWindow {
         System.exit(0);
     }
 
-    public Cursor registerCursor(int hotSpotX, int hotSpotY, ResourceEntry resourceEntry) {
-        ResourceEntry textureEntry = new ResourceEntry(resourceEntry.namespace(), "textures/cursors/" + resourceEntry.path());
+    public Cursor registerCursor(int hotSpotX, int hotSpotY, Identifier identifier) {
+        Identifier textureEntry = new Identifier(identifier.namespace(), "textures/cursors/" + identifier.path());
         Image image;
         try (InputStream assetAsStream = game().getResourceManager().getAssetAsStream(textureEntry)) {
             image = ImageIO.read(assetAsStream);
@@ -192,7 +192,7 @@ public class GameWindow {
             throw new IOError(e);
         }
 
-        return toolkit.createCustomCursor(image, new Point(hotSpotX, hotSpotY), resourceEntry.toString());
+        return toolkit.createCustomCursor(image, new Point(hotSpotX, hotSpotY), identifier.toString());
     }
 
     private Game game() {

@@ -12,7 +12,7 @@ import java.util.List;
 
 @Beta
 public class FilterApplier {
-    private final RenderSystem renderSystem;
+    private final Renderer renderer;
     private final BufferedImage buffer;
     private final ImageObserver observer;
     private List<BufferedImageOp> filters;
@@ -22,15 +22,15 @@ public class FilterApplier {
         size.height = Math.max(size.height, 1);
 
         BufferedImage buffer = new BufferedImage(size.width, size.height, BufferedImage.TYPE_INT_ARGB);
-        RenderSystem renderSystem = new RenderSystem(buffer.createGraphics());
+        Renderer renderer = new Renderer(buffer.createGraphics());
 
         this.observer = observer;
-        this.renderSystem = renderSystem;
+        this.renderer = renderer;
         this.buffer = buffer;
     }
 
-    public RenderSystem getRenderer() {
-        return this.renderSystem;
+    public Renderer getRenderer() {
+        return this.renderer;
     }
 
     public Rectangle getBounds() {

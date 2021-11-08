@@ -3,11 +3,11 @@ package com.ultreon.hydro.common;
 import java.util.Objects;
 
 @SuppressWarnings("ConstantConditions")
-public abstract class RegistryEntry implements IRegistryEntry {
-    private ResourceEntry registryName = null;
+public abstract class Registrable implements IRegistrable {
+    private Identifier registryName = null;
 
     public void setRegistryName(String namespace, String name) {
-        this.registryName = new ResourceEntry(namespace, name);
+        this.registryName = new Identifier(namespace, name);
     }
 
     public boolean isTempRegistryName() {
@@ -20,15 +20,15 @@ public abstract class RegistryEntry implements IRegistryEntry {
         }
     }
 
-    public ResourceEntry getRegistryName() {
+    public Identifier getRegistryName() {
         return registryName;
     }
 
     public void setRegistryName(String name) {
-        this.registryName = new ResourceEntry(null, name);
+        this.registryName = new Identifier(null, name);
     }
 
-    public void setRegistryName(ResourceEntry name) {
+    public void setRegistryName(Identifier name) {
         this.registryName = name;
     }
 
@@ -36,7 +36,7 @@ public abstract class RegistryEntry implements IRegistryEntry {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        RegistryEntry that = (RegistryEntry) o;
+        Registrable that = (Registrable) o;
         return Objects.equals(this.registryName, that.registryName);
     }
 

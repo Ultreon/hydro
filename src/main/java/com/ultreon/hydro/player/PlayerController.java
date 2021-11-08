@@ -7,11 +7,11 @@ import org.apache.logging.log4j.Logger;
 
 @SuppressWarnings("ClassCanBeRecord")
 public class PlayerController {
-    private final IPlayer player;
+    private final BasePlayer player;
 
     private static final Logger logger = LogManager.getLogger("Player-Controller");
 
-    public PlayerController(IPlayer player) {
+    public PlayerController(BasePlayer player) {
         this.player = player;
     }
 

@@ -9,7 +9,7 @@ package com.ultreon.hydro.render;
 
 import com.ultreon.commons.util.StringUtils;
 import com.ultreon.hydro.Game;
-import com.ultreon.hydro.vector.Vector4i;
+import com.ultreon.hydro.vector.Vec4i;
 
 import java.awt.*;
 import java.awt.font.FontRenderContext;
@@ -49,7 +49,7 @@ import java.util.Map;
  * @see Rectangle
  */
 @SuppressWarnings("unused")
-public class RenderSystem {
+public class Renderer {
     ////////////////////
     //     Fields     //
     ////////////////////
@@ -60,18 +60,18 @@ public class RenderSystem {
     //////////////////////////
     //     Constructors     //
     //////////////////////////
-    public RenderSystem(Graphics gfx) {
+    public Renderer(Graphics gfx) {
         this.gg = (Graphics2D) gfx;
     }
 
-    public RenderSystem(Graphics2D gfx2d) {
+    public Renderer(Graphics2D gfx2d) {
         this.gg = gfx2d;
     }
 
-    public RenderSystem(RenderSystem renderSystem) {
-        this.fallbackFont = renderSystem.fallbackFont;
-        this.gg = renderSystem.gg;
-        this.renderState = renderSystem.renderState;
+    public Renderer(Renderer renderer) {
+        this.fallbackFont = renderer.fallbackFont;
+        this.gg = renderer.gg;
+        this.renderState = renderer.renderState;
     }
 
     ////////////////////////
@@ -132,7 +132,7 @@ public class RenderSystem {
         gg.fillRect(r.getX(), r.getY(), r.getWidth(), r.getHeight());
     }
 
-    public void fill(Vector4i r) {
+    public void fill(Vec4i r) {
         gg.fillRect(r.x, r.y, r.z, r.w);
     }
 
@@ -436,12 +436,12 @@ public class RenderSystem {
     ///////////////////////////
     //     Miscellaneous     //
     ///////////////////////////
-    public RenderSystem subInstance() {
-        return new RenderSystem(gg.create());
+    public Renderer subInstance() {
+        return new Renderer(gg.create());
     }
 
-    public RenderSystem subInstance(int x, int y, int width, int height) {
-        return new RenderSystem(gg.create(x, y, width, height));
+    public Renderer subInstance(int x, int y, int width, int height) {
+        return new Renderer(gg.create(x, y, width, height));
     }
 
     public boolean hitClip(int x, int y, int width, int height) {

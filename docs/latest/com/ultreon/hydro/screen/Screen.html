@@ -79,7 +79,7 @@ loadScripts(document, 'script');</script>
             <div class="inheritance" title="Inheritance Tree"><a
                     href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html"
                     title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-                <div class="inheritance"><a href="gui/Widget.html" title="class in com.ultreon.hydro.screen.gui">com.ultreon.hydro.screen.gui.Widget</a>
+                <div class="inheritance"><a href="gui/Widget.html" title="class in com.ultreon.hydro.screen.gui">com.ultreon.hydro.screen.gui.Interactable</a>
                     <div class="inheritance"><a href="gui/Container.html" title="class in com.ultreon.hydro.screen.gui">com.ultreon.hydro.screen.gui.Container</a>
                         <div class="inheritance">com.ultreon.hydro.screen.Screen</div>
                     </div>
@@ -124,7 +124,7 @@ loadScripts(document, 'script');</script>
                                 <code><a href="gui/Container.html#children">children</a>, <a
                                         href="gui/Container.html#hoveredWidget">hoveredWidget</a></code></div>
                             <div class="inherited-list">
-                                <h3 id="fields.inherited.from.class.com.ultreon.hydro.screen.gui.Widget">Fields
+                                <h3 id="fields.inherited.from.class.com.ultreon.hydro.screen.gui.Interactable">Fields
                                     inherited from class&nbsp;com.ultreon.hydro.screen.gui.<a href="gui/Widget.html"
                                                                                               title="class in com.ultreon.hydro.screen.gui">Widget</a>
                                 </h3>
@@ -195,7 +195,7 @@ loadScripts(document, 'script');</script>
                                                                    title="class in com.ultreon.hydro.screen.gui">Widget</a>&gt;<br>T</code>
                                         </div>
                                         <div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
-                                            <code><span class="member-name-link"><a href="#add(T)">add</a></span>&#8203;(T&nbsp;widget)</code>
+                                            <code><span class="member-name-link"><a href="#add(T)">add</a></span>&#8203;(T&nbsp;interactable)</code>
                                         </div>
                                         <div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
                                             &nbsp;
@@ -336,7 +336,7 @@ loadScripts(document, 'script');</script>
                                             <code>abstract void</code></div>
                                         <div class="col-second even-row-color method-summary-table-tab2 method-summary-table method-summary-table-tab3">
                                             <code><span class="member-name-link"><a
-                                                    href="#render(com.ultreon.hydro.Game,com.ultreon.hydro.render.RenderSystem)">render</a></span>&#8203;(<a
+                                                    href="#render(com.ultreon.hydro.Game,com.ultreon.hydro.render.Renderer)">render</a></span>&#8203;(<a
                                                     href="../Game.html" title="class in com.ultreon.hydro">Game</a>&nbsp;game,
                                                 <a href="../render/RenderSystem.html"
                                                    title="class in com.ultreon.hydro.render">RenderSystem</a>&nbsp;gg)</code>
@@ -348,7 +348,7 @@ loadScripts(document, 'script');</script>
                                             <code>void</code></div>
                                         <div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
                                             <code><span class="member-name-link"><a
-                                                    href="#renderGUI(com.ultreon.hydro.Game,com.ultreon.hydro.render.RenderSystem)">renderGUI</a></span>&#8203;(<a
+                                                    href="#renderGUI(com.ultreon.hydro.Game,com.ultreon.hydro.render.Renderer)">renderGUI</a></span>&#8203;(<a
                                                     href="../Game.html" title="class in com.ultreon.hydro">Game</a>&nbsp;game,
                                                 <a href="../render/RenderSystem.html"
                                                    title="class in com.ultreon.hydro.render">RenderSystem</a>&nbsp;gg)</code>
@@ -390,12 +390,12 @@ loadScripts(document, 'script');</script>
                                         href="gui/Container.html#onMousePress(int,int,int)">onMousePress</a>, <a
                                         href="gui/Container.html#onMouseRelease(int,int,int)">onMouseRelease</a>, <a
                                         href="gui/Container.html#onMouseWheel(int,int,double,int,int)">onMouseWheel</a>,
-                                    <a href="gui/Container.html#remove(com.ultreon.hydro.screen.gui.Widget)">remove</a>,
-                                    <a href="gui/Container.html#render(com.ultreon.hydro.render.RenderSystem)">render</a>,
-                                    <a href="gui/Container.html#renderChildren(com.ultreon.hydro.render.RenderSystem)">renderChildren</a></code>
+                                    <a href="gui/Container.html#remove(com.ultreon.hydro.screen.gui.Interactable)">remove</a>,
+                                    <a href="gui/Container.html#render(com.ultreon.hydro.render.Renderer)">render</a>,
+                                    <a href="gui/Container.html#renderChildren(com.ultreon.hydro.render.Renderer)">renderChildren</a></code>
                             </div>
                             <div class="inherited-list">
-                                <h3 id="methods.inherited.from.class.com.ultreon.hydro.screen.gui.Widget">Methods
+                                <h3 id="methods.inherited.from.class.com.ultreon.hydro.screen.gui.Interactable">Methods
                                     inherited from class&nbsp;com.ultreon.hydro.screen.gui.<a href="gui/Widget.html"
                                                                                               title="class in com.ultreon.hydro.screen.gui">Widget</a>
                                 </h3>
@@ -406,7 +406,7 @@ loadScripts(document, 'script');</script>
                                     <a href="gui/Widget.html#getWidth()">getWidth</a>, <a href="gui/Widget.html#getX()">getX</a>,
                                     <a href="gui/Widget.html#getY()">getY</a>, <a href="gui/Widget.html#hashCode()">hashCode</a>,
                                     <a href="gui/Widget.html#isWithinBounds(int,int)">isWithinBounds</a>, <a
-                                            href="gui/Widget.html#isWithinBounds(com.ultreon.hydro.vector.Vector2i)">isWithinBounds</a>,
+                                            href="gui/Widget.html#isWithinBounds(com.ultreon.hydro.vector.Vec2i)">isWithinBounds</a>,
                                     <a href="gui/Widget.html#onMouseEnter(int,int)">onMouseEnter</a>, <a
                                             href="gui/Widget.html#setBounds(int,int,int,int)">setBounds</a>, <a
                                             href="gui/Widget.html#setHeight(int)">setHeight</a>, <a
@@ -655,7 +655,7 @@ loadScripts(document, 'script');</script>
                                 </li>
                                 <li>
                                     <section class="detail"
-                                             id="render(com.ultreon.hydro.Game,com.ultreon.hydro.render.RenderSystem)">
+                                             id="render(com.ultreon.hydro.Game,com.ultreon.hydro.render.Renderer)">
                                         <h3>render</h3>
                                         <div class="member-signature"><span class="modifiers">public abstract</span>&nbsp;<span
                                                 class="return-type">void</span>&nbsp;<span
@@ -666,13 +666,13 @@ loadScripts(document, 'script');</script>
                                 </li>
                                 <li>
                                     <section class="detail" id="add(T)">
-                                        <h3 id="add(com.ultreon.hydro.screen.gui.Widget)">add</h3>
+                                        <h3 id="add(com.ultreon.hydro.screen.gui.Interactable)">add</h3>
                                         <div class="member-signature"><span
                                                 class="modifiers">public final</span>&nbsp;<span
                                                 class="type-parameters">&lt;T extends <a href="gui/Widget.html"
                                                                                          title="class in com.ultreon.hydro.screen.gui">Widget</a>&gt;</span>&nbsp;<span
                                                 class="return-type">T</span>&nbsp;<span class="element-name">add</span>&#8203;<span
-                                                class="parameters">(T&nbsp;widget)</span></div>
+                                                class="parameters">(T&nbsp;interactable)</span></div>
                                         <dl class="notes">
                                             <dt>Overrides:</dt>
                                             <dd><code><a href="gui/Container.html#add(T)">add</a></code>&nbsp;in class&nbsp;<code><a
@@ -684,7 +684,7 @@ loadScripts(document, 'script');</script>
                                 </li>
                                 <li>
                                     <section class="detail"
-                                             id="renderGUI(com.ultreon.hydro.Game,com.ultreon.hydro.render.RenderSystem)">
+                                             id="renderGUI(com.ultreon.hydro.Game,com.ultreon.hydro.render.Renderer)">
                                         <h3>renderGUI</h3>
                                         <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span
                                                 class="return-type">void</span>&nbsp;<span class="element-name">renderGUI</span>&#8203;<span

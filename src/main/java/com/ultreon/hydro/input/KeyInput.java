@@ -1,13 +1,13 @@
 package com.ultreon.hydro.input;
 
-import com.ultreon.hydro.core.input.KeyboardController;
+import com.ultreon.hydro.core.input.KeyboardInput;
 
 import java.awt.*;
 
 import static java.lang.System.out;
 
 public final class KeyInput {
-    private final Controller controller = new Controller();
+    private final Input controller = new Input();
     private static KeyInput instance;
 
     private KeyInput() {
@@ -29,8 +29,8 @@ public final class KeyInput {
         canvas.addKeyListener(instance.controller);
     }
 
-    private static class Controller extends KeyboardController {
-        public Controller() {
+    private static class Input extends KeyboardInput {
+        public Input() {
 
         }
     }

@@ -9,11 +9,11 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
 public abstract class TextRenderer {
-    private final RenderSystem gfx;
+    private final Renderer gfx;
     private Font font;
 
     public TextRenderer() {
-        AtomicReference<RenderSystem> ref = new AtomicReference<>();
+        AtomicReference<Renderer> ref = new AtomicReference<>();
         this.createRenderer(ref);
         this.gfx = ref.get();
     }
@@ -35,5 +35,5 @@ public abstract class TextRenderer {
         gfx.text(text, x, y);
     }
 
-    protected abstract void createRenderer(AtomicReference<RenderSystem> reference);
+    protected abstract void createRenderer(AtomicReference<Renderer> reference);
 }

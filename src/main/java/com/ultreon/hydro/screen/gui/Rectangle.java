@@ -1,6 +1,6 @@
 package com.ultreon.hydro.screen.gui;
 
-import com.ultreon.hydro.vector.Vector2i;
+import com.ultreon.hydro.vector.Vec2i;
 
 import java.io.Externalizable;
 import java.io.IOException;
@@ -61,8 +61,8 @@ public class Rectangle extends Shape implements Externalizable, Cloneable {
         this.height = height;
     }
 
-    public Vector2i getPos() {
-        return new Vector2i(x, y);
+    public Vec2i getPos() {
+        return new Vec2i(x, y);
     }
 
     public void setPos(int x, int y) {
@@ -70,8 +70,8 @@ public class Rectangle extends Shape implements Externalizable, Cloneable {
         setY(y);
     }
 
-    public Vector2i getSize() {
-        return new Vector2i(width, height);
+    public Vec2i getSize() {
+        return new Vec2i(width, height);
     }
 
     public void setSize(int width, int height) {
@@ -92,7 +92,7 @@ public class Rectangle extends Shape implements Externalizable, Cloneable {
         return x >= this.x && y >= this.y && x <= this.x + width && y <= this.y + height;
     }
 
-    public boolean contains(Vector2i pos) {
+    public boolean contains(Vec2i pos) {
         return pos.x >= this.x && pos.y >= this.y && pos.x <= this.x + width && pos.y <= this.y + height;
     }
 

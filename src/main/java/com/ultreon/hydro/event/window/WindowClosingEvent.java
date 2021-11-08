@@ -1,10 +1,10 @@
 package com.ultreon.hydro.event.window;
 
 import com.ultreon.commons.lang.ICancellable;
-import com.ultreon.hydro.GameWindow;
+import com.ultreon.hydro.Window;
 
 public class WindowClosingEvent extends WindowEvent implements ICancellable {
-    public WindowClosingEvent(GameWindow window) {
+    public WindowClosingEvent(Window window) {
         super(window);
     }
 }

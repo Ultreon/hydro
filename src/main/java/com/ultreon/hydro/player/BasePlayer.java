@@ -2,7 +2,7 @@ package com.ultreon.hydro.player;
 
 
 @SuppressWarnings({"RedundantSuppression", "unused"})
-public interface IPlayer {
+public interface BasePlayer {
     void forward(boolean forward);
 
     void backward(boolean backward);

@@ -1,6 +1,6 @@
 package com.ultreon.hydro.util;
 
-import com.ultreon.hydro.render.RenderSystem;
+import com.ultreon.hydro.render.Renderer;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
@@ -16,7 +16,7 @@ public class GraphicsUtils {
      * @param font The Font for the text.
      * @author <b>Danier Kvist</b> <a href="https://stackoverflow.com/a/27740330/11124294">from this answer</a>.
      */
-    public static void drawCenteredString(RenderSystem g, String text, Rectangle2D rect, Font font) {
+    public static void drawCenteredString(Renderer g, String text, Rectangle2D rect, Font font) {
         // Get the FontMetrics
         FontMetrics metrics = g.fontMetrics(font);
 
@@ -43,7 +43,7 @@ public class GraphicsUtils {
      * @param font   The Font for the text.
      * @author <b>Danier Kvist</b> <a href="https://stackoverflow.com/a/27740330/11124294">from this answer</a>.
      */
-    public static void drawRightAnchoredString(RenderSystem g, String text, Point2D point, double height, Font font) {
+    public static void drawRightAnchoredString(Renderer g, String text, Point2D point, double height, Font font) {
         // Get the FontMetrics
         FontMetrics metrics = g.fontMetrics(font);
 
@@ -70,7 +70,7 @@ public class GraphicsUtils {
      * @param font   The Font for the text.
      * @author <b>Danier Kvist</b> <a href="https://stackoverflow.com/a/27740330/11124294">from this answer</a>.
      */
-    public static void drawLeftAnchoredString(RenderSystem g, String text, Point2D point, double height, Font font) {
+    public static void drawLeftAnchoredString(Renderer g, String text, Point2D point, double height, Font font) {
         // Get the FontMetrics
         FontMetrics metrics = g.fontMetrics(font);
 

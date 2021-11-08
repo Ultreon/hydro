@@ -7,17 +7,17 @@ import java.io.ObjectOutput;
 import java.util.Objects;
 
 @SuppressWarnings("unused")
-public class Vector4d implements Externalizable, Cloneable {
+public class Vec4d implements Externalizable, Cloneable {
     public double x, y, z, w;
 
-    public Vector4d(double x, double y, double z, double w) {
+    public Vec4d(double x, double y, double z, double w) {
         this.x = x;
         this.y = y;
         this.z = z;
         this.w = w;
     }
 
-    public Vector4d() {
+    public Vec4d() {
 
     }
 
@@ -53,10 +53,46 @@ public class Vector4d implements Externalizable, Cloneable {
         this.w = w;
     }
 
+    public static Vec4d mul(Vec4d a, Vec4d b) {
+        return new Vec4d(a.x * b.x, a.y * b.y, a.z * b.z, a.w * b.w);
+    }
+
+    public static Vec4d div(Vec4d a, Vec4d b) {
+        return new Vec4d(a.x / b.x, a.y / b.y, a.z / b.z, a.w / b.w);
+    }
+
+    public static Vec4d add(Vec4d a, Vec4d b) {
+        return new Vec4d(a.x + b.x, a.y + b.y, a.z + b.z, a.w + b.w);
+    }
+
+    public static Vec4d sub(Vec4d a, Vec4d b) {
+        return new Vec4d(a.x - b.x, a.y - b.y, a.z - b.z, a.w - b.w);
+    }
+
+    public static double dot(Vec4d a, Vec4d b) {
+        return a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w;
+    }
+
+    public static Vec4d pow(Vec4d a, Vec4d b) {
+        return new Vec4d(Math.pow(a.x, b.x), Math.pow(a.y, b.y), Math.pow(a.z, b.z), Math.pow(a.w, b.w));
+    }
+
+    public Vec4d d() {
+        return new Vec4d(x, y, z, w);
+    }
+
+    public Vec4f f() {
+        return new Vec4f((float)x, (float)y, (float)z, (float) w);
+    }
+
+    public Vec4i i() {
+        return new Vec4i((int)x, (int)y, (int)z, (int) w);
+    }
+
     @Override
-    public Vector4d clone() {
+    public Vec4d clone() {
         try {
-            Vector4d clone = (Vector4d) super.clone();
+            Vec4d clone = (Vec4d) super.clone();
 
             clone.x = this.x;
             clone.y = this.y;
@@ -72,7 +108,7 @@ public class Vector4d implements Externalizable, Cloneable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Vector4d vector4i = (Vector4d) o;
+        Vec4d vector4i = (Vec4d) o;
         return getX() == vector4i.getX() && getY() == vector4i.getY() && getZ() == vector4i.getZ() && getW() == vector4i.getW();
     }
 

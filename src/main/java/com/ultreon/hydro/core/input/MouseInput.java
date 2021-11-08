@@ -23,11 +23,11 @@ import static java.lang.System.out;
  * Should only for internal use.
  *
  * @author Qboi
- * @see KeyboardController
+ * @see KeyboardInput
  * @see java.awt.event.MouseAdapter
  */
 @SuppressWarnings("ConstantConditions")
-public abstract class MouseController extends MouseAdapter {
+public abstract class MouseInput extends MouseAdapter {
     // Mouse input values.
     private Point currentLocationOnScreen;
     private Point currentPoint;
@@ -43,7 +43,7 @@ public abstract class MouseController extends MouseAdapter {
     /**
      *
      */
-    public MouseController() {
+    public MouseInput() {
         this.game = Game.getInstance();
     }
 

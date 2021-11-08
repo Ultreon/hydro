@@ -79,7 +79,7 @@ loadScripts(document, 'script');</script>
             <div class="inheritance" title="Inheritance Tree"><a
                     href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html"
                     title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-                <div class="inheritance"><a href="../Widget.html" title="class in com.ultreon.hydro.screen.gui">com.ultreon.hydro.screen.gui.Widget</a>
+                <div class="inheritance"><a href="../Widget.html" title="class in com.ultreon.hydro.screen.gui">com.ultreon.hydro.screen.gui.Interactable</a>
                     <div class="inheritance">com.ultreon.hydro.screen.gui.controls.Button</div>
                 </div>
             </div>
@@ -152,7 +152,7 @@ loadScripts(document, 'script');</script>
                                 </div>
                             </div>
                             <div class="inherited-list">
-                                <h3 id="fields.inherited.from.class.com.ultreon.hydro.screen.gui.Widget">Fields
+                                <h3 id="fields.inherited.from.class.com.ultreon.hydro.screen.gui.Interactable">Fields
                                     inherited from class&nbsp;com.ultreon.hydro.screen.gui.<a href="../Widget.html"
                                                                                               title="class in com.ultreon.hydro.screen.gui">Widget</a>
                                 </h3>
@@ -170,7 +170,7 @@ loadScripts(document, 'script');</script>
                                 <div class="table-header col-first">Constructor</div>
                                 <div class="table-header col-last">Description</div>
                                 <div class="col-constructor-name even-row-color"><code><span class="member-name-link"><a
-                                        href="#%3Cinit%3E(com.ultreon.hydro.vector.Vector2i,com.ultreon.hydro.screen.gui.style.Style)">Button</a></span>&#8203;(<a
+                                        href="#%3Cinit%3E(com.ultreon.hydro.vector.Vec2i,com.ultreon.hydro.screen.gui.style.Style)">Button</a></span>&#8203;(<a
                                         href="../../../vector/Vector2i.html" title="class in com.ultreon.hydro.vector">Vector2i</a>&nbsp;pos,
                                     <a href="../style/Style.html" title="class in com.ultreon.hydro.screen.gui.style">Style</a>&nbsp;style)</code>
                                 </div>
@@ -179,7 +179,7 @@ loadScripts(document, 'script');</script>
                                     <div class="block">Constructor for button.</div>
                                 </div>
                                 <div class="col-constructor-name odd-row-color"><code><span class="member-name-link"><a
-                                        href="#%3Cinit%3E(com.ultreon.hydro.vector.Vector2i,com.ultreon.hydro.screen.gui.style.Style,int,int)">Button</a></span>&#8203;(<a
+                                        href="#%3Cinit%3E(com.ultreon.hydro.vector.Vec2i,com.ultreon.hydro.screen.gui.style.Style,int,int)">Button</a></span>&#8203;(<a
                                         href="../../../vector/Vector2i.html" title="class in com.ultreon.hydro.vector">Vector2i</a>&nbsp;pos,
                                     <a href="../style/Style.html" title="class in com.ultreon.hydro.screen.gui.style">Style</a>&nbsp;style,
                                     int&nbsp;width,
@@ -189,7 +189,7 @@ loadScripts(document, 'script');</script>
                                     <div class="block">Constructor for button.</div>
                                 </div>
                                 <div class="col-constructor-name even-row-color"><code><span class="member-name-link"><a
-                                        href="#%3Cinit%3E(com.ultreon.hydro.vector.Vector2i,com.ultreon.hydro.vector.Vector2i,com.ultreon.hydro.screen.gui.style.Style)">Button</a></span>&#8203;(<a
+                                        href="#%3Cinit%3E(com.ultreon.hydro.vector.Vec2i,com.ultreon.hydro.vector.Vec2i,com.ultreon.hydro.screen.gui.style.Style)">Button</a></span>&#8203;(<a
                                         href="../../../vector/Vector2i.html" title="class in com.ultreon.hydro.vector">Vector2i</a>&nbsp;pos,
                                     <a href="../../../vector/Vector2i.html" title="class in com.ultreon.hydro.vector">Vector2i</a>&nbsp;size,
                                     <a href="../style/Style.html" title="class in com.ultreon.hydro.screen.gui.style">Style</a>&nbsp;style)</code>
@@ -294,9 +294,9 @@ loadScripts(document, 'script');</script>
                                             <code>void</code></div>
                                         <div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab6 method-summary-table-tab4 method-summary-table">
                                             <code><span class="member-name-link"><a
-                                                    href="#render(com.ultreon.hydro.render.RenderSystem)">render</a></span>&#8203;(<a
+                                                    href="#render(com.ultreon.hydro.render.Renderer)">render</a></span>&#8203;(<a
                                                     href="../../../render/RenderSystem.html"
-                                                    title="class in com.ultreon.hydro.render">RenderSystem</a>&nbsp;renderSystem)</code>
+                                                    title="class in com.ultreon.hydro.render">RenderSystem</a>&nbsp;renderer)</code>
                                         </div>
                                         <div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab6 method-summary-table-tab4 method-summary-table">
                                             <div class="block"><span class="deprecated-label">Deprecated.</span></div>
@@ -306,7 +306,7 @@ loadScripts(document, 'script');</script>
                                 </div>
                             </div>
                             <div class="inherited-list">
-                                <h3 id="methods.inherited.from.class.com.ultreon.hydro.screen.gui.Widget">Methods
+                                <h3 id="methods.inherited.from.class.com.ultreon.hydro.screen.gui.Interactable">Methods
                                     inherited from class&nbsp;com.ultreon.hydro.screen.gui.<a href="../Widget.html"
                                                                                               title="class in com.ultreon.hydro.screen.gui">Widget</a>
                                 </h3>
@@ -317,7 +317,7 @@ loadScripts(document, 'script');</script>
                                     <a href="../Widget.html#getWidth()">getWidth</a>, <a href="../Widget.html#getX()">getX</a>,
                                     <a href="../Widget.html#getY()">getY</a>, <a href="../Widget.html#hashCode()">hashCode</a>,
                                     <a href="../Widget.html#isWithinBounds(int,int)">isWithinBounds</a>, <a
-                                            href="../Widget.html#isWithinBounds(com.ultreon.hydro.vector.Vector2i)">isWithinBounds</a>,
+                                            href="../Widget.html#isWithinBounds(com.ultreon.hydro.vector.Vec2i)">isWithinBounds</a>,
                                     <a href="../Widget.html#onKeyPress(int,char)">onKeyPress</a>, <a
                                             href="../Widget.html#onKeyRelease(int,char)">onKeyRelease</a>, <a
                                             href="../Widget.html#onKeyType(int,char)">onKeyType</a>, <a
@@ -405,7 +405,7 @@ loadScripts(document, 'script');</script>
                             <ul class="member-list">
                                 <li>
                                     <section class="detail"
-                                             id="&lt;init&gt;(com.ultreon.hydro.vector.Vector2i,com.ultreon.hydro.screen.gui.style.Style)">
+                                             id="&lt;init&gt;(com.ultreon.hydro.vector.Vec2i,com.ultreon.hydro.screen.gui.style.Style)">
                                         <h3>Button</h3>
                                         <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span
                                                 class="element-name">Button</span>&#8203;<span class="parameters">(<a
@@ -424,7 +424,7 @@ loadScripts(document, 'script');</script>
                                 </li>
                                 <li>
                                     <section class="detail"
-                                             id="&lt;init&gt;(com.ultreon.hydro.vector.Vector2i,com.ultreon.hydro.screen.gui.style.Style,int,int)">
+                                             id="&lt;init&gt;(com.ultreon.hydro.vector.Vec2i,com.ultreon.hydro.screen.gui.style.Style,int,int)">
                                         <h3>Button</h3>
                                         <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span
                                                 class="element-name">Button</span>&#8203;<span class="parameters">(<a
@@ -445,7 +445,7 @@ loadScripts(document, 'script');</script>
                                 </li>
                                 <li>
                                     <section class="detail"
-                                             id="&lt;init&gt;(com.ultreon.hydro.vector.Vector2i,com.ultreon.hydro.vector.Vector2i,com.ultreon.hydro.screen.gui.style.Style)">
+                                             id="&lt;init&gt;(com.ultreon.hydro.vector.Vec2i,com.ultreon.hydro.vector.Vec2i,com.ultreon.hydro.screen.gui.style.Style)">
                                         <h3>Button</h3>
                                         <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span
                                                 class="element-name">Button</span>&#8203;<span class="parameters">(<a
@@ -486,20 +486,20 @@ loadScripts(document, 'script');</script>
                                     </section>
                                 </li>
                                 <li>
-                                    <section class="detail" id="render(com.ultreon.hydro.render.RenderSystem)">
+                                    <section class="detail" id="render(com.ultreon.hydro.render.Renderer)">
                                         <h3>render</h3>
                                         <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span
                                                 class="return-type">void</span>&nbsp;<span
                                                 class="element-name">render</span>&#8203;<span class="parameters">(<a
                                                 href="../../../render/RenderSystem.html"
-                                                title="class in com.ultreon.hydro.render">RenderSystem</a>&nbsp;renderSystem)</span>
+                                                title="class in com.ultreon.hydro.render">RenderSystem</a>&nbsp;renderer)</span>
                                         </div>
                                         <div class="deprecation-block"><span class="deprecated-label">Deprecated.</span>
                                         </div>
                                         <dl class="notes">
                                             <dt>Specified by:</dt>
                                             <dd><code><a
-                                                    href="../Widget.html#render(com.ultreon.hydro.render.RenderSystem)">render</a></code>&nbsp;in
+                                                    href="../Widget.html#render(com.ultreon.hydro.render.Renderer)">render</a></code>&nbsp;in
                                                 class&nbsp;<code><a href="../Widget.html"
                                                                     title="class in com.ultreon.hydro.screen.gui">Widget</a></code>
                                             </dd>

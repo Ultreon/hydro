@@ -1,9 +1,9 @@
 package com.ultreon.hydro.common;
 
-public interface IRegistryEntry {
-    ResourceEntry getRegistryName();
+public interface IRegistrable {
+    Identifier getRegistryName();
 
-    void setRegistryName(ResourceEntry rl);
+    void setRegistryName(Identifier rl);
 
     void updateRegistryName(String namespace);
 

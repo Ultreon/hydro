@@ -79,7 +79,7 @@ loadScripts(document, 'script');</script>
             <div class="inheritance" title="Inheritance Tree"><a
                     href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html"
                     title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-                <div class="inheritance"><a href="Widget.html" title="class in com.ultreon.hydro.screen.gui">com.ultreon.hydro.screen.gui.Widget</a>
+                <div class="inheritance"><a href="Widget.html" title="class in com.ultreon.hydro.screen.gui">com.ultreon.hydro.screen.gui.Interactable</a>
                     <div class="inheritance">com.ultreon.hydro.screen.gui.Container</div>
                 </div>
             </div>
@@ -127,7 +127,7 @@ loadScripts(document, 'script');</script>
                                 <div class="col-last odd-row-color">&nbsp;</div>
                             </div>
                             <div class="inherited-list">
-                                <h3 id="fields.inherited.from.class.com.ultreon.hydro.screen.gui.Widget">Fields
+                                <h3 id="fields.inherited.from.class.com.ultreon.hydro.screen.gui.Interactable">Fields
                                     inherited from class&nbsp;com.ultreon.hydro.screen.gui.<a href="Widget.html"
                                                                                               title="class in com.ultreon.hydro.screen.gui">Widget</a>
                                 </h3>
@@ -282,7 +282,7 @@ loadScripts(document, 'script');</script>
                                             <code>void</code></div>
                                         <div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
                                             <code><span class="member-name-link"><a
-                                                    href="#remove(com.ultreon.hydro.screen.gui.Widget)">remove</a></span>&#8203;(<a
+                                                    href="#remove(com.ultreon.hydro.screen.gui.Interactable)">remove</a></span>&#8203;(<a
                                                     href="Widget.html" title="class in com.ultreon.hydro.screen.gui">Widget</a>&nbsp;child)</code>
                                         </div>
                                         <div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
@@ -292,9 +292,9 @@ loadScripts(document, 'script');</script>
                                             <code>void</code></div>
                                         <div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
                                             <code><span class="member-name-link"><a
-                                                    href="#render(com.ultreon.hydro.render.RenderSystem)">render</a></span>&#8203;(<a
+                                                    href="#render(com.ultreon.hydro.render.Renderer)">render</a></span>&#8203;(<a
                                                     href="../../render/RenderSystem.html"
-                                                    title="class in com.ultreon.hydro.render">RenderSystem</a>&nbsp;renderSystem)</code>
+                                                    title="class in com.ultreon.hydro.render">RenderSystem</a>&nbsp;renderer)</code>
                                         </div>
                                         <div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
                                             &nbsp;
@@ -303,9 +303,9 @@ loadScripts(document, 'script');</script>
                                             <code>protected void</code></div>
                                         <div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
                                             <code><span class="member-name-link"><a
-                                                    href="#renderChildren(com.ultreon.hydro.render.RenderSystem)">renderChildren</a></span>&#8203;(<a
+                                                    href="#renderChildren(com.ultreon.hydro.render.Renderer)">renderChildren</a></span>&#8203;(<a
                                                     href="../../render/RenderSystem.html"
-                                                    title="class in com.ultreon.hydro.render">RenderSystem</a>&nbsp;renderSystem)</code>
+                                                    title="class in com.ultreon.hydro.render">RenderSystem</a>&nbsp;renderer)</code>
                                         </div>
                                         <div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
                                             &nbsp;
@@ -314,7 +314,7 @@ loadScripts(document, 'script');</script>
                                 </div>
                             </div>
                             <div class="inherited-list">
-                                <h3 id="methods.inherited.from.class.com.ultreon.hydro.screen.gui.Widget">Methods
+                                <h3 id="methods.inherited.from.class.com.ultreon.hydro.screen.gui.Interactable">Methods
                                     inherited from class&nbsp;com.ultreon.hydro.screen.gui.<a href="Widget.html"
                                                                                               title="class in com.ultreon.hydro.screen.gui">Widget</a>
                                 </h3>
@@ -325,7 +325,7 @@ loadScripts(document, 'script');</script>
                                     <a href="Widget.html#getX()">getX</a>, <a href="Widget.html#getY()">getY</a>, <a
                                             href="Widget.html#hashCode()">hashCode</a>, <a
                                             href="Widget.html#isWithinBounds(int,int)">isWithinBounds</a>, <a
-                                            href="Widget.html#isWithinBounds(com.ultreon.hydro.vector.Vector2i)">isWithinBounds</a>,
+                                            href="Widget.html#isWithinBounds(com.ultreon.hydro.vector.Vec2i)">isWithinBounds</a>,
                                     <a href="Widget.html#onKeyPress(int,char)">onKeyPress</a>, <a
                                             href="Widget.html#onKeyRelease(int,char)">onKeyRelease</a>, <a
                                             href="Widget.html#onKeyType(int,char)">onKeyType</a>, <a
@@ -362,7 +362,7 @@ loadScripts(document, 'script');</script>
                                         title="class or interface in java.lang" class="external-link">wait</a></code>
                             </div>
                             <div class="inherited-list">
-                                <h3 id="methods.inherited.from.class.com.ultreon.hydro.screen.gui.IGuiListener">Methods
+                                <h3 id="methods.inherited.from.class.com.ultreon.hydro.screen.gui.GuiElement">Methods
                                     inherited from interface&nbsp;com.ultreon.hydro.screen.gui.<a
                                             href="IGuiListener.html" title="interface in com.ultreon.hydro.screen.gui">IGuiListener</a>
                                 </h3>
@@ -429,18 +429,18 @@ loadScripts(document, 'script');</script>
                             <h2>Method Details</h2>
                             <ul class="member-list">
                                 <li>
-                                    <section class="detail" id="render(com.ultreon.hydro.render.RenderSystem)">
+                                    <section class="detail" id="render(com.ultreon.hydro.render.Renderer)">
                                         <h3>render</h3>
                                         <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span
                                                 class="return-type">void</span>&nbsp;<span
                                                 class="element-name">render</span>&#8203;<span class="parameters">(<a
                                                 href="../../render/RenderSystem.html"
-                                                title="class in com.ultreon.hydro.render">RenderSystem</a>&nbsp;renderSystem)</span>
+                                                title="class in com.ultreon.hydro.render">RenderSystem</a>&nbsp;renderer)</span>
                                         </div>
                                         <dl class="notes">
                                             <dt>Specified by:</dt>
                                             <dd><code><a
-                                                    href="Widget.html#render(com.ultreon.hydro.render.RenderSystem)">render</a></code>&nbsp;in
+                                                    href="Widget.html#render(com.ultreon.hydro.render.Renderer)">render</a></code>&nbsp;in
                                                 class&nbsp;<code><a href="Widget.html"
                                                                     title="class in com.ultreon.hydro.screen.gui">Widget</a></code>
                                             </dd>
@@ -448,19 +448,19 @@ loadScripts(document, 'script');</script>
                                     </section>
                                 </li>
                                 <li>
-                                    <section class="detail" id="renderChildren(com.ultreon.hydro.render.RenderSystem)">
+                                    <section class="detail" id="renderChildren(com.ultreon.hydro.render.Renderer)">
                                         <h3>renderChildren</h3>
                                         <div class="member-signature"><span
                                                 class="modifiers">protected</span>&nbsp;<span
                                                 class="return-type">void</span>&nbsp;<span class="element-name">renderChildren</span>&#8203;<span
                                                 class="parameters">(<a href="../../render/RenderSystem.html"
-                                                                       title="class in com.ultreon.hydro.render">RenderSystem</a>&nbsp;renderSystem)</span>
+                                                                       title="class in com.ultreon.hydro.render">RenderSystem</a>&nbsp;renderer)</span>
                                         </div>
                                     </section>
                                 </li>
                                 <li>
                                     <section class="detail" id="add(T)">
-                                        <h3 id="add(com.ultreon.hydro.screen.gui.Widget)">add</h3>
+                                        <h3 id="add(com.ultreon.hydro.screen.gui.Interactable)">add</h3>
                                         <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span
                                                 class="type-parameters">&lt;T extends <a href="Widget.html"
                                                                                          title="class in com.ultreon.hydro.screen.gui">Widget</a>&gt;</span>&nbsp;<span
@@ -469,7 +469,7 @@ loadScripts(document, 'script');</script>
                                     </section>
                                 </li>
                                 <li>
-                                    <section class="detail" id="remove(com.ultreon.hydro.screen.gui.Widget)">
+                                    <section class="detail" id="remove(com.ultreon.hydro.screen.gui.Interactable)">
                                         <h3>remove</h3>
                                         <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span
                                                 class="return-type">void</span>&nbsp;<span

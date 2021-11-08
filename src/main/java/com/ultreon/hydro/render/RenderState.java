@@ -11,38 +11,38 @@ class RenderState {
     private final Font font;
     private final Shape clip;
     private final Font fallbackFont;
-    private final RenderSystem renderSystem;
+    private final Renderer renderer;
     private final Composite composite;
     private final RenderingHints hints;
     private final Stroke stroke;
     private double translationX;
     private double translationY;
 
-    RenderState(RenderSystem renderSystem) {
-        this.renderSystem = renderSystem;
-        this.clearColor = this.renderSystem.gg.getBackground();
-        this.transform = this.renderSystem.gg.getTransform();
-        this.color = this.renderSystem.gg.getColor();
-        this.paint = this.renderSystem.gg.getPaint();
-        this.font = this.renderSystem.gg.getFont();
-        this.clip = this.renderSystem.gg.getClip();
-        this.fallbackFont = this.renderSystem.fallbackFont;
-        this.composite = this.renderSystem.gg.getComposite();
-        this.hints = this.renderSystem.gg.getRenderingHints();
-        this.stroke = this.renderSystem.gg.getStroke();
+    RenderState(Renderer renderer) {
+        this.renderer = renderer;
+        this.clearColor = this.renderer.gg.getBackground();
+        this.transform = this.renderer.gg.getTransform();
+        this.color = this.renderer.gg.getColor();
+        this.paint = this.renderer.gg.getPaint();
+        this.font = this.renderer.gg.getFont();
+        this.clip = this.renderer.gg.getClip();
+        this.fallbackFont = this.renderer.fallbackFont;
+        this.composite = this.renderer.gg.getComposite();
+        this.hints = this.renderer.gg.getRenderingHints();
+        this.stroke = this.renderer.gg.getStroke();
     }
 
     void revert() {
-        this.renderSystem.translate(-translationX, -translationY);
-        this.renderSystem.setTransform(transform);
-        this.renderSystem.clearColor(clearColor);
-        this.renderSystem.color(color);
-        this.renderSystem.paint(paint);
-        this.renderSystem.font(font);
-        this.renderSystem.simpleClip(clip);
-        this.renderSystem.fallbackFont(fallbackFont);
-        this.renderSystem.composite(composite);
-        this.renderSystem.hints(hints);
-        this.renderSystem.stroke(stroke);
+        this.renderer.translate(-translationX, -translationY);
+        this.renderer.setTransform(transform);
+        this.renderer.clearColor(clearColor);
+        this.renderer.color(color);
+        this.renderer.paint(paint);
+        this.renderer.font(font);
+        this.renderer.simpleClip(clip);
+        this.renderer.fallbackFont(fallbackFont);
+        this.renderer.composite(composite);
+        this.renderer.hints(hints);
+        this.renderer.stroke(stroke);
     }
 }

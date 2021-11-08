@@ -7,17 +7,16 @@ import java.io.ObjectOutput;
 import java.util.Objects;
 
 @SuppressWarnings("unused")
-public class Vector4i implements Externalizable, Cloneable {
-    public int x, y, z, w;
+public class Vec3i implements Externalizable, Cloneable {
+    public int x, y, z;
 
-    public Vector4i(int x, int y, int z, int w) {
+    public Vec3i(int x, int y, int z) {
         this.x = x;
         this.y = y;
         this.z = z;
-        this.w = w;
     }
 
-    public Vector4i() {
+    public Vec3i() {
 
     }
 
@@ -45,23 +44,50 @@ public class Vector4i implements Externalizable, Cloneable {
         this.z = z;
     }
 
-    public int getW() {
-        return w;
+    public static Vec3i mul(Vec3i a, Vec3i b) {
+        return new Vec3i(a.x * b.x, a.y * b.y, a.z * b.z);
     }
 
-    public void setW(int w) {
-        this.w = w;
+    public static Vec3i div(Vec3i a, Vec3i b) {
+        return new Vec3i(a.x / b.x, a.y / b.y, a.z / b.z);
+    }
+
+    public static Vec3i add(Vec3i a, Vec3i b) {
+        return new Vec3i(a.x + b.x, a.y + b.y, a.z + b.z);
+    }
+
+    public static Vec3i sub(Vec3i a, Vec3i b) {
+        return new Vec3i(a.x - b.x, a.y - b.y, a.z - b.z);
+    }
+
+    public static int dot(Vec3i a, Vec3i b) {
+        return a.x * b.x + a.y * b.y + a.z * b.z;
+    }
+
+    public static Vec3d pow(Vec3i a, Vec3i b) {
+        return new Vec3d(Math.pow(a.x, b.x), Math.pow(a.y, b.y), Math.pow(a.z, b.z));
+    }
+
+    public Vec3d d() {
+        return new Vec3d(x, y, z);
+    }
+
+    public Vec3f f() {
+        return new Vec3f(x, y, z);
+    }
+
+    public Vec3i i() {
+        return new Vec3i(x, y, z);
     }
 
     @Override
-    public Vector4i clone() {
+    public Vec3i clone() {
         try {
-            Vector4i clone = (Vector4i) super.clone();
+            Vec3i clone = (Vec3i) super.clone();
 
             clone.x = this.x;
             clone.y = this.y;
             clone.z = this.z;
-            clone.w = this.w;
             return clone;
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
@@ -72,13 +98,13 @@ public class Vector4i implements Externalizable, Cloneable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Vector4i vector4i = (Vector4i) o;
-        return getX() == vector4i.getX() && getY() == vector4i.getY() && getZ() == vector4i.getZ() && getW() == vector4i.getW();
+        Vec3i vector4i = (Vec3i) o;
+        return getX() == vector4i.getX() && getY() == vector4i.getY() && getZ() == vector4i.getZ();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getX(), getY(), getZ(), getW());
+        return Objects.hash(getX(), getY(), getZ());
     }
 
     @Override
@@ -87,7 +113,6 @@ public class Vector4i implements Externalizable, Cloneable {
                 "x=" + x +
                 ", y=" + y +
                 ", z=" + z +
-                ", w=" + w +
                 '}';
     }
 
@@ -96,7 +121,6 @@ public class Vector4i implements Externalizable, Cloneable {
         out.writeInt(x);
         out.writeInt(y);
         out.writeInt(z);
-        out.writeInt(w);
     }
 
     @Override
@@ -104,6 +128,5 @@ public class Vector4i implements Externalizable, Cloneable {
         this.x = in.readInt();
         this.y = in.readInt();
         this.z = in.readInt();
-        this.w = in.readInt();
     }
 }

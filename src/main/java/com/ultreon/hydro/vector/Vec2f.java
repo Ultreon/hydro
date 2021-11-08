@@ -7,15 +7,15 @@ import java.io.ObjectOutput;
 import java.util.Objects;
 
 @SuppressWarnings("unused")
-public class Vector2f implements Externalizable, Cloneable {
+public class Vec2f implements Externalizable, Cloneable {
     public float x, y;
 
-    public Vector2f(float x, float y) {
+    public Vec2f(float x, float y) {
         this.x = x;
         this.y = y;
     }
 
-    public Vector2f() {
+    public Vec2f() {
 
     }
 
@@ -85,12 +85,48 @@ public class Vector2f implements Externalizable, Cloneable {
         this.y = (float) Math.pow(this.y, y);
     }
 
+    public static Vec2f mul(Vec2f a, Vec2f b) {
+        return new Vec2f(a.x * b.x, a.y * b.y);
+    }
+
+    public static Vec2f div(Vec2f a, Vec2f b) {
+        return new Vec2f(a.x / b.x, a.y / b.y);
+    }
+
+    public static Vec2f add(Vec2f a, Vec2f b) {
+        return new Vec2f(a.x + b.x, a.y + b.y);
+    }
+
+    public static Vec2f sub(Vec2f a, Vec2f b) {
+        return new Vec2f(a.x - b.x, a.y - b.y);
+    }
+
+    public static float dot(Vec2f a, Vec2f b) {
+        return a.x * b.x + a.y * b.y;
+    }
+
+    public static Vec2d pow(Vec2f a, Vec2f b) {
+        return new Vec2d(Math.pow(a.x, b.x), Math.pow(a.y, b.y));
+    }
+
+    public Vec2d d() {
+        return new Vec2d(x, y);
+    }
+
+    public Vec2f f() {
+        return new Vec2f(x, y);
+    }
+
+    public Vec2i i() {
+        return new Vec2i((int)x, (int)y);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Vector2f vector2f = (Vector2f) o;
-        return Float.compare(vector2f.getX(), getX()) == 0 && Float.compare(vector2f.getY(), getY()) == 0;
+        Vec2f vec2F = (Vec2f) o;
+        return Float.compare(vec2F.getX(), getX()) == 0 && Float.compare(vec2F.getY(), getY()) == 0;
     }
 
     @Override
@@ -107,9 +143,9 @@ public class Vector2f implements Externalizable, Cloneable {
     }
 
     @Override
-    public Vector2f clone() {
+    public Vec2f clone() {
         try {
-            Vector2f clone = (Vector2f) super.clone();
+            Vec2f clone = (Vec2f) super.clone();
 
             clone.x = this.x;
             clone.y = this.y;
