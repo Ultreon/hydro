@@ -16,8 +16,6 @@ import java.awt.event.MouseWheelEvent;
 import java.util.HashMap;
 import java.util.Map;
 
-import static java.lang.System.out;
-
 /**
  * Mouse controller for the Hydro Game Engine.
  * Should only for internal use.
@@ -155,7 +153,7 @@ public abstract class MouseInput extends MouseAdapter {
 
     @Override
     public final void mouseMoved(MouseEvent e) {
-        out.printf("Mouse Moved: x=%s, y=%s", e.getX(), e.getY());
+//        out.printf("Mouse Moved: x=%s, y=%s", e.getX(), e.getY());
 
         currentLocationOnScreen = e.getLocationOnScreen() != null ? e.getLocationOnScreen() : currentLocationOnScreen;
         currentPoint = e.getPoint() != null ? e.getPoint() : currentPoint;

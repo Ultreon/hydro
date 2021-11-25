@@ -254,7 +254,7 @@ public abstract class Game {
                         internalTick();
                     } catch (Throwable t) {
                         CrashLog crashLog = new CrashLog("Game being ticked.", t);
-                        throw crashLog.createCrash();
+                        crash(crashLog.createCrash());
                     }
                 }
 
@@ -270,7 +270,7 @@ public abstract class Game {
                     filteredRender(fps);
                 } catch (Throwable t) {
                     CrashLog crashLog = new CrashLog("Game being rendered.", t);
-                    throw crashLog.createCrash();
+                    crash(crashLog.createCrash());
                 }
 
                 for (Runnable task : tasks) {
@@ -279,12 +279,9 @@ public abstract class Game {
 
                 tasks.clear();
             }
-        } catch (ApplicationCrash e) {
-            e.printStackTrace();
-
-            Game.instance.crash(e);
-//            showScreen(new CrashScreen(e.getCrashReport()), true);
-            while (running) Thread.onSpinWait();
+        } catch (Throwable t) {
+            CrashLog crashLog = new CrashLog("Running game loop.", t);
+            crash(crashLog.createCrash());
         }
 
         close();
@@ -422,8 +419,11 @@ public abstract class Game {
 
         if (!overridden) {
             crashLog.defaultSave();
-            crashLog.createCrash().printCrash();
+            crash.printCrash();
         }
+
+        shutdown();
+        close();
     }
 
     /**
@@ -454,6 +454,11 @@ public abstract class Game {
 
     public Cursor getPointerCursor() {
         return Cursor.getPredefinedCursor(Cursor.HAND_CURSOR);
+    }
+
+    public void crash(Throwable t) {
+        CrashLog crashLog = new CrashLog("Unknown source", t);
+        crash(crashLog.createCrash());
     }
 
     protected static class BootOptions {

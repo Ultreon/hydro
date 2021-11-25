@@ -8,7 +8,6 @@ import com.ultreon.hydro.event.Subscriber;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.*;
@@ -66,11 +65,12 @@ public abstract class AbstractEvents<T extends AbstractEvent> {
 //            logger.info("Sending " + event.getClass().getName() + " to " + method.getSecond().getName());
             try {
                 method.getSecond().invoke(method.getFirst(), event);
-            } catch (InvocationTargetException e) {
-                logger.error("Cannot invoke event handler error follows:");
-                e.getCause().printStackTrace();
             } catch (Throwable t) {
-                t.printStackTrace();
+                throw new RuntimeException(t);
+//                System.err.println("========================================================");
+//                System.err.println("Cannot invoke event handler error follows:");
+//                t.getCause().printStackTrace();
+//                System.err.println("========================================================");
             }
         }
 

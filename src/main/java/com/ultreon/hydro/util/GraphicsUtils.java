@@ -48,7 +48,7 @@ public class GraphicsUtils {
         FontMetrics metrics = g.fontMetrics(font);
 
         // Determine the X coordinate for the text
-        int x = (int) (point.getX() - (metrics.stringWidth(text)));
+        int x = (int) (point.getX() - metrics.stringWidth(text) * 2);
 
         // Determine the Y coordinate for the text (note we add the ascent, as in java 2d 0 is top of the screen)
         int y = (int) (point.getY() + ((height - metrics.getHeight()) / 2) + metrics.getAscent());

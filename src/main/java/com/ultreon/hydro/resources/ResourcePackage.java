@@ -28,4 +28,8 @@ public class ResourcePackage {
     public Resource get(Identifier entry) {
         return resources.get(entry);
     }
+
+    public void dump() {
+        System.out.println(resources);
+    }
 }

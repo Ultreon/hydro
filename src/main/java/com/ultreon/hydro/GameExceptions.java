@@ -1,6 +1,5 @@
 package com.ultreon.hydro;
 
-import com.ultreon.commons.crash.ApplicationCrash;
 import com.ultreon.commons.crash.CrashLog;
 
 @SuppressWarnings("ClassCanBeRecord")
@@ -13,13 +12,7 @@ class GameExceptions implements Thread.UncaughtExceptionHandler {
 
     @Override
     public void uncaughtException(Thread thread, Throwable throwable) {
-        if (throwable instanceof ApplicationCrash) {
-            game.close();
-            throwable.printStackTrace();
-            return;
-        }
         CrashLog crashLog = new CrashLog("Uncaught exception", throwable);
-        crashLog.createCrash().printStackTrace();
-        game.close();
+        game.crash(crashLog.createCrash());
     }
 }

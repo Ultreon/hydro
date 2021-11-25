@@ -2,6 +2,7 @@ package com.ultreon.hydro.resources;
 
 import com.ultreon.commons.exceptions.DuplicateElementException;
 import com.ultreon.commons.function.ThrowingSupplier;
+import com.ultreon.hydro.Game;
 import com.ultreon.hydro.common.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -33,16 +34,19 @@ public class ResourceManager {
         return collect.get(collect.size() - 1);
     }
 
-    @Deprecated
-    public InputStream getResourceAsStream(String path) {
-        return new ByteArrayInputStream(getResource(path));
+    public InputStream openResourceStream(String path) {
+        byte[] resource = getResource(path);
+        return resource == null ? null : new ByteArrayInputStream(resource);
+    }
+
+    public InputStream openResourceStream(Identifier entry) {
+        @Nullable Resource resource = getResource(entry);
+        return resource == null ? null : resource.openStream();
     }
 
     @Nullable
     public Resource getResource(Identifier entry) {
         for (ResourcePackage resourcePackage : resourcePackages) {
-            logger.warn(resourcePackage.entries());
-
             if (resourcePackage.has(entry)) {
                 return resourcePackage.get(entry);
             }
@@ -53,7 +57,17 @@ public class ResourceManager {
         return null;
     }
 
+    public void dump() {
+        for (ResourcePackage resourcePackage : resourcePackages) {
+            resourcePackage.dump();
+        }
+    }
+
     public void importResources(File file) {
+        if (!file.exists()) {
+            Game.getInstance().crash(new IOException("Resources file doesn't exists: " + file.getAbsolutePath()));
+        }
+
         if (file.isFile()) {
             importFileResourcePackage(file);
         } else if (file.isDirectory()) {
@@ -71,7 +85,7 @@ public class ResourceManager {
             Map<Identifier, Resource> map = new HashMap<>();
 
             // Get assets directory.
-            File assets = new File(file, "assets");
+            File assets = new File(file, "Assets");
 
             // Check if assets directory exists.
             if (assets.exists()) {
@@ -98,8 +112,6 @@ public class ResourceManager {
                         ThrowingSupplier<InputStream, IOException> sup = () -> new FileInputStream(asset);
                         Resource resource = new Resource(sup);
 
-                        logger.warn(assetPath);
-
                         // Continue to next file / folder if asset path is the same path as the assets package.
                         if (assetPath.toFile().equals(assetsPackage)) {
                             continue;
@@ -109,12 +121,8 @@ public class ResourceManager {
                         Path relativize = assetsPackage.toPath().relativize(assetPath);
                         String s = relativize.toString().replaceAll("\\\\", "/");
 
-                        logger.warn(s);
-
                         // Create resource entry/
                         Identifier entry = new Identifier(namespace, s);
-
-                        logger.warn(entry);
 
                         // MEME
                         boolean b = Person.MY_SELF.kill(Person.MY_SELF) == Emotion.LOL;
