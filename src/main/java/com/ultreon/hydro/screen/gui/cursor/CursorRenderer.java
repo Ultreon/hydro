@@ -1,5 +1,6 @@
 package com.ultreon.hydro.screen.gui.cursor;
 
+import com.ultreon.hydro.Game;
 import com.ultreon.hydro.common.Drawable;
 import com.ultreon.hydro.common.Identifier;
 import com.ultreon.hydro.registry.Registry;
@@ -20,7 +21,7 @@ public abstract class CursorRenderer implements Drawable {
         // Transparent 16 x 16 pixel cursor image.
         BufferedImage cursorImg2 = new BufferedImage(32, 32, BufferedImage.TYPE_INT_ARGB);
 
-        Renderer gg2 = new Renderer(cursorImg2.createGraphics());
+        Renderer gg2 = new Renderer(cursorImg2.createGraphics(), Game.getInstance().getObserver());
         draw(gg2);
 
         // Create a new blank cursor.

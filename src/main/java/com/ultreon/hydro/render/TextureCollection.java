@@ -1,5 +1,6 @@
 package com.ultreon.hydro.render;
 
+import com.ultreon.hydro.Game;
 import com.ultreon.hydro.common.Registrable;
 import com.ultreon.hydro.graphics.ITexture;
 import org.apache.logging.log4j.LogManager;
@@ -23,7 +24,7 @@ public class TextureCollection extends Registrable {
         }
 
         BufferedImage bufferedImage = new BufferedImage(texture.width(), texture.height(), BufferedImage.TYPE_INT_ARGB);
-        Renderer graphics = new Renderer(bufferedImage.getGraphics());
+        Renderer graphics = new Renderer(bufferedImage.getGraphics(), Game.getInstance().getObserver());
         graphics.hint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         texture.render(graphics);
         graphics.dispose();

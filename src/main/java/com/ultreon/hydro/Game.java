@@ -58,6 +58,7 @@ public abstract class Game {
 
     // Threads
     protected Thread mainThread;
+    private float renderPartialTicks;
 
     public static Game getInstance() {
         return instance;
@@ -154,6 +155,10 @@ public abstract class Game {
     /////////////////////
     //     Getters     //
     /////////////////////
+    public float getRenderPartialTicks() {
+        return renderPartialTicks;
+    }
+
     public boolean isAntialiasEnabled() {
         return true;
     }
@@ -224,13 +229,14 @@ public abstract class Game {
         return tps;
     }
 
+    @SuppressWarnings("DuplicatedCode")
     private void mainThread() {
-        double tickCap = 1d / (double) tps;
+        double tickCap = 1f / (double) tps;
         double frameTime = 0d;
         double frames = 0;
 
         double time = TimeProcessor.getTime();
-        double unprocessed = 0;
+        this.renderPartialTicks = 0;
 
         try {
             while (running) {
@@ -238,13 +244,13 @@ public abstract class Game {
 
                 double time2 = TimeProcessor.getTime();
                 double passed = time2 - time;
-                unprocessed += passed;
+                this.renderPartialTicks += passed;
                 frameTime += passed;
 
                 time = time2;
 
-                while (unprocessed >= tickCap) {
-                    unprocessed -= tickCap;
+                while (this.renderPartialTicks >= tickCap) {
+                    this.renderPartialTicks -= tickCap;
 
                     canTick = true;
                 }
@@ -267,7 +273,54 @@ public abstract class Game {
                 frames++;
 
                 try {
-                    filteredRender(fps);
+                    mainRender(fps);
+                } catch (Throwable t) {
+                    CrashLog crashLog = new CrashLog("Game being rendered.", t);
+                    crash(crashLog.createCrash());
+                }
+
+                for (Runnable task : tasks) {
+                    task.run();
+                }
+
+                tasks.clear();
+            }
+        } catch (Throwable t) {
+            CrashLog crashLog = new CrashLog("Running game loop.", t);
+            crash(crashLog.createCrash());
+        }
+
+        close();
+    }
+
+    @SuppressWarnings("DuplicatedCode")
+    private void renderLoop() {
+        double frameTime = 0d;
+        double frames = 0;
+
+        double time = TimeProcessor.getTime();
+        this.renderPartialTicks = 0;
+
+        try {
+            while (running) {
+
+                double time2 = TimeProcessor.getTime();
+                double passed = time2 - time;
+                this.renderPartialTicks += passed;
+                frameTime += passed;
+
+                time = time2;
+
+                if (frameTime >= 1.0d) {
+                    frameTime = 0;
+                    fps = (int) Math.round(frames);
+                    frames = 0;
+                }
+
+                frames++;
+
+                try {
+                    mainRender(fps);
                 } catch (Throwable t) {
                     CrashLog crashLog = new CrashLog("Game being rendered.", t);
                     crash(crashLog.createCrash());
@@ -290,7 +343,7 @@ public abstract class Game {
     /**
      *
      */
-    private void internalTick() {
+    protected void internalTick() {
         @Nullable Screen currentScreen = screenManager.getCurrentScreen();
 
         if (playerController != null) {
@@ -310,7 +363,7 @@ public abstract class Game {
      *
      * @param fps current game framerate.
      */
-    private void filteredRender(int fps) {
+    private void mainRender(int fps) {
         if (!window.isInitialized()) return;
 
         // Buffer strategy (triple buffering).
@@ -323,7 +376,7 @@ public abstract class Game {
         }
 
         // Get GraphicsProcessor and GraphicsProcessor objects.
-        Renderer renderer = new Renderer(bs.getDrawGraphics());
+        Renderer renderer = new Renderer(bs.getDrawGraphics(), getObserver());
 
         FilterApplier filterApplier = new FilterApplier(getBounds().getSize(), this.getObserver());
         Renderer filterRenderer = filterApplier.getRenderer();
@@ -335,7 +388,7 @@ public abstract class Game {
 
         List<BufferedImageOp> filters = Game.instance.getCurrentFilters();
 
-        this.filteredRender(filterRenderer);
+        this.render0(filterRenderer);
 
         // Set filter gotten from filter event-handlers.
         filterApplier.setFilters(filters);
@@ -365,7 +418,7 @@ public abstract class Game {
     /**
      * @param renderer the renderer to render the game with.
      */
-    private void filteredRender(Renderer renderer) {
+    private void render0(Renderer renderer) {
 
         // Call to game environment rendering.
         GameEvents.get().publish(new RenderGameEvent.Before(renderer));
@@ -448,8 +501,9 @@ public abstract class Game {
         this.mainThread.start();
     }
 
+    @Deprecated
     public boolean isMainAlive() {
-        return mainThread.isAlive();
+        return true;
     }
 
     public Cursor getPointerCursor() {

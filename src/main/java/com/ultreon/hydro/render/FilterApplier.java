@@ -22,7 +22,7 @@ public class FilterApplier {
         size.height = Math.max(size.height, 1);
 
         BufferedImage buffer = new BufferedImage(size.width, size.height, BufferedImage.TYPE_INT_ARGB);
-        Renderer renderer = new Renderer(buffer.createGraphics());
+        Renderer renderer = new Renderer(buffer.createGraphics(), observer);
 
         this.observer = observer;
         this.renderer = renderer;

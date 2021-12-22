@@ -169,7 +169,7 @@ public class ResourceManager {
 
                         if (splitPath.length >= 3) {
                             String assetsDirectoryName = splitPath[0];
-                            if (assetsDirectoryName.equals("assets")) {
+                            if (assetsDirectoryName.equals("Assets")) {
                                 // Get namespace and path from split path
                                 String namespace = splitPath[1];
                                 String path = splitPath[2];
@@ -178,11 +178,15 @@ public class ResourceManager {
                                 ThrowingSupplier<InputStream, IOException> sup = () -> jarFile.getInputStream(jarEntry);
                                 Resource resource = new Resource(sup);
 
-                                // Entry
-                                Identifier entry = new Identifier(namespace, path);
+                                try {
+                                    // Entry
+                                    Identifier entry = new Identifier(namespace, path);
 
-                                // Add (entry -> resource) mapping.
-                                map.put(entry, resource);
+                                    // Add (entry -> resource) mapping.
+                                    map.put(entry, resource);
+                                } catch (Throwable ignored) {
+
+                                }
                             }
                         }
                     }

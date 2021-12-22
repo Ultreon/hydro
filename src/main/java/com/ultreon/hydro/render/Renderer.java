@@ -8,7 +8,6 @@ package com.ultreon.hydro.render;
 /////////////////////
 
 import com.ultreon.commons.util.StringUtils;
-import com.ultreon.hydro.Game;
 import com.ultreon.hydro.vector.Vec4i;
 
 import java.awt.*;
@@ -55,23 +54,27 @@ public class Renderer {
     ////////////////////
     Font fallbackFont;
     final Graphics2D gg;
+    final ImageObserver observer;
     private RenderState renderState;
 
     //////////////////////////
     //     Constructors     //
     //////////////////////////
-    public Renderer(Graphics gfx) {
+    public Renderer(Graphics gfx, ImageObserver observer) {
         this.gg = (Graphics2D) gfx;
+        this.observer = observer;
     }
 
-    public Renderer(Graphics2D gfx2d) {
+    public Renderer(Graphics2D gfx2d, ImageObserver observer) {
         this.gg = gfx2d;
+        this.observer = observer;
     }
 
     public Renderer(Renderer renderer) {
         this.fallbackFont = renderer.fallbackFont;
         this.gg = renderer.gg;
         this.renderState = renderer.renderState;
+        this.observer = renderer.observer;
     }
 
     ////////////////////////
@@ -204,31 +207,31 @@ public class Renderer {
     //     Image     //
     ///////////////////
     public boolean image(Image img, int x, int y) {
-        return gg.drawImage(img, x, y, Game.getInstance().getObserver());
+        return gg.drawImage(img, x, y, observer);
     }
 
     public boolean image(Image img, int x, int y, int width, int height) {
-        return gg.drawImage(img, x, y, width, height, Game.getInstance().getObserver());
+        return gg.drawImage(img, x, y, width, height, observer);
     }
 
     public boolean image(Image img, int x, int y, Color backgroundColor) {
-        return gg.drawImage(img, x, y, backgroundColor, Game.getInstance().getObserver());
+        return gg.drawImage(img, x, y, backgroundColor, observer);
     }
 
     public boolean image(Image img, int x, int y, int width, int height, Color backgroundColor) {
-        return gg.drawImage(img, x, y, width, height, backgroundColor, Game.getInstance().getObserver());
+        return gg.drawImage(img, x, y, width, height, backgroundColor, observer);
     }
 
     public boolean image(Image img, int dx1, int dy1, int dx2, int dy2, int sx1, int sy1, int sx2, int sy2) {
-        return gg.drawImage(img, dx1, dy1, dx2, dy2, sx1, sy1, sx2, sy2, Game.getInstance().getObserver());
+        return gg.drawImage(img, dx1, dy1, dx2, dy2, sx1, sy1, sx2, sy2, observer);
     }
 
     public boolean image(Image img, int dx1, int dy1, int dx2, int dy2, int sx1, int sy1, int sx2, int sy2, Color backgroundColor) {
-        return gg.drawImage(img, dx1, dy1, dx2, dy2, sx1, sy1, sx2, sy2, backgroundColor, Game.getInstance().getObserver());
+        return gg.drawImage(img, dx1, dy1, dx2, dy2, sx1, sy1, sx2, sy2, backgroundColor, observer);
     }
 
     public boolean image(Image img, AffineTransform xForm) {
-        return gg.drawImage(img, xForm, Game.getInstance().getObserver());
+        return gg.drawImage(img, xForm, observer);
     }
 
     public void image(BufferedImage img, BufferedImageOp op, int x, int y) {
@@ -437,11 +440,11 @@ public class Renderer {
     //     Miscellaneous     //
     ///////////////////////////
     public Renderer subInstance() {
-        return new Renderer(gg.create());
+        return new Renderer(gg.create(), observer);
     }
 
     public Renderer subInstance(int x, int y, int width, int height) {
-        return new Renderer(gg.create(x, y, width, height));
+        return new Renderer(gg.create(x, y, width, height), observer);
     }
 
     public boolean hitClip(int x, int y, int width, int height) {
