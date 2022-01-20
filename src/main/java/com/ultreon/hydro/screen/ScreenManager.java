@@ -2,7 +2,7 @@ package com.ultreon.hydro.screen;
 
 import com.ultreon.commons.annotation.MethodsReturnNonnullByDefault;
 import com.ultreon.hydro.Game;
-import com.ultreon.hydro.common.ResourceEntry;
+import com.ultreon.hydro.common.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.Contract;
@@ -99,7 +99,7 @@ public class ScreenManager {
     @Contract("->null")
     @Deprecated
     @Nullable
-    public ResourceEntry getCurrentSceneKey() {
+    public Identifier getCurrentSceneKey() {
         return null;
     }
 

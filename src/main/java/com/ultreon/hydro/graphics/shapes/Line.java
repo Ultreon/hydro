@@ -2,7 +2,7 @@ package com.ultreon.hydro.graphics.shapes;
 
 
 import com.ultreon.commons.util.Constants;
-import com.ultreon.hydro.util.IntersectionUtils;
+import com.ultreon.hydro.util.CollisionUtils;
 
 public class Line implements Shape {
     private double slope;
@@ -141,11 +141,11 @@ public class Line implements Shape {
     @Override
     public boolean doIntersect(Shape shape) {
         if (shape instanceof Circle)
-            return IntersectionUtils.doIntersect(this, (Circle) shape);
+            return CollisionUtils.doIntersect(this, (Circle) shape);
         else if (shape instanceof Polygon)
-            return IntersectionUtils.doIntersect((Polygon) shape, this);
+            return CollisionUtils.doIntersect((Polygon) shape, this);
         else if (shape instanceof Line)
-            return IntersectionUtils.doIntersectLineSegments(this, (Line) shape);
+            return CollisionUtils.doIntersectLineSegments(this, (Line) shape);
         else
             throw new UnsupportedOperationException(Constants.UNSUPPORTED_SHAPE);
     }

@@ -1,7 +1,7 @@
 package com.ultreon.hydro.graphics.shapes;
 
 import com.ultreon.commons.util.Constants;
-import com.ultreon.hydro.util.IntersectionUtils;
+import com.ultreon.hydro.util.CollisionUtils;
 
 import java.util.ArrayList;
 
@@ -47,9 +47,9 @@ public class Polygon implements Shape {
     @Override
     public boolean doIntersect(Shape shape) {
         if (shape instanceof Circle)
-            return IntersectionUtils.doIntersect((Circle) shape, this);
+            return CollisionUtils.doIntersect((Circle) shape, this);
         else if (shape instanceof Line)
-            return IntersectionUtils.doIntersect(this, (Line) shape);
+            return CollisionUtils.doIntersect(this, (Line) shape);
         else
             throw new UnsupportedOperationException(Constants.UNSUPPORTED_SHAPE);
     }

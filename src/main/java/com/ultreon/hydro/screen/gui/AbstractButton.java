@@ -2,9 +2,9 @@ package com.ultreon.hydro.screen.gui;
 
 import com.ultreon.hydro.Game;
 import com.ultreon.hydro.input.MouseInput;
-import com.ultreon.hydro.vector.Vector2i;
+import com.ultreon.hydro.vector.Vec2i;
 
-public abstract class AbstractButton extends Widget {
+public abstract class AbstractButton extends Interactable {
     private Runnable command;
     private boolean hovered;
     private boolean pressed;
@@ -48,7 +48,7 @@ public abstract class AbstractButton extends Widget {
     public void make() {
         this.valid = true;
 
-        Vector2i mousePos = MouseInput.getPos();
+        Vec2i mousePos = MouseInput.getPos();
         if (isWithinBounds(mousePos)) {
             Game.getInstance().getGameWindow().setCursor(Game.getInstance().getPointerCursor());
             this.hovered = true;

@@ -1,7 +1,7 @@
 package com.ultreon.hydro.common;
 
-import com.ultreon.hydro.render.RenderSystem;
+import com.ultreon.hydro.render.Renderer;
 
 public interface Drawable {
-    void draw(RenderSystem g);
+    void draw(Renderer g);
 }

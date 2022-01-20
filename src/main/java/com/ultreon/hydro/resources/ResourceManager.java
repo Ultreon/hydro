@@ -2,7 +2,8 @@ package com.ultreon.hydro.resources;
 
 import com.ultreon.commons.exceptions.DuplicateElementException;
 import com.ultreon.commons.function.ThrowingSupplier;
-import com.ultreon.hydro.common.ResourceEntry;
+import com.ultreon.hydro.Game;
+import com.ultreon.hydro.common.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
@@ -21,7 +22,7 @@ import java.util.stream.Stream;
 
 public class ResourceManager {
     private final Map<File, PathMapping<byte[]>> mapping = new ConcurrentHashMap<>();
-    private final Map<ResourceEntry, byte[]> assets = new ConcurrentHashMap<>();
+    private final Map<Identifier, byte[]> assets = new ConcurrentHashMap<>();
     private final List<ResourcePackage> resourcePackages = new ArrayList<>();
     private final Logger logger = LogManager.getLogger("Resource-Manager");
 
@@ -33,16 +34,19 @@ public class ResourceManager {
         return collect.get(collect.size() - 1);
     }
 
-    @Deprecated
-    public InputStream getResourceAsStream(String path) {
-        return new ByteArrayInputStream(getResource(path));
+    public InputStream openResourceStream(String path) {
+        byte[] resource = getResource(path);
+        return resource == null ? null : new ByteArrayInputStream(resource);
+    }
+
+    public InputStream openResourceStream(Identifier entry) {
+        @Nullable Resource resource = getResource(entry);
+        return resource == null ? null : resource.openStream();
     }
 
     @Nullable
-    public Resource getResource(ResourceEntry entry) {
+    public Resource getResource(Identifier entry) {
         for (ResourcePackage resourcePackage : resourcePackages) {
-            logger.warn(resourcePackage.entries());
-
             if (resourcePackage.has(entry)) {
                 return resourcePackage.get(entry);
             }
@@ -50,10 +54,21 @@ public class ResourceManager {
 
         logger.warn("Unknown resource: " + entry);
 
+
         return null;
     }
 
+    public void dump() {
+        for (ResourcePackage resourcePackage : resourcePackages) {
+            resourcePackage.dump();
+        }
+    }
+
     public void importResources(File file) {
+        if (!file.exists()) {
+            Game.getInstance().crash(new IOException("Resources file doesn't exists: " + file.getAbsolutePath()));
+        }
+
         if (file.isFile()) {
             importFileResourcePackage(file);
         } else if (file.isDirectory()) {
@@ -68,10 +83,10 @@ public class ResourceManager {
 
         try {
             // Prepare (entry -> resource) mappings/
-            Map<ResourceEntry, Resource> map = new HashMap<>();
+            Map<Identifier, Resource> map = new HashMap<>();
 
             // Get assets directory.
-            File assets = new File(file, "assets");
+            File assets = new File(file, "Assets");
 
             // Check if assets directory exists.
             if (assets.exists()) {
@@ -98,8 +113,6 @@ public class ResourceManager {
                         ThrowingSupplier<InputStream, IOException> sup = () -> new FileInputStream(asset);
                         Resource resource = new Resource(sup);
 
-                        logger.warn(assetPath);
-
                         // Continue to next file / folder if asset path is the same path as the assets package.
                         if (assetPath.toFile().equals(assetsPackage)) {
                             continue;
@@ -109,12 +122,8 @@ public class ResourceManager {
                         Path relativize = assetsPackage.toPath().relativize(assetPath);
                         String s = relativize.toString().replaceAll("\\\\", "/");
 
-                        logger.warn(s);
-
                         // Create resource entry/
-                        ResourceEntry entry = new ResourceEntry(namespace, s);
-
-                        logger.warn(entry);
+                        Identifier entry = new Identifier(namespace, s);
 
                         // MEME
                         boolean b = Person.MY_SELF.kill(Person.MY_SELF) == Emotion.LOL;
@@ -139,7 +148,7 @@ public class ResourceManager {
         if (file.getName().endsWith(".jar")) {
             try {
                 // Prepare (entry -> resource) mappings.
-                Map<ResourceEntry, Resource> map = new HashMap<>();
+                Map<Identifier, Resource> map = new HashMap<>();
 
                 // Create jar file instance from file.
                 JarFile jarFile = new JarFile(file);
@@ -160,7 +169,7 @@ public class ResourceManager {
 
                         if (splitPath.length >= 3) {
                             String assetsDirectoryName = splitPath[0];
-                            if (assetsDirectoryName.equals("assets")) {
+                            if (assetsDirectoryName.equals("Assets")) {
                                 // Get namespace and path from split path
                                 String namespace = splitPath[1];
                                 String path = splitPath[2];
@@ -169,11 +178,15 @@ public class ResourceManager {
                                 ThrowingSupplier<InputStream, IOException> sup = () -> jarFile.getInputStream(jarEntry);
                                 Resource resource = new Resource(sup);
 
-                                // Entry
-                                ResourceEntry entry = new ResourceEntry(namespace, path);
+                                try {
+                                    // Entry
+                                    Identifier entry = new Identifier(namespace, path);
 
-                                // Add (entry -> resource) mapping.
-                                map.put(entry, resource);
+                                    // Add (entry -> resource) mapping.
+                                    map.put(entry, resource);
+                                } catch (Throwable ignored) {
+
+                                }
                             }
                         }
                     }
@@ -217,7 +230,7 @@ public class ResourceManager {
             String path = matcher.group(3);
 
             if (Objects.equals(type, "assets")) {
-                ResourceEntry res = new ResourceEntry(namespace, path);
+                Identifier res = new Identifier(namespace, path);
                 assets.put(res, bytes);
             }
 
@@ -235,12 +248,12 @@ public class ResourceManager {
         }
     }
 
-    public byte[] getAsset(ResourceEntry resourceEntry) {
-        return assets.get(resourceEntry);
+    public byte[] getAsset(Identifier identifier) {
+        return assets.get(identifier);
     }
 
-    public InputStream getAssetAsStream(ResourceEntry resourceEntry) {
-        return new ByteArrayInputStream(getAsset(resourceEntry));
+    public InputStream getAssetAsStream(Identifier identifier) {
+        return new ByteArrayInputStream(getAsset(identifier));
     }
 
     private static class PathMapping<T> {

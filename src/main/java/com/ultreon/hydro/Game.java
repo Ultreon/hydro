@@ -9,11 +9,11 @@ import com.ultreon.hydro.event.RenderGameEvent;
 import com.ultreon.hydro.event.RenderScreenEvent;
 import com.ultreon.hydro.event.TickEvent;
 import com.ultreon.hydro.event.bus.GameEvents;
-import com.ultreon.hydro.player.IPlayer;
+import com.ultreon.hydro.player.BasePlayer;
 import com.ultreon.hydro.player.PlayerController;
 import com.ultreon.hydro.render.FilterApplier;
 import com.ultreon.hydro.render.RenderSettings;
-import com.ultreon.hydro.render.RenderSystem;
+import com.ultreon.hydro.render.Renderer;
 import com.ultreon.hydro.resources.ResourceManager;
 import com.ultreon.hydro.screen.Screen;
 import com.ultreon.hydro.screen.ScreenManager;
@@ -41,10 +41,10 @@ public abstract class Game {
     private static boolean devMode;
 
     // Utility objects.
-    public IPlayer playerInterface;
+    public BasePlayer playerInterface;
     private PlayerController playerController;
     protected final ResourceManager resourceManager;
-    protected final GameWindow gameWindow;
+    protected final Window window;
     protected final ScreenManager screenManager;
     protected final RenderSettings renderSettings;
 
@@ -58,14 +58,15 @@ public abstract class Game {
 
     // Threads
     protected Thread mainThread;
+    private float renderPartialTicks;
 
     public static Game getInstance() {
         return instance;
     }
 
-    public Game(GameWindow.Properties windowProperties, BootOptions bootOptions) {
+    public Game(Window.Properties windowProperties, BootOptions bootOptions) {
         // Set default uncaught exception handler.
-        Thread.setDefaultUncaughtExceptionHandler(new GameExceptionHandler(this));
+        Thread.setDefaultUncaughtExceptionHandler(new GameExceptions(this));
 
         // Assign instance.
         instance = this;
@@ -78,7 +79,7 @@ public abstract class Game {
         this.renderSettings = new RenderSettings();
 
         // Setup game window.
-        this.gameWindow = new GameWindow(windowProperties);
+        this.window = new Window(windowProperties);
 
         // Prepare for loading.
         this.prepare();
@@ -136,9 +137,9 @@ public abstract class Game {
 
     protected abstract void preparePlayer();
 
-    protected abstract IPlayer createPlayer();
+    protected abstract BasePlayer createPlayer();
 
-    protected abstract void render(RenderSystem renderSystem);
+    protected abstract void render(Renderer renderer);
 
     protected abstract void tick();
 
@@ -154,6 +155,10 @@ public abstract class Game {
     /////////////////////
     //     Getters     //
     /////////////////////
+    public float getRenderPartialTicks() {
+        return renderPartialTicks;
+    }
+
     public boolean isAntialiasEnabled() {
         return true;
     }
@@ -162,24 +167,24 @@ public abstract class Game {
         return isAntialiasEnabled();
     }
 
-    public final GameWindow getGameWindow() {
-        return this.gameWindow;
+    public final Window getGameWindow() {
+        return this.window;
     }
 
     public ImageObserver getObserver() {
-        return gameWindow.observer;
+        return window.observer;
     }
 
     public Rectangle getBounds() {
-        return new Rectangle(0, 0, gameWindow.getWidth(), gameWindow.getHeight());
+        return new Rectangle(0, 0, window.getWidth(), window.getHeight());
     }
 
     public final int getWidth() {
-        return gameWindow.getWidth();
+        return window.getWidth();
     }
 
     public final int getHeight() {
-        return gameWindow.getHeight();
+        return window.getHeight();
     }
 
     public int getFps() {
@@ -224,13 +229,16 @@ public abstract class Game {
         return tps;
     }
 
+    @SuppressWarnings("DuplicatedCode")
     private void mainThread() {
-        double tickCap = 1d / (double) tps;
+        double tickCap = 1f / (double) tps;
         double frameTime = 0d;
         double frames = 0;
 
         double time = TimeProcessor.getTime();
-        double unprocessed = 0;
+        this.renderPartialTicks = 0;
+
+        initialGameTick();
 
         try {
             while (running) {
@@ -238,13 +246,13 @@ public abstract class Game {
 
                 double time2 = TimeProcessor.getTime();
                 double passed = time2 - time;
-                unprocessed += passed;
+                this.renderPartialTicks += passed;
                 frameTime += passed;
 
                 time = time2;
 
-                while (unprocessed >= tickCap) {
-                    unprocessed -= tickCap;
+                while (this.renderPartialTicks >= tickCap) {
+                    this.renderPartialTicks -= tickCap;
 
                     canTick = true;
                 }
@@ -254,7 +262,7 @@ public abstract class Game {
                         internalTick();
                     } catch (Throwable t) {
                         CrashLog crashLog = new CrashLog("Game being ticked.", t);
-                        throw crashLog.createCrash();
+                        crash(crashLog.createCrash());
                     }
                 }
 
@@ -267,10 +275,10 @@ public abstract class Game {
                 frames++;
 
                 try {
-                    filteredRender(fps);
+                    mainRender(fps);
                 } catch (Throwable t) {
                     CrashLog crashLog = new CrashLog("Game being rendered.", t);
-                    throw crashLog.createCrash();
+                    crash(crashLog.createCrash());
                 }
 
                 for (Runnable task : tasks) {
@@ -279,12 +287,60 @@ public abstract class Game {
 
                 tasks.clear();
             }
-        } catch (ApplicationCrash e) {
-            e.printStackTrace();
+        } catch (Throwable t) {
+            CrashLog crashLog = new CrashLog("Running game loop.", t);
+            crash(crashLog.createCrash());
+        }
 
-            Game.instance.crash(e);
-//            showScreen(new CrashScreen(e.getCrashReport()), true);
-            while (running) Thread.onSpinWait();
+        close();
+    }
+
+    protected void initialGameTick() {
+
+    }
+
+    @SuppressWarnings("DuplicatedCode")
+    private void renderLoop() {
+        double frameTime = 0d;
+        double frames = 0;
+
+        double time = TimeProcessor.getTime();
+        this.renderPartialTicks = 0;
+
+        try {
+            while (running) {
+
+                double time2 = TimeProcessor.getTime();
+                double passed = time2 - time;
+                this.renderPartialTicks += passed;
+                frameTime += passed;
+
+                time = time2;
+
+                if (frameTime >= 1.0d) {
+                    frameTime = 0;
+                    fps = (int) Math.round(frames);
+                    frames = 0;
+                }
+
+                frames++;
+
+                try {
+                    mainRender(fps);
+                } catch (Throwable t) {
+                    CrashLog crashLog = new CrashLog("Game being rendered.", t);
+                    crash(crashLog.createCrash());
+                }
+
+                for (Runnable task : tasks) {
+                    task.run();
+                }
+
+                tasks.clear();
+            }
+        } catch (Throwable t) {
+            CrashLog crashLog = new CrashLog("Running game loop.", t);
+            crash(crashLog.createCrash());
         }
 
         close();
@@ -293,7 +349,7 @@ public abstract class Game {
     /**
      *
      */
-    private void internalTick() {
+    protected void internalTick() {
         @Nullable Screen currentScreen = screenManager.getCurrentScreen();
 
         if (playerController != null) {
@@ -313,38 +369,38 @@ public abstract class Game {
      *
      * @param fps current game framerate.
      */
-    private void filteredRender(int fps) {
-        if (!gameWindow.isInitialized()) return;
+    private void mainRender(int fps) {
+        if (!window.isInitialized()) return;
 
         // Buffer strategy (triple buffering).
-        BufferStrategy bs = this.gameWindow.canvas.getBufferStrategy();
+        BufferStrategy bs = this.window.canvas.getBufferStrategy();
 
         // Create buffers if not created yet.
         if (bs == null) {
-            this.gameWindow.canvas.createBufferStrategy(2);
-            bs = this.gameWindow.canvas.getBufferStrategy();
+            this.window.canvas.createBufferStrategy(2);
+            bs = this.window.canvas.getBufferStrategy();
         }
 
         // Get GraphicsProcessor and GraphicsProcessor objects.
-        RenderSystem renderSystem = new RenderSystem(bs.getDrawGraphics());
+        Renderer renderer = new Renderer(bs.getDrawGraphics(), getObserver());
 
         FilterApplier filterApplier = new FilterApplier(getBounds().getSize(), this.getObserver());
-        RenderSystem filterRenderSystem = filterApplier.getRenderer();
+        Renderer filterRenderer = filterApplier.getRenderer();
 
         if (this.renderSettings.isAntialiasingEnabled() && this.isTextAntialiasEnabled())
-            filterRenderSystem.hint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+            filterRenderer.hint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         if (this.renderSettings.isAntialiasingEnabled() && this.isAntialiasEnabled())
-            filterRenderSystem.hint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            filterRenderer.hint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         List<BufferedImageOp> filters = Game.instance.getCurrentFilters();
 
-        this.filteredRender(filterRenderSystem);
+        this.render0(filterRenderer);
 
         // Set filter gotten from filter event-handlers.
         filterApplier.setFilters(filters);
 
         // Draw filtered image.
-        renderSystem.image(filterApplier.done(), 0, 0);
+        renderer.image(filterApplier.done(), 0, 0);
 
         // Disable Antialias
         // Todo: check performance.
@@ -356,7 +412,7 @@ public abstract class Game {
         this.fps = fps;
 
         // Dispose and show.
-        renderSystem.dispose();
+        renderer.dispose();
 
         try {
             bs.show();
@@ -366,14 +422,14 @@ public abstract class Game {
     }
 
     /**
-     * @param renderSystem the renderer to render the game with.
+     * @param renderer the renderer to render the game with.
      */
-    private void filteredRender(RenderSystem renderSystem) {
+    private void render0(Renderer renderer) {
 
         // Call to game environment rendering.
-        GameEvents.get().publish(new RenderGameEvent.Before(renderSystem));
-        render(renderSystem);
-        GameEvents.get().publish(new RenderGameEvent.After(renderSystem));
+        GameEvents.get().publish(new RenderGameEvent.Before(renderer));
+        render(renderer);
+        GameEvents.get().publish(new RenderGameEvent.After(renderer));
 
         // Get screen.
         @Nullable Screen screen = this.screenManager.getCurrentScreen();
@@ -382,11 +438,17 @@ public abstract class Game {
         if (screen != null) {
 
             // Render the screen.
-            GameEvents.get().publish(new RenderScreenEvent.Before(screen, renderSystem));
-            screen.render(this, renderSystem);
-            screen.renderGUI(this, renderSystem);
-            GameEvents.get().publish(new RenderScreenEvent.After(screen, renderSystem));
+            GameEvents.get().publish(new RenderScreenEvent.Before(screen, renderer));
+            screen.render(this, renderer);
+            screen.renderGUI(this, renderer);
+            GameEvents.get().publish(new RenderScreenEvent.After(screen, renderer));
         }
+
+        postRender(renderer);
+    }
+
+    public void postRender(Renderer renderer) {
+
     }
 
     @SneakyThrows
@@ -398,7 +460,7 @@ public abstract class Game {
 
     protected final void close() {
         onClose();
-        gameWindow.close();
+        window.close();
         if (crashed) {
             System.exit(0);
         }
@@ -422,8 +484,11 @@ public abstract class Game {
 
         if (!overridden) {
             crashLog.defaultSave();
-            crashLog.createCrash().printCrash();
+            crash.printCrash();
         }
+
+        shutdown();
+        close();
     }
 
     /**
@@ -448,12 +513,18 @@ public abstract class Game {
         this.mainThread.start();
     }
 
+    @Deprecated
     public boolean isMainAlive() {
-        return mainThread.isAlive();
+        return true;
     }
 
     public Cursor getPointerCursor() {
         return Cursor.getPredefinedCursor(Cursor.HAND_CURSOR);
+    }
+
+    public void crash(Throwable t) {
+        CrashLog crashLog = new CrashLog("Unknown source", t);
+        crash(crashLog.createCrash());
     }
 
     protected static class BootOptions {

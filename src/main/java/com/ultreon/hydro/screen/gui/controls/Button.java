@@ -1,10 +1,10 @@
 package com.ultreon.hydro.screen.gui.controls;
 
-import com.ultreon.hydro.render.RenderSystem;
-import com.ultreon.hydro.screen.gui.Widget;
+import com.ultreon.hydro.render.Renderer;
+import com.ultreon.hydro.screen.gui.Interactable;
 import com.ultreon.hydro.screen.gui.style.State;
 import com.ultreon.hydro.screen.gui.style.Style;
-import com.ultreon.hydro.vector.Vector2i;
+import com.ultreon.hydro.vector.Vec2i;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -15,7 +15,7 @@ import java.util.Set;
 
 @Deprecated
 @SuppressWarnings("unused")
-public class Button extends Widget {
+public class Button extends Interactable {
     private final Style style;
     private final MouseListener mouseListener;
     private final Set<State> state;
@@ -28,7 +28,7 @@ public class Button extends Widget {
      * @param pos   the position.
      * @param style the style.
      */
-    public Button(Vector2i pos, Style style) {
+    public Button(Vec2i pos, Style style) {
         this(pos, style, 96, 24);
     }
 
@@ -38,8 +38,8 @@ public class Button extends Widget {
      * @param pos   the position.
      * @param style the style.
      */
-    public Button(Vector2i pos, Style style, int width, int height) {
-        this(pos, new Vector2i(width, height), style);
+    public Button(Vec2i pos, Style style, int width, int height) {
+        this(pos, new Vec2i(width, height), style);
     }
 
     /**
@@ -51,7 +51,7 @@ public class Button extends Widget {
         return state;
     }
 
-    public Button(Vector2i pos, Vector2i size, Style style) {
+    public Button(Vec2i pos, Vec2i size, Style style) {
         super(pos.x, pos.y, size.x, size.y);
         this.buttonRectangle = new Rectangle2D.Float(pos.x, pos.y, size.x, size.y);
         this.state = new HashSet<>();
@@ -69,20 +69,20 @@ public class Button extends Widget {
     }
 
     @Override
-    public void render(RenderSystem renderSystem) {
+    public void render(Renderer renderer) {
         if (state.contains(State.PRESSED)) {
-            renderSystem.color(style.getBackgroundColors().getPressed());
-            renderSystem.stroke(new BasicStroke(style.getBorderWidths().getPressed()));
+            renderer.color(style.getBackgroundColors().getPressed());
+            renderer.stroke(new BasicStroke(style.getBorderWidths().getPressed()));
 //            g.fill(buttonRectangle);
-            renderSystem.fill(new Rectangle2D.Double(0, 0, width, height));
-            renderSystem.color(style.getBorderColors().getPressed());
-            renderSystem.outline(new Rectangle2D.Double(0, 0, width, height));
+            renderer.fill(new Rectangle2D.Double(0, 0, width, height));
+            renderer.color(style.getBorderColors().getPressed());
+            renderer.outline(new Rectangle2D.Double(0, 0, width, height));
         } else if (state.contains(State.NORMAL)) {
-            renderSystem.color(style.getBackgroundColors().getNormal());
-            renderSystem.stroke(new BasicStroke(style.getBorderWidths().getNormal()));
-            renderSystem.fill(new Rectangle2D.Double(0, 0, width, height));
-            renderSystem.color(style.getBorderColors().getNormal());
-            renderSystem.outline(new Rectangle2D.Double(0, 0, width, height));
+            renderer.color(style.getBackgroundColors().getNormal());
+            renderer.stroke(new BasicStroke(style.getBorderWidths().getNormal()));
+            renderer.fill(new Rectangle2D.Double(0, 0, width, height));
+            renderer.color(style.getBorderColors().getNormal());
+            renderer.outline(new Rectangle2D.Double(0, 0, width, height));
         }
     }
 

@@ -1,13 +1,13 @@
 package com.ultreon.hydro.event.registry;
 
-import com.ultreon.hydro.common.IRegistryEntry;
+import com.ultreon.hydro.common.IRegistrable;
 import com.ultreon.hydro.event.Event;
 import com.ultreon.hydro.registry.Registry;
 
 import java.util.Objects;
 
 public class RegistryEvent {
-    public static class Register<T extends IRegistryEntry> extends Event {
+    public static class Register<T extends IRegistrable> extends Event {
         private final Registry<T> registry;
 
         public Register(Registry<T> registry) {

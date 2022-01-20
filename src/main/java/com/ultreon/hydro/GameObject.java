@@ -1,7 +1,7 @@
 package com.ultreon.hydro;
 
-import com.ultreon.hydro.render.RenderSystem;
-import com.ultreon.hydro.vector.Vector2f;
+import com.ultreon.hydro.render.Renderer;
+import com.ultreon.hydro.vector.Vec2f;
 
 public abstract class GameObject {
     private float x;
@@ -23,9 +23,9 @@ public abstract class GameObject {
         this.y = y;
     }
 
-    public Vector2f getPosition() {
-        return new Vector2f(x, y);
+    public Vec2f getPosition() {
+        return new Vec2f(x, y);
     }
 
-    public abstract void render(RenderSystem renderSystem);
+    public abstract void render(Renderer renderer);
 }

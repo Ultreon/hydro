@@ -1,11 +1,11 @@
 package com.ultreon.hydro.render;
 
 import com.ultreon.hydro.Game;
-import com.ultreon.hydro.GameWindow;
+import com.ultreon.hydro.Window;
 
 public class RenderSettings {
     private final boolean antialiasingBackup = Game.getInstance().isAntialiasEnabled();
-    private final GameWindow gameWindow = Game.getInstance().getGameWindow();
+    private final Window window = Game.getInstance().getGameWindow();
     private boolean antialiasingOverride = antialiasingBackup;
 
     public boolean isAntialiasingEnabled() {
@@ -32,8 +32,8 @@ public class RenderSettings {
         if (Game.getInstance() == null) {
             return 1.f;
         }
-        int width = gameWindow.getWidth();
-        int height = gameWindow.getHeight();
+        int width = window.getWidth();
+        int height = window.getHeight();
 
         return width > height ? width / 600f : height / 600f;
     }

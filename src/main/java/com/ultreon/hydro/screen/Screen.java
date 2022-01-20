@@ -2,16 +2,16 @@ package com.ultreon.hydro.screen;
 
 import com.ultreon.hydro.Game;
 import com.ultreon.hydro.input.KeyInput;
-import com.ultreon.hydro.render.RenderSystem;
+import com.ultreon.hydro.render.Renderer;
 import com.ultreon.hydro.screen.gui.Container;
-import com.ultreon.hydro.screen.gui.Widget;
+import com.ultreon.hydro.screen.gui.Interactable;
 
 import java.awt.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 @SuppressWarnings("unused")
 public abstract class Screen extends Container {
-    private Widget focusedWidget;
+    private Interactable focusedInteractable;
     private int focusIndex = 0;
 
     public Screen() {
@@ -70,9 +70,9 @@ public abstract class Screen extends Container {
     }
 
     public void onMouseExit() {
-        if (this.hoveredWidget != null) {
-            this.hoveredWidget.onMouseLeave();
-            this.hoveredWidget = null;
+        if (this.hoveredInteractable != null) {
+            this.hoveredInteractable.onMouseLeave();
+            this.hoveredInteractable = null;
         }
     }
 
@@ -84,34 +84,34 @@ public abstract class Screen extends Container {
             return;
         }
 
-        if (this.focusedWidget != null) this.focusedWidget.onKeyPress(keyCode, character);
+        if (this.focusedInteractable != null) this.focusedInteractable.onKeyPress(keyCode, character);
     }
 
     @Override
     public void onKeyRelease(int keyCode, char character) {
         if (keyCode == KeyInput.Map.KEY_TAB) return;
 
-        if (this.focusedWidget != null) this.focusedWidget.onKeyRelease(keyCode, character);
+        if (this.focusedInteractable != null) this.focusedInteractable.onKeyRelease(keyCode, character);
     }
 
     @Override
     public void onKeyType(int keyCode, char character) {
         if (keyCode == KeyInput.Map.KEY_TAB) return;
 
-        if (this.focusedWidget != null) this.focusedWidget.onKeyType(keyCode, character);
+        if (this.focusedInteractable != null) this.focusedInteractable.onKeyType(keyCode, character);
     }
 
     public void onChildFocusChanged() {
-        CopyOnWriteArrayList<Widget> clone = new CopyOnWriteArrayList<>(children);
+        CopyOnWriteArrayList<Interactable> clone = new CopyOnWriteArrayList<>(children);
         if (this.focusIndex >= clone.size()) {
             this.focusIndex = 0;
         }
 
-        this.focusedWidget = clone.get(this.focusIndex);
+        this.focusedInteractable = clone.get(this.focusIndex);
     }
 
-    public Widget getFocusedWidget() {
-        return focusedWidget;
+    public Interactable getFocusedWidget() {
+        return focusedInteractable;
     }
 
     @Deprecated
@@ -119,17 +119,17 @@ public abstract class Screen extends Container {
 
     }
 
-    public abstract void render(Game game, RenderSystem gg);
+    public abstract void render(Game game, Renderer gg);
 
     @Override
-    public final <T extends Widget> T add(T widget) {
+    public final <T extends Interactable> T add(T widget) {
         this.children.add(widget);
         return widget;
     }
 
-    public void renderGUI(Game game, RenderSystem gg) {
-        for (Widget widget : this.children) {
-            widget.render(gg);
+    public void renderGUI(Game game, Renderer gg) {
+        for (Interactable interactable : this.children) {
+            interactable.render(gg);
         }
     }
 

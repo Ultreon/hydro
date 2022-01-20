@@ -5,6 +5,7 @@ import com.ultreon.hydro.Hydro;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.ByteArrayInputStream;
 import java.io.IOError;
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,6 +26,18 @@ public class Resource {
         }
     }
 
+    public byte[] loadOrGet() {
+        if (data == null) {
+            load();
+        }
+
+        return getData();
+    }
+
+    public InputStream loadOrOpenStream() {
+        return new ByteArrayInputStream(loadOrGet());
+    }
+
     protected Image loadImage() {
         try (InputStream inputStream = opener.get()) {
             return ImageIO.read(inputStream);
@@ -35,6 +48,10 @@ public class Resource {
 
     public byte[] getData() {
         return data;
+    }
+
+    public ByteArrayInputStream openStream() {
+        return new ByteArrayInputStream(data);
     }
 
     public Font loadFont() throws FontFormatException {
