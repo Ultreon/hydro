@@ -5,7 +5,7 @@
 <title>AbstractEvents.AbstractSubscription (hydro 1.0.957-a1 API)</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="declaration: package: com.ultreon.hydro.event.bus, class: AbstractEvents, class: AbstractSubscription">
+<meta name="description" content="declaration: package: com.ultreon.bubbles.event.bus, class: AbstractEvents, class: AbstractSubscription">
 <meta name="generator" content="javadoc/ClassWriterImpl">
 <link rel="stylesheet" type="text/css" href="../../../../../stylesheet.css" title="Style">
 <link rel="stylesheet" type="text/css" href="../../../../../script-dir/jquery-ui.min.css" title="Style">
@@ -68,16 +68,16 @@ loadScripts(document, 'script');</script>
 <main role="main">
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">com.ultreon.hydro.event.bus</a></div>
+<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">com.ultreon.bubbles.event.bus</a></div>
 <h1 title="Class AbstractEvents.AbstractSubscription" class="title">Class AbstractEvents.AbstractSubscription</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance">com.ultreon.hydro.event.bus.AbstractEvents.AbstractSubscription</div>
+<div class="inheritance">com.ultreon.bubbles.event.bus.AbstractEvents.AbstractSubscription</div>
 </div>
 <section class="class-description" id="class-description">
 <dl class="notes">
 <dt>Enclosing class:</dt>
-<dd><a href="AbstractEvents.html" title="class in com.ultreon.hydro.event.bus">AbstractEvents</a>&lt;<a href="AbstractEvents.html" title="type parameter in AbstractEvents">T</a> extends <a href="../AbstractEvent.html" title="class in com.ultreon.hydro.event">AbstractEvent</a>&gt;</dd>
+<dd><a href="AbstractEvents.html" title="class in com.ultreon.bubbles.event.bus">AbstractEvents</a>&lt;<a href="AbstractEvents.html" title="type parameter in AbstractEvents">T</a> extends <a href="../AbstractEvent.html" title="class in com.ultreon.bubbles.event">AbstractEvent</a>&gt;</dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public abstract static class </span><span class="element-name type-name-label">AbstractEvents.AbstractSubscription</span>
@@ -109,7 +109,7 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>abstract &lt;T extends <a href="../AbstractEvent.html" title="class in com.ultreon.hydro.event">AbstractEvent</a>&gt;<br><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html" title="class or interface in java.util" class="external-link">Collection</a>&lt;<a href="../Subscriber.html" title="class in com.ultreon.hydro.event">Subscriber</a>&lt;T&gt;&gt;</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>abstract &lt;T extends <a href="../AbstractEvent.html" title="class in com.ultreon.bubbles.event">AbstractEvent</a>&gt;<br><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html" title="class or interface in java.util" class="external-link">Collection</a>&lt;<a href="../Subscriber.html" title="class in com.ultreon.bubbles.event">Subscriber</a>&lt;T&gt;&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getSubscribers(java.lang.Class)" class="member-name-link">getSubscribers</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;T&gt;&nbsp;clazz)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>abstract long</code></div>
@@ -161,8 +161,8 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="getSubscribers(java.lang.Class)">
 <h3>getSubscribers</h3>
-<div class="member-signature"><span class="modifiers">public abstract</span>&nbsp;<span class="type-parameters">&lt;T extends <a href="../AbstractEvent.html" title="class in com.ultreon.hydro.event">AbstractEvent</a>&gt;</span>
-<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html" title="class or interface in java.util" class="external-link">Collection</a>&lt;<a href="../Subscriber.html" title="class in com.ultreon.hydro.event">Subscriber</a>&lt;T&gt;&gt;</span>&nbsp;<span class="element-name">getSubscribers</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;T&gt;&nbsp;clazz)</span></div>
+<div class="member-signature"><span class="modifiers">public abstract</span>&nbsp;<span class="type-parameters">&lt;T extends <a href="../AbstractEvent.html" title="class in com.ultreon.bubbles.event">AbstractEvent</a>&gt;</span>
+<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html" title="class or interface in java.util" class="external-link">Collection</a>&lt;<a href="../Subscriber.html" title="class in com.ultreon.bubbles.event">Subscriber</a>&lt;T&gt;&gt;</span>&nbsp;<span class="element-name">getSubscribers</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;T&gt;&nbsp;clazz)</span></div>
 </section>
 </li>
 <li>

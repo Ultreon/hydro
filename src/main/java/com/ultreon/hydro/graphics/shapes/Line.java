@@ -1,8 +1,8 @@
-package com.ultreon.hydro.graphics.shapes;
+package com.ultreon.bubbles.graphics.shapes;
 
 
 import com.ultreon.commons.util.Constants;
-import com.ultreon.hydro.util.CollisionUtils;
+import com.ultreon.bubbles.util.CollisionUtils;
 
 public class Line implements Shape {
     private double slope;

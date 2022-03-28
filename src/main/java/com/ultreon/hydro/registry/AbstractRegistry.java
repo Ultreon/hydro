@@ -1,4 +1,4 @@
-package com.ultreon.hydro.registry;
+package com.ultreon.bubbles.registry;
 
 import java.util.Collection;
 import java.util.HashMap;

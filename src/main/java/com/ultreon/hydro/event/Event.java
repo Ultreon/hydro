@@ -1,4 +1,4 @@
-package com.ultreon.hydro.event;
+package com.ultreon.bubbles.event;
 
 public abstract class Event extends AbstractEvent {
 

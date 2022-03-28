@@ -1,6 +1,6 @@
-package com.ultreon.hydro.event.screen;
+package com.ultreon.bubbles.event.screen;
 
-import com.ultreon.hydro.screen.Screen;
+import com.ultreon.bubbles.screen.Screen;
 
 public abstract class ScreenEvent {
     private final Screen screen;

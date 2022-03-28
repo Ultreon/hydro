@@ -1,9 +1,9 @@
-package com.ultreon.hydro.registry.object;
+package com.ultreon.bubbles.registry.object;
 
-import com.ultreon.hydro.common.IRegistrable;
-import com.ultreon.hydro.common.Identifier;
-import com.ultreon.hydro.common.Registrable;
-import com.ultreon.hydro.registry.Registry;
+import com.ultreon.bubbles.common.IRegistrable;
+import com.ultreon.bubbles.common.Identifier;
+import com.ultreon.bubbles.common.Registrable;
+import com.ultreon.bubbles.registry.Registry;
 
 import java.util.function.Supplier;
 

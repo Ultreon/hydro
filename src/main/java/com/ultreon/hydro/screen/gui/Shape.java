@@ -1,4 +1,4 @@
-package com.ultreon.hydro.screen.gui;
+package com.ultreon.bubbles.screen.gui;
 
 public abstract class Shape {
     public abstract Rectangle getBounds();

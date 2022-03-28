@@ -1,8 +1,8 @@
-package com.ultreon.hydro.render;
+package com.ultreon.bubbles.render;
 
 import com.ultreon.hydro.Game;
-import com.ultreon.hydro.common.Registrable;
-import com.ultreon.hydro.graphics.ITexture;
+import com.ultreon.bubbles.common.Registrable;
+import com.ultreon.bubbles.graphics.ITexture;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

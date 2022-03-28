@@ -1,7 +1,7 @@
-package com.ultreon.hydro.event.window;
+package com.ultreon.bubbles.event.window;
 
 import com.ultreon.hydro.Window;
-import com.ultreon.hydro.event.Event;
+import com.ultreon.bubbles.event.Event;
 
 public class WindowEvent extends Event {
     private final Window window;

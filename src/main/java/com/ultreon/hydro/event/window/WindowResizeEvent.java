@@ -1,8 +1,8 @@
-package com.ultreon.hydro.event.window;
+package com.ultreon.bubbles.event.window;
 
 import com.ultreon.hydro.Window;
-import com.ultreon.hydro.vector.Vec2f;
-import com.ultreon.hydro.vector.Vec2i;
+import com.ultreon.bubbles.vector.Vec2f;
+import com.ultreon.bubbles.vector.Vec2i;
 
 public class WindowResizeEvent extends WindowEvent {
     private final Vec2i oldSize;

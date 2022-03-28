@@ -1,4 +1,4 @@
-package com.ultreon.hydro.event.type;
+package com.ultreon.bubbles.event.type;
 
 /**
  * Mouse Event Types.

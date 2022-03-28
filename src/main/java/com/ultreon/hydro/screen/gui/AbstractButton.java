@@ -1,8 +1,8 @@
-package com.ultreon.hydro.screen.gui;
+package com.ultreon.bubbles.screen.gui;
 
 import com.ultreon.hydro.Game;
-import com.ultreon.hydro.input.MouseInput;
-import com.ultreon.hydro.vector.Vec2i;
+import com.ultreon.bubbles.input.MouseInput;
+import com.ultreon.bubbles.vector.Vec2i;
 
 public abstract class AbstractButton extends Interactable {
     private Runnable command;

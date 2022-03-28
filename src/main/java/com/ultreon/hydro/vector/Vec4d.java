@@ -1,4 +1,4 @@
-package com.ultreon.hydro.vector;
+package com.ultreon.bubbles.vector;
 
 import java.io.Externalizable;
 import java.io.IOException;

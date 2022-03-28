@@ -1,4 +1,4 @@
-package com.ultreon.hydro.resources;
+package com.ultreon.bubbles.resources;
 
 public enum Emotion {
     LOL

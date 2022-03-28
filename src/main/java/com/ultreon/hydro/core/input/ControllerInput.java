@@ -1,4 +1,4 @@
-package com.ultreon.hydro.core.input;
+package com.ultreon.bubbles.core.input;
 
 public abstract class ControllerInput {
 

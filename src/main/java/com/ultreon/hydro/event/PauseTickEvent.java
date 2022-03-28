@@ -1,4 +1,4 @@
-package com.ultreon.hydro.event;
+package com.ultreon.bubbles.event;
 
 import com.ultreon.hydro.Game;
 

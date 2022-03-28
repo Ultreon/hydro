@@ -1,9 +1,9 @@
-package com.ultreon.hydro.resources;
+package com.ultreon.bubbles.resources;
 
 import com.ultreon.commons.exceptions.DuplicateElementException;
 import com.ultreon.commons.function.ThrowingSupplier;
 import com.ultreon.hydro.Game;
-import com.ultreon.hydro.common.Identifier;
+import com.ultreon.bubbles.common.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.Nullable;

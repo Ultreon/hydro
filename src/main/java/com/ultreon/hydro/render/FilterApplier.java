@@ -1,4 +1,4 @@
-package com.ultreon.hydro.render;
+package com.ultreon.bubbles.render;
 
 import com.google.common.annotations.Beta;
 import com.jhlabs.image.*;

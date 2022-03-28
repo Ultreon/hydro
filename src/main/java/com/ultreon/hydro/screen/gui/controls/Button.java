@@ -1,10 +1,10 @@
-package com.ultreon.hydro.screen.gui.controls;
+package com.ultreon.bubbles.screen.gui.controls;
 
-import com.ultreon.hydro.render.Renderer;
-import com.ultreon.hydro.screen.gui.Interactable;
-import com.ultreon.hydro.screen.gui.style.State;
-import com.ultreon.hydro.screen.gui.style.Style;
-import com.ultreon.hydro.vector.Vec2i;
+import com.ultreon.bubbles.render.Renderer;
+import com.ultreon.bubbles.screen.gui.Interactable;
+import com.ultreon.bubbles.screen.gui.style.State;
+import com.ultreon.bubbles.screen.gui.style.Style;
+import com.ultreon.bubbles.vector.Vec2i;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;

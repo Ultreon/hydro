@@ -1,13 +1,13 @@
-package com.ultreon.hydro.screen.gui.border;
+package com.ultreon.bubbles.screen.gui.border;
 
-import com.ultreon.hydro.graphics.Insets;
-import com.ultreon.hydro.render.Renderer;
+import com.ultreon.bubbles.graphics.Insets;
+import com.ultreon.bubbles.render.Renderer;
 
 import java.awt.*;
 
 @SuppressWarnings("unused")
 public class OuterBorder extends Border {
-    public OuterBorder(com.ultreon.hydro.graphics.Insets insets) {
+    public OuterBorder(com.ultreon.bubbles.graphics.Insets insets) {
         super(insets);
     }
 

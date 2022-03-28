@@ -1,7 +1,7 @@
-package com.ultreon.hydro.player;
+package com.ultreon.bubbles.player;
 
-import com.ultreon.hydro.input.KeyInput;
-import com.ultreon.hydro.input.KeyInput.Map;
+import com.ultreon.bubbles.input.KeyInput;
+import com.ultreon.bubbles.input.KeyInput.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

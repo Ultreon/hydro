@@ -1,6 +1,6 @@
-package com.ultreon.hydro.common;
+package com.ultreon.bubbles.common;
 
-import com.ultreon.hydro.render.Renderer;
+import com.ultreon.bubbles.render.Renderer;
 
 public interface Drawable {
     void draw(Renderer g);

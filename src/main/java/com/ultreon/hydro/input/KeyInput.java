@@ -1,6 +1,6 @@
-package com.ultreon.hydro.input;
+package com.ultreon.bubbles.input;
 
-import com.ultreon.hydro.core.input.KeyboardInput;
+import com.ultreon.bubbles.core.input.KeyboardInput;
 
 import java.awt.*;
 

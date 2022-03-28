@@ -1,4 +1,4 @@
-package com.ultreon.hydro.common;
+package com.ultreon.bubbles.common;
 
 import com.ultreon.commons.annotation.MethodsReturnNonnullByDefault;
 import com.ultreon.commons.exceptions.SyntaxError;

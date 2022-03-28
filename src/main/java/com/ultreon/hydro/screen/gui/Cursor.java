@@ -1,7 +1,7 @@
-package com.ultreon.hydro.screen.gui;
+package com.ultreon.bubbles.screen.gui;
 
 import com.google.common.annotations.Beta;
-import com.ultreon.hydro.common.Identifier;
+import com.ultreon.bubbles.common.Identifier;
 
 @Beta
 public class Cursor {

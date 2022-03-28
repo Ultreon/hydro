@@ -1,6 +1,6 @@
-package com.ultreon.hydro.input;
+package com.ultreon.bubbles.input;
 
-import com.ultreon.hydro.vector.Vec2i;
+import com.ultreon.bubbles.vector.Vec2i;
 
 import java.awt.*;
 
@@ -44,7 +44,7 @@ public final class MouseInput {
         canvas.addMouseWheelListener(instance.controller);
     }
 
-    private static class Controller extends com.ultreon.hydro.core.input.MouseInput {
+    private static class Controller extends com.ultreon.bubbles.core.input.MouseInput {
         @Override
         protected Point getCurrentLocationOnScreen() {
             return super.getCurrentLocationOnScreen();

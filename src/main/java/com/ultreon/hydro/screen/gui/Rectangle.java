@@ -1,6 +1,6 @@
-package com.ultreon.hydro.screen.gui;
+package com.ultreon.bubbles.screen.gui;
 
-import com.ultreon.hydro.vector.Vec2i;
+import com.ultreon.bubbles.vector.Vec2i;
 
 import java.io.Externalizable;
 import java.io.IOException;

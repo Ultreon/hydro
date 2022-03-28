@@ -1,7 +1,7 @@
-package com.ultreon.hydro.screen.gui.border;
+package com.ultreon.bubbles.screen.gui.border;
 
-import com.ultreon.hydro.graphics.Insets;
-import com.ultreon.hydro.render.Renderer;
+import com.ultreon.bubbles.graphics.Insets;
+import com.ultreon.bubbles.render.Renderer;
 
 import java.awt.*;
 
@@ -16,7 +16,7 @@ public class Border {
     }
 
     public Border(int top, int left, int bottom, int right) {
-        this.borderInsets = new com.ultreon.hydro.graphics.Insets(top, left, bottom, right);
+        this.borderInsets = new com.ultreon.bubbles.graphics.Insets(top, left, bottom, right);
     }
 
     public void paintBorder(Renderer renderer, int x, int y, int width, int height) {

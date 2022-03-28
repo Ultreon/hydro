@@ -5,7 +5,7 @@
 <title>KeyboardEvent (hydro 1.0.957-a1 API)</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="declaration: package: com.ultreon.hydro.event.input, class: KeyboardEvent">
+<meta name="description" content="declaration: package: com.ultreon.bubbles.event.input, class: KeyboardEvent">
 <meta name="generator" content="javadoc/ClassWriterImpl">
 <link rel="stylesheet" type="text/css" href="../../../../../stylesheet.css" title="Style">
 <link rel="stylesheet" type="text/css" href="../../../../../script-dir/jquery-ui.min.css" title="Style">
@@ -68,30 +68,30 @@ loadScripts(document, 'script');</script>
 <main role="main">
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">com.ultreon.hydro.event.input</a></div>
+<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">com.ultreon.bubbles.event.input</a></div>
 <h1 title="Class KeyboardEvent" class="title">Class KeyboardEvent</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance"><a href="../AbstractEvent.html" title="class in com.ultreon.hydro.event">com.ultreon.hydro.event.AbstractEvent</a>
-<div class="inheritance"><a href="../Event.html" title="class in com.ultreon.hydro.event">com.ultreon.hydro.event.Event</a>
-<div class="inheritance">com.ultreon.hydro.event.input.KeyboardEvent</div>
+<div class="inheritance"><a href="../AbstractEvent.html" title="class in com.ultreon.bubbles.event">com.ultreon.bubbles.event.AbstractEvent</a>
+<div class="inheritance"><a href="../Event.html" title="class in com.ultreon.bubbles.event">com.ultreon.bubbles.event.Event</a>
+<div class="inheritance">com.ultreon.bubbles.event.input.KeyboardEvent</div>
 </div>
 </div>
 </div>
 <section class="class-description" id="class-description">
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">KeyboardEvent</span>
-<span class="extends-implements">extends <a href="../Event.html" title="class in com.ultreon.hydro.event">Event</a></span></div>
+<span class="extends-implements">extends <a href="../Event.html" title="class in com.ultreon.bubbles.event">Event</a></span></div>
 <div class="block">Keyboard Event
  This event is used for handling keyboard input.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
 <ul class="see-list">
-<li><a href="KeyboardEvent.html" title="class in com.ultreon.hydro.event.input"><code>KeyboardEvent</code></a></li>
-<li><a href="../../core/input/KeyboardInput.html" title="class in com.ultreon.hydro.core.input"><code>KeyboardInput</code></a></li>
+<li><a href="KeyboardEvent.html" title="class in com.ultreon.bubbles.event.input"><code>KeyboardEvent</code></a></li>
+<li><a href="../../core/input/KeyboardInput.html" title="class in com.ultreon.bubbles.core.input"><code>KeyboardInput</code></a></li>
 <li><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html" title="class or interface in java.awt.event" class="external-link"><code>KeyEvent</code></a></li>
-<li><a href="../type/KeyEventType.html" title="enum class in com.ultreon.hydro.event.type"><code>KeyEventType</code></a></li>
+<li><a href="../type/KeyEventType.html" title="enum class in com.ultreon.bubbles.event.type"><code>KeyEventType</code></a></li>
 </ul>
 </dd>
 </dl>
@@ -106,10 +106,10 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(com.ultreon.hydro.Game,com.ultreon.hydro.core.input.KeyboardInput,java.awt.event.KeyEvent,com.ultreon.hydro.event.type.KeyEventType)" class="member-name-link">KeyboardEvent</a><wbr>(<a href="../../Game.html" title="class in com.ultreon.hydro">Game</a>&nbsp;main,
- @NotNull <a href="../../core/input/KeyboardInput.html" title="class in com.ultreon.hydro.core.input">KeyboardInput</a>&nbsp;controller,
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(com.ultreon.bubbles.Game,com.ultreon.bubbles.core.input.KeyboardInput,java.awt.event.KeyEvent,com.ultreon.bubbles.event.type.KeyEventType)" class="member-name-link">KeyboardEvent</a><wbr>(<a href="../../Game.html" title="class in com.ultreon.hydro">Game</a>&nbsp;main,
+ @NotNull <a href="../../core/input/KeyboardInput.html" title="class in com.ultreon.bubbles.core.input">KeyboardInput</a>&nbsp;controller,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html" title="class or interface in java.awt.event" class="external-link">KeyEvent</a>&nbsp;event,
- <a href="../type/KeyEventType.html" title="enum class in com.ultreon.hydro.event.type">KeyEventType</a>&nbsp;type)</code></div>
+ <a href="../type/KeyEventType.html" title="enum class in com.ultreon.bubbles.event.type">KeyEventType</a>&nbsp;type)</code></div>
 <div class="col-last even-row-color">
 <div class="block">Keyboard event, called from a specific scene.</div>
 </div>
@@ -127,7 +127,7 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../../core/input/KeyboardInput.html" title="class in com.ultreon.hydro.core.input">KeyboardInput</a></code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../../core/input/KeyboardInput.html" title="class in com.ultreon.bubbles.core.input">KeyboardInput</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getController()" class="member-name-link">getController</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Returns the KeyboardController instance used in the event.</div>
@@ -158,7 +158,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashMap.html" title="class or interface in java.util" class="external-link">HashMap</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Boolean.html" title="class or interface in java.lang" class="external-link">Boolean</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPressed()" class="member-name-link">getPressed</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../type/KeyEventType.html" title="enum class in com.ultreon.hydro.event.type">KeyEventType</a></code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../type/KeyEventType.html" title="enum class in com.ultreon.bubbles.event.type">KeyEventType</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getType()" class="member-name-link">getType</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>long</code></div>
@@ -168,7 +168,7 @@ loadScripts(document, 'script');</script>
 </div>
 </div>
 <div class="inherited-list">
-<h3 id="methods-inherited-from-class-com.ultreon.hydro.event.AbstractEvent">Methods inherited from class&nbsp;com.ultreon.hydro.event.<a href="../AbstractEvent.html" title="class in com.ultreon.hydro.event">AbstractEvent</a></h3>
+<h3 id="methods-inherited-from-class-com.ultreon.bubbles.event.AbstractEvent">Methods inherited from class&nbsp;com.ultreon.bubbles.event.<a href="../AbstractEvent.html" title="class in com.ultreon.bubbles.event">AbstractEvent</a></h3>
 <code><a href="../AbstractEvent.html#cancel()">cancel</a>, <a href="../AbstractEvent.html#isCancelable()">isCancelable</a>, <a href="../AbstractEvent.html#isCancelled()">isCancelled</a></code></div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-java.lang.Object">Methods inherited from class&nbsp;java.lang.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></h3>
@@ -185,20 +185,20 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(com.ultreon.hydro.Game,com.ultreon.hydro.core.input.KeyboardInput,java.awt.event.KeyEvent,com.ultreon.hydro.event.type.KeyEventType)">
+<section class="detail" id="&lt;init&gt;(com.ultreon.bubbles.Game,com.ultreon.bubbles.core.input.KeyboardInput,java.awt.event.KeyEvent,com.ultreon.bubbles.event.type.KeyEventType)">
 <h3>KeyboardEvent</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">KeyboardEvent</span><wbr><span class="parameters">(<a href="../../Game.html" title="class in com.ultreon.hydro">Game</a>&nbsp;main,
  @NotNull
- @NotNull <a href="../../core/input/KeyboardInput.html" title="class in com.ultreon.hydro.core.input">KeyboardInput</a>&nbsp;controller,
+ @NotNull <a href="../../core/input/KeyboardInput.html" title="class in com.ultreon.bubbles.core.input">KeyboardInput</a>&nbsp;controller,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html" title="class or interface in java.awt.event" class="external-link">KeyEvent</a>&nbsp;event,
- <a href="../type/KeyEventType.html" title="enum class in com.ultreon.hydro.event.type">KeyEventType</a>&nbsp;type)</span></div>
+ <a href="../type/KeyEventType.html" title="enum class in com.ultreon.bubbles.event.type">KeyEventType</a>&nbsp;type)</span></div>
 <div class="block">Keyboard event, called from a specific scene.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>main</code> - The <a href="../../Game.html" title="class in com.ultreon.hydro"><code>Game</code></a> instance.</dd>
-<dd><code>controller</code> - The <a href="../../core/input/KeyboardInput.html" title="class in com.ultreon.hydro.core.input"><code>KeyboardInput</code></a> instance.</dd>
+<dd><code>controller</code> - The <a href="../../core/input/KeyboardInput.html" title="class in com.ultreon.bubbles.core.input"><code>KeyboardInput</code></a> instance.</dd>
 <dd><code>event</code> - The <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html" title="class or interface in java.awt.event" class="external-link"><code>KeyEvent</code></a> instance.</dd>
-<dd><code>type</code> - One of the <a href="../type/KeyEventType.html" title="enum class in com.ultreon.hydro.event.type"><code>KeyEventType</code></a> constants.</dd>
+<dd><code>type</code> - One of the <a href="../type/KeyEventType.html" title="enum class in com.ultreon.bubbles.event.type"><code>KeyEventType</code></a> constants.</dd>
 </dl>
 </section>
 </li>
@@ -224,7 +224,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="getController()">
 <h3>getController</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../../core/input/KeyboardInput.html" title="class in com.ultreon.hydro.core.input">KeyboardInput</a></span>&nbsp;<span class="element-name">getController</span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../../core/input/KeyboardInput.html" title="class in com.ultreon.bubbles.core.input">KeyboardInput</a></span>&nbsp;<span class="element-name">getController</span>()</div>
 <div class="block">Returns the KeyboardController instance used in the event.</div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -241,7 +241,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="getType()">
 <h3>getType</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../type/KeyEventType.html" title="enum class in com.ultreon.hydro.event.type">KeyEventType</a></span>&nbsp;<span class="element-name">getType</span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../type/KeyEventType.html" title="enum class in com.ultreon.bubbles.event.type">KeyEventType</a></span>&nbsp;<span class="element-name">getType</span>()</div>
 </section>
 </li>
 <li>

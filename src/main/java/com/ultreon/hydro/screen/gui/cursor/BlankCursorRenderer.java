@@ -1,6 +1,6 @@
-package com.ultreon.hydro.screen.gui.cursor;
+package com.ultreon.bubbles.screen.gui.cursor;
 
-import com.ultreon.hydro.render.Renderer;
+import com.ultreon.bubbles.render.Renderer;
 
 public class BlankCursorRenderer extends CursorRenderer {
     public BlankCursorRenderer() {

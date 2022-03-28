@@ -1,6 +1,6 @@
-package com.ultreon.hydro.screen.gui.cursor;
+package com.ultreon.bubbles.screen.gui.cursor;
 
-import com.ultreon.hydro.common.Registrable;
+import com.ultreon.bubbles.common.Registrable;
 
 import java.awt.*;
 

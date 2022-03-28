@@ -1,10 +1,10 @@
-package com.ultreon.hydro.event.bus;
+package com.ultreon.bubbles.event.bus;
 
 import com.ultreon.commons.lang.ICancellable;
 import com.ultreon.commons.lang.Pair;
-import com.ultreon.hydro.event.AbstractEvent;
-import com.ultreon.hydro.event.SubscribeEvent;
-import com.ultreon.hydro.event.Subscriber;
+import com.ultreon.bubbles.event.AbstractEvent;
+import com.ultreon.bubbles.event.SubscribeEvent;
+import com.ultreon.bubbles.event.Subscriber;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
 

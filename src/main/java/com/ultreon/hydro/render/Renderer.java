@@ -1,7 +1,7 @@
 /////////////////////
 //     Package     //
 /////////////////////
-package com.ultreon.hydro.render;
+package com.ultreon.bubbles.render;
 
 /////////////////////
 //     Imports     //
@@ -9,7 +9,7 @@ package com.ultreon.hydro.render;
 
 import com.ultreon.commons.util.ColorUtils;
 import com.ultreon.commons.util.StringUtils;
-import com.ultreon.hydro.vector.Vec4i;
+import com.ultreon.bubbles.vector.Vec4i;
 
 import java.awt.*;
 import java.awt.font.FontRenderContext;
@@ -168,7 +168,7 @@ public class Renderer {
         gg.fill(s);
     }
 
-    public void fill(com.ultreon.hydro.screen.gui.Rectangle r) {
+    public void fill(com.ultreon.bubbles.screen.gui.Rectangle r) {
         gg.fillRect(r.getX(), r.getY(), r.getWidth(), r.getHeight());
     }
 

@@ -1,6 +1,6 @@
-package com.ultreon.hydro.util;
+package com.ultreon.bubbles.util;
 
-import com.ultreon.hydro.render.Renderer;
+import com.ultreon.bubbles.render.Renderer;
 
 import java.awt.*;
 import java.awt.geom.Point2D;

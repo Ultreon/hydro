@@ -1,4 +1,4 @@
-package com.ultreon.hydro.screen.gui.style;
+package com.ultreon.bubbles.screen.gui.style;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

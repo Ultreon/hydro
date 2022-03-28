@@ -1,10 +1,10 @@
-package com.ultreon.hydro.screen.gui.cursor;
+package com.ultreon.bubbles.screen.gui.cursor;
 
 import com.ultreon.hydro.Game;
-import com.ultreon.hydro.common.Drawable;
-import com.ultreon.hydro.common.Identifier;
-import com.ultreon.hydro.registry.Registry;
-import com.ultreon.hydro.render.Renderer;
+import com.ultreon.bubbles.common.Drawable;
+import com.ultreon.bubbles.common.Identifier;
+import com.ultreon.bubbles.registry.Registry;
+import com.ultreon.bubbles.render.Renderer;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

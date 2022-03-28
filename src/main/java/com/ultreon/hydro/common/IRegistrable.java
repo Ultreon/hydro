@@ -1,4 +1,4 @@
-package com.ultreon.hydro.common;
+package com.ultreon.bubbles.common;
 
 public interface IRegistrable {
     Identifier getRegistryName();

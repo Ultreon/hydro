@@ -1,8 +1,8 @@
-package com.ultreon.hydro.screen;
+package com.ultreon.bubbles.screen;
 
 import com.ultreon.commons.annotation.MethodsReturnNonnullByDefault;
 import com.ultreon.hydro.Game;
-import com.ultreon.hydro.common.Identifier;
+import com.ultreon.bubbles.common.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.Contract;

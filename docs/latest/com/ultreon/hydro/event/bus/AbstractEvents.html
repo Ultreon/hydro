@@ -5,7 +5,7 @@
 <title>AbstractEvents (hydro 1.0.957-a1 API)</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="declaration: package: com.ultreon.hydro.event.bus, class: AbstractEvents">
+<meta name="description" content="declaration: package: com.ultreon.bubbles.event.bus, class: AbstractEvents">
 <meta name="generator" content="javadoc/ClassWriterImpl">
 <link rel="stylesheet" type="text/css" href="../../../../../stylesheet.css" title="Style">
 <link rel="stylesheet" type="text/css" href="../../../../../script-dir/jquery-ui.min.css" title="Style">
@@ -68,19 +68,19 @@ loadScripts(document, 'script');</script>
 <main role="main">
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">com.ultreon.hydro.event.bus</a></div>
-<h1 title="Class AbstractEvents" class="title">Class AbstractEvents&lt;T extends <a href="../AbstractEvent.html" title="class in com.ultreon.hydro.event">AbstractEvent</a>&gt;</h1>
+<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">com.ultreon.bubbles.event.bus</a></div>
+<h1 title="Class AbstractEvents" class="title">Class AbstractEvents&lt;T extends <a href="../AbstractEvent.html" title="class in com.ultreon.bubbles.event">AbstractEvent</a>&gt;</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance">com.ultreon.hydro.event.bus.AbstractEvents&lt;T&gt;</div>
+<div class="inheritance">com.ultreon.bubbles.event.bus.AbstractEvents&lt;T&gt;</div>
 </div>
 <section class="class-description" id="class-description">
 <dl class="notes">
 <dt>Direct Known Subclasses:</dt>
-<dd><code><a href="GameEvents.html" title="class in com.ultreon.hydro.event.bus">GameEvents</a></code></dd>
+<dd><code><a href="GameEvents.html" title="class in com.ultreon.bubbles.event.bus">GameEvents</a></code></dd>
 </dl>
 <hr>
-<div class="type-signature"><span class="modifiers">public abstract class </span><span class="element-name type-name-label">AbstractEvents&lt;T extends <a href="../AbstractEvent.html" title="class in com.ultreon.hydro.event">AbstractEvent</a>&gt;</span>
+<div class="type-signature"><span class="modifiers">public abstract class </span><span class="element-name type-name-label">AbstractEvents&lt;T extends <a href="../AbstractEvent.html" title="class in com.ultreon.bubbles.event">AbstractEvent</a>&gt;</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
 </section>
 <section class="summary">
@@ -95,7 +95,7 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Class</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>static class&nbsp;</code></div>
-<div class="col-second even-row-color"><code><a href="AbstractEvents.AbstractSubscription.html" class="type-name-link" title="class in com.ultreon.hydro.event.bus">AbstractEvents.AbstractSubscription</a></code></div>
+<div class="col-second even-row-color"><code><a href="AbstractEvents.AbstractSubscription.html" class="type-name-link" title="class in com.ultreon.bubbles.event.bus">AbstractEvents.AbstractSubscription</a></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 </div>
 </section>
@@ -109,13 +109,13 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Field</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;? extends <a href="../AbstractEvent.html" title="class in com.ultreon.hydro.event">AbstractEvent</a>&gt;&gt;</code></div>
+<div class="col-first even-row-color"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;? extends <a href="../AbstractEvent.html" title="class in com.ultreon.bubbles.event">AbstractEvent</a>&gt;&gt;</code></div>
 <div class="col-second even-row-color"><code><a href="#classMap" class="member-name-link">classMap</a></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 <div class="col-first odd-row-color"><code>protected static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Predicate.html" title="class or interface in java.util.function" class="external-link">Predicate</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/reflect/Method.html" title="class or interface in java.lang.reflect" class="external-link">Method</a>&gt;</code></div>
 <div class="col-second odd-row-color"><code><a href="#classPredicate" class="member-name-link">classPredicate</a></code></div>
 <div class="col-last odd-row-color">&nbsp;</div>
-<div class="col-first even-row-color"><code>final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;? extends <a href="../AbstractEvent.html" title="class in com.ultreon.hydro.event">AbstractEvent</a>&gt;,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/CopyOnWriteArraySet.html" title="class or interface in java.util.concurrent" class="external-link">CopyOnWriteArraySet</a>&lt;com.ultreon.commons.lang.Pair&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/reflect/Method.html" title="class or interface in java.lang.reflect" class="external-link">Method</a>&gt;&gt;&gt;</code></div>
+<div class="col-first even-row-color"><code>final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;? extends <a href="../AbstractEvent.html" title="class in com.ultreon.bubbles.event">AbstractEvent</a>&gt;,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/CopyOnWriteArraySet.html" title="class or interface in java.util.concurrent" class="external-link">CopyOnWriteArraySet</a>&lt;com.ultreon.commons.lang.Pair&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/reflect/Method.html" title="class or interface in java.lang.reflect" class="external-link">Method</a>&gt;&gt;&gt;</code></div>
 <div class="col-second even-row-color"><code><a href="#eventToMethod" class="member-name-link">eventToMethod</a></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 <div class="col-first odd-row-color"><code>protected static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Predicate.html" title="class or interface in java.util.function" class="external-link">Predicate</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/reflect/Method.html" title="class or interface in java.lang.reflect" class="external-link">Method</a>&gt;</code></div>
@@ -124,10 +124,10 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color"><code>protected final org.apache.logging.log4j.Logger</code></div>
 <div class="col-second even-row-color"><code><a href="#logger" class="member-name-link">logger</a></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
-<div class="col-first odd-row-color"><code>final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;com.ultreon.commons.lang.Pair&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/reflect/Method.html" title="class or interface in java.lang.reflect" class="external-link">Method</a>&gt;,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/CopyOnWriteArraySet.html" title="class or interface in java.util.concurrent" class="external-link">CopyOnWriteArraySet</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;? extends <a href="../AbstractEvent.html" title="class in com.ultreon.hydro.event">AbstractEvent</a>&gt;&gt;&gt;</code></div>
+<div class="col-first odd-row-color"><code>final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;com.ultreon.commons.lang.Pair&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/reflect/Method.html" title="class or interface in java.lang.reflect" class="external-link">Method</a>&gt;,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/CopyOnWriteArraySet.html" title="class or interface in java.util.concurrent" class="external-link">CopyOnWriteArraySet</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;? extends <a href="../AbstractEvent.html" title="class in com.ultreon.bubbles.event">AbstractEvent</a>&gt;&gt;&gt;</code></div>
 <div class="col-second odd-row-color"><code><a href="#methodToEvent" class="member-name-link">methodToEvent</a></code></div>
 <div class="col-last odd-row-color">&nbsp;</div>
-<div class="col-first even-row-color"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="AbstractEvents.AbstractSubscription.html" title="class in com.ultreon.hydro.event.bus">AbstractEvents.AbstractSubscription</a>&gt;</code></div>
+<div class="col-first even-row-color"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="AbstractEvents.AbstractSubscription.html" title="class in com.ultreon.bubbles.event.bus">AbstractEvents.AbstractSubscription</a>&gt;</code></div>
 <div class="col-second even-row-color"><code><a href="#subscriptions" class="member-name-link">subscriptions</a></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 </div>
@@ -158,7 +158,7 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addHandlers(java.lang.Class,java.lang.Object,java.lang.reflect.Method)" class="member-name-link">addHandlers</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;? extends <a href="../AbstractEvent.html" title="class in com.ultreon.hydro.event">AbstractEvent</a>&gt;&nbsp;event,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addHandlers(java.lang.Class,java.lang.Object,java.lang.reflect.Method)" class="member-name-link">addHandlers</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;? extends <a href="../AbstractEvent.html" title="class in com.ultreon.bubbles.event">AbstractEvent</a>&gt;&nbsp;event,
  @Nullable <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;obj,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/reflect/Method.html" title="class or interface in java.lang.reflect" class="external-link">Method</a>&nbsp;method)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
@@ -217,25 +217,25 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="subscriptions">
 <h3>subscriptions</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="AbstractEvents.AbstractSubscription.html" title="class in com.ultreon.hydro.event.bus">AbstractEvents.AbstractSubscription</a>&gt;</span>&nbsp;<span class="element-name">subscriptions</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="AbstractEvents.AbstractSubscription.html" title="class in com.ultreon.bubbles.event.bus">AbstractEvents.AbstractSubscription</a>&gt;</span>&nbsp;<span class="element-name">subscriptions</span></div>
 </section>
 </li>
 <li>
 <section class="detail" id="classMap">
 <h3>classMap</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;? extends <a href="../AbstractEvent.html" title="class in com.ultreon.hydro.event">AbstractEvent</a>&gt;&gt;</span>&nbsp;<span class="element-name">classMap</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link">Long</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;? extends <a href="../AbstractEvent.html" title="class in com.ultreon.bubbles.event">AbstractEvent</a>&gt;&gt;</span>&nbsp;<span class="element-name">classMap</span></div>
 </section>
 </li>
 <li>
 <section class="detail" id="eventToMethod">
 <h3>eventToMethod</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;? extends <a href="../AbstractEvent.html" title="class in com.ultreon.hydro.event">AbstractEvent</a>&gt;,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/CopyOnWriteArraySet.html" title="class or interface in java.util.concurrent" class="external-link">CopyOnWriteArraySet</a>&lt;com.ultreon.commons.lang.Pair&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/reflect/Method.html" title="class or interface in java.lang.reflect" class="external-link">Method</a>&gt;&gt;&gt;</span>&nbsp;<span class="element-name">eventToMethod</span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;? extends <a href="../AbstractEvent.html" title="class in com.ultreon.bubbles.event">AbstractEvent</a>&gt;,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/CopyOnWriteArraySet.html" title="class or interface in java.util.concurrent" class="external-link">CopyOnWriteArraySet</a>&lt;com.ultreon.commons.lang.Pair&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/reflect/Method.html" title="class or interface in java.lang.reflect" class="external-link">Method</a>&gt;&gt;&gt;</span>&nbsp;<span class="element-name">eventToMethod</span></div>
 </section>
 </li>
 <li>
 <section class="detail" id="methodToEvent">
 <h3>methodToEvent</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;com.ultreon.commons.lang.Pair&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/reflect/Method.html" title="class or interface in java.lang.reflect" class="external-link">Method</a>&gt;,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/CopyOnWriteArraySet.html" title="class or interface in java.util.concurrent" class="external-link">CopyOnWriteArraySet</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;? extends <a href="../AbstractEvent.html" title="class in com.ultreon.hydro.event">AbstractEvent</a>&gt;&gt;&gt;</span>&nbsp;<span class="element-name">methodToEvent</span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;com.ultreon.commons.lang.Pair&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/reflect/Method.html" title="class or interface in java.lang.reflect" class="external-link">Method</a>&gt;,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/CopyOnWriteArraySet.html" title="class or interface in java.util.concurrent" class="external-link">CopyOnWriteArraySet</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;? extends <a href="../AbstractEvent.html" title="class in com.ultreon.bubbles.event">AbstractEvent</a>&gt;&gt;&gt;</span>&nbsp;<span class="element-name">methodToEvent</span></div>
 </section>
 </li>
 <li>
@@ -268,7 +268,7 @@ loadScripts(document, 'script');</script>
 <ul class="member-list">
 <li>
 <section class="detail" id="publish(E)">
-<h3 id="publish(com.ultreon.hydro.event.AbstractEvent)">publish</h3>
+<h3 id="publish(com.ultreon.bubbles.event.AbstractEvent)">publish</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="type-parameters">&lt;E extends <a href="AbstractEvents.html" title="type parameter in AbstractEvents">T</a>&gt;</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">publish</span><wbr><span class="parameters">(E&nbsp;event)</span></div>
 </section>
 </li>
@@ -313,7 +313,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="addHandlers(java.lang.Class,java.lang.Object,java.lang.reflect.Method)">
 <h3>addHandlers</h3>
-<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addHandlers</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;? extends <a href="../AbstractEvent.html" title="class in com.ultreon.hydro.event">AbstractEvent</a>&gt;&nbsp;event,
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addHandlers</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;? extends <a href="../AbstractEvent.html" title="class in com.ultreon.bubbles.event">AbstractEvent</a>&gt;&nbsp;event,
  @Nullable
  @Nullable <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;obj,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/reflect/Method.html" title="class or interface in java.lang.reflect" class="external-link">Method</a>&nbsp;method)</span></div>

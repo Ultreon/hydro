@@ -1,8 +1,8 @@
-package com.ultreon.hydro.render;
+package com.ultreon.bubbles.render;
 
 import com.ultreon.hydro.Game;
-import com.ultreon.hydro.common.Identifier;
-import com.ultreon.hydro.resources.ResourceManager;
+import com.ultreon.bubbles.common.Identifier;
+import com.ultreon.bubbles.resources.ResourceManager;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

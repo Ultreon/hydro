@@ -1,4 +1,4 @@
-package com.ultreon.hydro.event.window;
+package com.ultreon.bubbles.event.window;
 
 import com.ultreon.commons.lang.ICancellable;
 import com.ultreon.hydro.Window;

@@ -1,9 +1,9 @@
-package com.ultreon.hydro.event.input;
+package com.ultreon.bubbles.event.input;
 
 import com.ultreon.hydro.Game;
-import com.ultreon.hydro.core.input.KeyboardInput;
-import com.ultreon.hydro.event.Event;
-import com.ultreon.hydro.event.type.KeyEventType;
+import com.ultreon.bubbles.core.input.KeyboardInput;
+import com.ultreon.bubbles.event.Event;
+import com.ultreon.bubbles.event.type.KeyEventType;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.event.KeyEvent;

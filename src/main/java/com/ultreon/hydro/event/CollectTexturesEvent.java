@@ -1,6 +1,6 @@
-package com.ultreon.hydro.event;
+package com.ultreon.bubbles.event;
 
-import com.ultreon.hydro.render.TextureCollection;
+import com.ultreon.bubbles.render.TextureCollection;
 
 public class CollectTexturesEvent extends Event {
     private final TextureCollection textureCollection;

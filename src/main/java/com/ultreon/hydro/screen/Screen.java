@@ -1,10 +1,10 @@
-package com.ultreon.hydro.screen;
+package com.ultreon.bubbles.screen;
 
 import com.ultreon.hydro.Game;
-import com.ultreon.hydro.input.KeyInput;
-import com.ultreon.hydro.render.Renderer;
-import com.ultreon.hydro.screen.gui.Container;
-import com.ultreon.hydro.screen.gui.Interactable;
+import com.ultreon.bubbles.input.KeyInput;
+import com.ultreon.bubbles.render.Renderer;
+import com.ultreon.bubbles.screen.gui.Container;
+import com.ultreon.bubbles.screen.gui.Interactable;
 
 import java.awt.*;
 import java.util.concurrent.CopyOnWriteArrayList;

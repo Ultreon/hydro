@@ -1,11 +1,11 @@
-package com.ultreon.hydro.event.input;
+package com.ultreon.bubbles.event.input;
 
 import com.ultreon.hydro.Game;
-import com.ultreon.hydro.core.input.KeyboardInput;
-import com.ultreon.hydro.core.input.MouseInput;
-import com.ultreon.hydro.event.Event;
-import com.ultreon.hydro.event.type.KeyEventType;
-import com.ultreon.hydro.event.type.MouseEventType;
+import com.ultreon.bubbles.core.input.KeyboardInput;
+import com.ultreon.bubbles.core.input.MouseInput;
+import com.ultreon.bubbles.event.Event;
+import com.ultreon.bubbles.event.type.KeyEventType;
+import com.ultreon.bubbles.event.type.MouseEventType;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.event.KeyEvent;
@@ -15,7 +15,7 @@ import java.awt.event.MouseEvent;
  * Mouse Motion Event
  * This event is used for handling mouse motion input.
  *
- * @see com.ultreon.hydro.event.input.MouseEvent
+ * @see com.ultreon.bubbles.event.input.MouseEvent
  * @see MouseMotionEvent
  * @see MouseInput
  * @see MouseEventType

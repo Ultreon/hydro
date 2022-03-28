@@ -1,9 +1,9 @@
-package com.ultreon.hydro.event.input;
+package com.ultreon.bubbles.event.input;
 
 import com.studiohartman.jamepad.ControllerManager;
 import com.studiohartman.jamepad.ControllerState;
-import com.ultreon.hydro.core.AntiMod;
-import com.ultreon.hydro.event.bus.GameEvents;
+import com.ultreon.bubbles.core.AntiMod;
+import com.ultreon.bubbles.event.bus.GameEvents;
 
 @AntiMod
 public class XInputEventThread implements Runnable {

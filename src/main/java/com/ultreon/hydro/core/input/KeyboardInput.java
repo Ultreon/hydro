@@ -1,11 +1,11 @@
-package com.ultreon.hydro.core.input;
+package com.ultreon.bubbles.core.input;
 
 import com.ultreon.hydro.Game;
-import com.ultreon.hydro.event.bus.GameEvents;
-import com.ultreon.hydro.event.input.KeyboardEvent;
-import com.ultreon.hydro.event.type.KeyEventType;
-import com.ultreon.hydro.screen.Screen;
-import com.ultreon.hydro.screen.ScreenManager;
+import com.ultreon.bubbles.event.bus.GameEvents;
+import com.ultreon.bubbles.event.input.KeyboardEvent;
+import com.ultreon.bubbles.event.type.KeyEventType;
+import com.ultreon.bubbles.screen.Screen;
+import com.ultreon.bubbles.screen.ScreenManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

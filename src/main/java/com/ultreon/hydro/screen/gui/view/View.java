@@ -1,7 +1,7 @@
-package com.ultreon.hydro.screen.gui.view;
+package com.ultreon.bubbles.screen.gui.view;
 
-import com.ultreon.hydro.render.Renderer;
-import com.ultreon.hydro.screen.gui.Interactable;
+import com.ultreon.bubbles.render.Renderer;
+import com.ultreon.bubbles.screen.gui.Interactable;
 
 public abstract class View extends Interactable {
     public Renderer containerGraphics;

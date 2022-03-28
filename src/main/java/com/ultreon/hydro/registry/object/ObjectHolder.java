@@ -1,4 +1,4 @@
-package com.ultreon.hydro.registry.object;
+package com.ultreon.bubbles.registry.object;
 
 import org.apache.commons.lang3.ObjectUtils;
 

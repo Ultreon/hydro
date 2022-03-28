@@ -1,7 +1,7 @@
 package com.ultreon.hydro;
 
-import com.ultreon.hydro.render.Renderer;
-import com.ultreon.hydro.vector.Vec2f;
+import com.ultreon.bubbles.render.Renderer;
+import com.ultreon.bubbles.vector.Vec2f;
 
 public abstract class GameObject {
     private float x;

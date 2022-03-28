@@ -2,21 +2,21 @@ package com.ultreon.hydro;
 
 import com.ultreon.commons.crash.ApplicationCrash;
 import com.ultreon.commons.crash.CrashLog;
-import com.ultreon.commons.lang.InfoTransporter;
+import com.ultreon.commons.lang.MessageBridge;
 import com.ultreon.commons.lang.LoggableProgress;
 import com.ultreon.commons.time.TimeProcessor;
-import com.ultreon.hydro.event.RenderGameEvent;
-import com.ultreon.hydro.event.RenderScreenEvent;
-import com.ultreon.hydro.event.TickEvent;
-import com.ultreon.hydro.event.bus.GameEvents;
-import com.ultreon.hydro.player.BasePlayer;
-import com.ultreon.hydro.player.PlayerController;
-import com.ultreon.hydro.render.FilterApplier;
-import com.ultreon.hydro.render.RenderSettings;
-import com.ultreon.hydro.render.Renderer;
-import com.ultreon.hydro.resources.ResourceManager;
-import com.ultreon.hydro.screen.Screen;
-import com.ultreon.hydro.screen.ScreenManager;
+import com.ultreon.bubbles.event.RenderGameEvent;
+import com.ultreon.bubbles.event.RenderScreenEvent;
+import com.ultreon.bubbles.event.TickEvent;
+import com.ultreon.bubbles.event.bus.GameEvents;
+import com.ultreon.bubbles.player.BasePlayer;
+import com.ultreon.bubbles.player.PlayerController;
+import com.ultreon.bubbles.render.FilterApplier;
+import com.ultreon.bubbles.render.RenderSettings;
+import com.ultreon.bubbles.render.Renderer;
+import com.ultreon.bubbles.resources.ResourceManager;
+import com.ultreon.bubbles.screen.Screen;
+import com.ultreon.bubbles.screen.ScreenManager;
 import lombok.SneakyThrows;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -87,7 +87,7 @@ public abstract class Game {
 //        this.gameWindow.init();
 
         // Load game with loading screen.
-        this.load(new LoggableProgress(new InfoTransporter(this::log), 1000));
+        this.load(new LoggableProgress(new MessageBridge(this::log), 1000));
         this.screenManager = createScreenManager();
     }
 

@@ -1,7 +1,7 @@
-package com.ultreon.hydro.event;
+package com.ultreon.bubbles.event;
 
 import com.ultreon.hydro.GameObject;
-import com.ultreon.hydro.render.Renderer;
+import com.ultreon.bubbles.render.Renderer;
 
 public abstract class RenderGameObjectEvent extends RenderEvent {
     private final GameObject gameObject;

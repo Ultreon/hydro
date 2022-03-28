@@ -1,6 +1,6 @@
-package com.ultreon.hydro.resources;
+package com.ultreon.bubbles.resources;
 
-import com.ultreon.hydro.common.Identifier;
+import com.ultreon.bubbles.common.Identifier;
 
 import java.util.HashMap;
 import java.util.Map;

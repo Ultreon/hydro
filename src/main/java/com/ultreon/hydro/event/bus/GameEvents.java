@@ -1,6 +1,6 @@
-package com.ultreon.hydro.event.bus;
+package com.ultreon.bubbles.event.bus;
 
-import com.ultreon.hydro.event.Event;
+import com.ultreon.bubbles.event.Event;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

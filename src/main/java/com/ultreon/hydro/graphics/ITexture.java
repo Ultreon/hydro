@@ -1,6 +1,6 @@
-package com.ultreon.hydro.graphics;
+package com.ultreon.bubbles.graphics;
 
-import com.ultreon.hydro.render.Renderer;
+import com.ultreon.bubbles.render.Renderer;
 
 public interface ITexture {
     void render(Renderer gg);

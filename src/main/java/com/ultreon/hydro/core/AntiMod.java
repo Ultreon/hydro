@@ -1,4 +1,4 @@
-package com.ultreon.hydro.core;
+package com.ultreon.bubbles.core;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

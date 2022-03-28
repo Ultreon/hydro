@@ -1,7 +1,7 @@
-package com.ultreon.hydro.event;
+package com.ultreon.bubbles.event;
 
 import com.ultreon.hydro.Game;
-import com.ultreon.hydro.event.screen.OpenScreenEvent;
+import com.ultreon.bubbles.event.screen.OpenScreenEvent;
 
 /**
  * @author Qboi

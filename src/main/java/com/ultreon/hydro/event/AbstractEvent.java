@@ -1,6 +1,6 @@
-package com.ultreon.hydro.event;
+package com.ultreon.bubbles.event;
 
-import com.ultreon.hydro.annotation.Cancelable;
+import com.ultreon.bubbles.annotation.Cancelable;
 
 public abstract class AbstractEvent {
     private boolean cancelled;

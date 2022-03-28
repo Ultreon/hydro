@@ -1,4 +1,4 @@
-package com.ultreon.hydro.screen.gui;
+package com.ultreon.bubbles.screen.gui;
 
 public interface GuiElement {
     void make();

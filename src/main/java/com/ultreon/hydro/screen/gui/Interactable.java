@@ -1,7 +1,7 @@
-package com.ultreon.hydro.screen.gui;
+package com.ultreon.bubbles.screen.gui;
 
-import com.ultreon.hydro.render.Renderer;
-import com.ultreon.hydro.vector.Vec2i;
+import com.ultreon.bubbles.render.Renderer;
+import com.ultreon.bubbles.vector.Vec2i;
 
 import java.util.Objects;
 

@@ -1,4 +1,4 @@
-package com.ultreon.hydro.graphics;
+package com.ultreon.bubbles.graphics;
 
 public class Insets extends java.awt.Insets {
     /**

@@ -1,4 +1,4 @@
-package com.ultreon.hydro.input;
+package com.ultreon.bubbles.input;
 
 public class Keybind {
     private final int defaultKey;

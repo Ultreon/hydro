@@ -1,12 +1,12 @@
-package com.ultreon.hydro.registry;
+package com.ultreon.bubbles.registry;
 
-import com.ultreon.hydro.common.IRegistrable;
-import com.ultreon.hydro.common.Identifier;
-import com.ultreon.hydro.common.Registrable;
-import com.ultreon.hydro.event.SubscribeEvent;
-import com.ultreon.hydro.event.bus.GameEvents;
-import com.ultreon.hydro.event.registry.RegistryEvent;
-import com.ultreon.hydro.registry.object.Registered;
+import com.ultreon.bubbles.common.IRegistrable;
+import com.ultreon.bubbles.common.Identifier;
+import com.ultreon.bubbles.common.Registrable;
+import com.ultreon.bubbles.event.SubscribeEvent;
+import com.ultreon.bubbles.event.bus.GameEvents;
+import com.ultreon.bubbles.event.registry.RegistryEvent;
+import com.ultreon.bubbles.registry.object.Registered;
 import org.apache.logging.log4j.LogManager;
 
 import java.util.ArrayList;

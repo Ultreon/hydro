@@ -1,8 +1,8 @@
-package com.ultreon.hydro.event.registry;
+package com.ultreon.bubbles.event.registry;
 
-import com.ultreon.hydro.common.IRegistrable;
-import com.ultreon.hydro.event.Event;
-import com.ultreon.hydro.registry.Registry;
+import com.ultreon.bubbles.common.IRegistrable;
+import com.ultreon.bubbles.event.Event;
+import com.ultreon.bubbles.registry.Registry;
 
 import java.util.Objects;
 

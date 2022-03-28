@@ -1,12 +1,12 @@
 package com.ultreon.hydro;
 
 import com.ultreon.commons.exceptions.OneTimeUseException;
-import com.ultreon.hydro.common.Identifier;
-import com.ultreon.hydro.core.CursorManager;
-import com.ultreon.hydro.event.bus.GameEvents;
-import com.ultreon.hydro.event.window.WindowClosingEvent;
-import com.ultreon.hydro.input.KeyInput;
-import com.ultreon.hydro.input.MouseInput;
+import com.ultreon.bubbles.common.Identifier;
+import com.ultreon.bubbles.core.CursorManager;
+import com.ultreon.bubbles.event.bus.GameEvents;
+import com.ultreon.bubbles.event.window.WindowClosingEvent;
+import com.ultreon.bubbles.input.KeyInput;
+import com.ultreon.bubbles.input.MouseInput;
 import org.jdesktop.swingx.JXFrame;
 import org.jetbrains.annotations.Contract;
 

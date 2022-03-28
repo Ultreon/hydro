@@ -1,8 +1,8 @@
-package com.ultreon.hydro.event.input;
+package com.ultreon.bubbles.event.input;
 
 import com.studiohartman.jamepad.ControllerManager;
 import com.studiohartman.jamepad.ControllerState;
-import com.ultreon.hydro.event.Event;
+import com.ultreon.bubbles.event.Event;
 
 @SuppressWarnings("unused")
 public class XInputEvent extends Event {

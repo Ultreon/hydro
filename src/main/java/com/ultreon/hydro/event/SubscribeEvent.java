@@ -1,4 +1,4 @@
-package com.ultreon.hydro.event;
+package com.ultreon.bubbles.event;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

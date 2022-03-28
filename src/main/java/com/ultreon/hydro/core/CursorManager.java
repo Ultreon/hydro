@@ -1,4 +1,4 @@
-package com.ultreon.hydro.core;
+package com.ultreon.bubbles.core;
 
 import java.awt.*;
 
